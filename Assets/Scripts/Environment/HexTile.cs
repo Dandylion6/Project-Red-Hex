@@ -6,16 +6,8 @@ public class HexTile : MonoBehaviour
     [SerializeField] private float size = 1.0f;
 
 
-    public Vector2Int AxialCoordinate => new(hexagon.q, hexagon.r);
-
-    private Hexagon hexagon = new();
-
-
-    private void Start()
-    {
-        Vector2Int hexAxial = Hexagon.WorldToAxial(new(transform.position.x, transform.position.z), size);
-        hexagon = new(hexAxial.x, hexAxial.y, size);
-    }
+    public Vector2Int AxialCoordinate => Hexagon.WorldToAxial(new(transform.position.x, transform.position.z), size);
+    public float Size => size;
 
 
     private void OnDrawGizmosSelected()

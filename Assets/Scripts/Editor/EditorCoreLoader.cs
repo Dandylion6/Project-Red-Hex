@@ -2,12 +2,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BaseScenes
-{
-    public const string CORE_SCENE = "Core_Scene";
-    public const string MENU_SCENE = "Menu_Scene";
-}
-
 [InitializeOnLoad]
 static public class EditorCoreLoader
 {
@@ -29,7 +23,7 @@ static public class EditorCoreLoader
         }
 
         // Loads the core scene for any other scene additively
-        SceneManager.LoadScene("CoreScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene(BaseScenes.CORE_SCENE, LoadSceneMode.Additive);
         SceneManager.sceneLoaded -= OnSceneLoad; // Only happens once.
     }
 }
