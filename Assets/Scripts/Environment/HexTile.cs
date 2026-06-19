@@ -13,7 +13,7 @@ public class HexTile : MonoBehaviour
 
     private void Start()
     {
-        Vector2Int hexAxial = Hexagon.WorldToAxial(new(transform.position.x, transform.position.z));
+        Vector2Int hexAxial = Hexagon.WorldToAxial(new(transform.position.x, transform.position.z), size);
         hexagon = new(hexAxial.x, hexAxial.y, size);
     }
 
@@ -26,7 +26,7 @@ public class HexTile : MonoBehaviour
 
     private void SnapToGrid()
     {
-        Vector2Int hexAxial = Hexagon.WorldToAxial(new(transform.position.x, transform.position.z));
+        Vector2Int hexAxial = Hexagon.WorldToAxial(new(transform.position.x, transform.position.z), size);
         Vector2 world = Hexagon.AxialToWorld(hexAxial, size);
         transform.position = new(world.x, transform.position.y, world.y);
     }
