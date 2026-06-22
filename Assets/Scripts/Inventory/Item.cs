@@ -1,9 +1,8 @@
 using UnityEngine;
-
-public class Item : MonoBehaviour
+[System.Serializable]
+public abstract class Item : MonoBehaviour
 {
-    
-    public void Use() { }
+    public abstract void Use();
 
 
 }
