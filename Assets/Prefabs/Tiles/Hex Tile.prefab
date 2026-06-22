@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d642963424bd634faf7051950cccfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HexTile
-  isWalkable: 0
+  isWalkable: 1
 --- !u!135 &8468254566431521880
 SphereCollider:
   m_ObjectHideFlags: 0

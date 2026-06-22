@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class HexTile : MonoBehaviour
@@ -10,7 +11,12 @@ public class HexTile : MonoBehaviour
     public Vector2Int AxialCoordinate => Hexagon.WorldToAxial(new(transform.position.x, transform.position.z));
     public bool IsWalkable => isWalkable;
 
+    private Action<TilePiece> onPiecePlaced = null;
     private TilePiece piece = null;
+
+
+    public void SubscribeToOnPiecePlaced(Action<TilePiece> callback) => onPiecePlaced += callback;
+    public void UnsubscibeToOnPiecePlaced(Action<TilePiece> callback) => onPiecePlaced -= callback;
 
 
     public bool TrySetPiece(TilePiece piece)
@@ -18,11 +24,16 @@ public class HexTile : MonoBehaviour
         if (!CanSetPiece(piece)) return false;
 
         this.piece = piece;
+        onPiecePlaced?.Invoke(piece);
         return true;
     }
 
 
-    public void SetPiece(TilePiece piece) => this.piece = piece;
+    public void SetPiece(TilePiece piece)
+    {
+        this.piece = piece;
+        onPiecePlaced?.Invoke(piece);
+    }
 
 
     public TilePiece RemovePiece()

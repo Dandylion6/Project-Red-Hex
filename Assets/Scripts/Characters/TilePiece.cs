@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class TilePiece : MonoBehaviour
 {
+    public bool HasTurn => hasTurn;
+
     private HexTile occupying = null;
+    private bool hasTurn = false;
 
 
     public void MoveTo(Vector3 target)
@@ -24,4 +27,8 @@ public class TilePiece : MonoBehaviour
         tile.SetPiece(this);
         occupying = tile;
     }
+
+
+    public void StartTurn() => hasTurn = true;
+    public void EndTurn() => hasTurn = false;
 }
