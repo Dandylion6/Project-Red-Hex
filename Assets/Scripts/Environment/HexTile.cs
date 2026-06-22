@@ -52,6 +52,12 @@ public class HexTile : MonoBehaviour
         if (piece == null) return false;
         if (!isWalkable) return false;
         if (this.piece != null) return false;
+
+        // Check path.
+        Pathfinding.Result result = HexGridManager.Instance.CalculatePath(piece.Occupying, this);
+        if (!result.isComplete) return false;
+        if (result.tileDistance > piece.MaxMoveDistance) return false;
+
         return true;
     }
 

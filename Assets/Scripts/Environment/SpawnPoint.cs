@@ -13,7 +13,7 @@ public class SpawnPoint : MonoBehaviour
     private HexTile tile = null;
 
 
-    private void Awake()
+    private void Start()
     {
         tile = GetComponent<HexTile>();
         TilePiece player = GameManager.Instance.Player;
@@ -22,7 +22,7 @@ public class SpawnPoint : MonoBehaviour
 
         // Will move the player to this tile.
         if (lastScene == goToScene)
-            player.MoveTo(tile);
+            player.SpawnAt(tile);
     }
 
 
@@ -31,8 +31,8 @@ public class SpawnPoint : MonoBehaviour
         // Only check for player
         if (piece != GameManager.Instance.Player) return;
 
-        SceneManager.UnloadSceneAsync(currentScene);
+        if (currentScene != string.Empty) SceneManager.UnloadSceneAsync(currentScene);
         lastScene = currentScene;
-        SceneManager.LoadScene(goToScene, LoadSceneMode.Additive);
+        if (goToScene != string.Empty) SceneManager.LoadScene(goToScene, LoadSceneMode.Additive);
     }
 }

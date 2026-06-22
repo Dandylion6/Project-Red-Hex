@@ -2,10 +2,25 @@ using UnityEngine;
 
 public class TilePiece : MonoBehaviour
 {
+    [Header("Piece Settings")]
+    [SerializeField] private int baseMoveDistance = 1;
+
+
+    public HexTile Occupying => occupying;
+    public int MaxMoveDistance => maxMoveDistance;
     public bool HasTurn => hasTurn;
 
     private HexTile occupying = null;
+    private int maxMoveDistance;
     private bool hasTurn = false;
+
+
+    public void SpawnAt(HexTile tile)
+    {
+        tile.SetPiece(this);
+        occupying = tile;
+        transform.position = tile.transform.position;
+    }
 
 
     public void MoveTo(Vector3 target)
@@ -18,6 +33,7 @@ public class TilePiece : MonoBehaviour
 
     public void MoveTo(HexTile tile)
     {
+        if (!hasTurn) return;
         if (!tile.CanSetPiece(this)) return;
         if (occupying != null) 
             occupying.RemovePiece();
@@ -31,4 +47,7 @@ public class TilePiece : MonoBehaviour
 
     public void StartTurn() => hasTurn = true;
     public void EndTurn() => hasTurn = false;
+
+
+    private void Start() => maxMoveDistance = baseMoveDistance;
 }
