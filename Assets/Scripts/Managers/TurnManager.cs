@@ -1,19 +1,26 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public class TurnManager : Singleton<TurnManager>
 {
-    private List<TilePiece> piecesWithTurn = new();
+    private readonly List<TilePiece> piecesWithTurns = new();
+    private TilePiece activePiece = null;
 
 
     private void Start()
     {
-        piecesWithTurn.Add(GameManager.Instance.Player);
+        piecesWithTurns.Add(GameManager.Instance.Player);
     }
 
 
     private void Update()
     {
-        
+        if (activePiece != null && activePiece.HasTurn)
+            activePiece = null;
+
+        foreach (TilePiece piece in piecesWithTurns)
+        {
+            activePiece = piece;
+            piece.StartTurn();
+        }
     }
 }

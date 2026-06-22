@@ -127,10 +127,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1749471133023849186, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
-      propertyPath: isWalkable
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3363674685689751770, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
       propertyPath: m_Name
       value: Hex Tile (5)
@@ -874,6 +870,14 @@ PrefabInstance:
     - target: {fileID: 4737089195504600601, guid: 1747824da0061574da207b6dbf83607b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650370089074731329, guid: 1747824da0061574da207b6dbf83607b, type: 3}
+      propertyPath: goToScene
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650370089074731329, guid: 1747824da0061574da207b6dbf83607b, type: 3}
+      propertyPath: currentScene
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
