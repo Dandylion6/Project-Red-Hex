@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14b259ded6571047be3c8f85807b718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TilePiece
+  baseMoveDistance: 2
 --- !u!114 &3429750668091550358
 MonoBehaviour:
   m_ObjectHideFlags: 0

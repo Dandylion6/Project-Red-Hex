@@ -3,13 +3,15 @@ using UnityEngine;
 public class TilePiece : MonoBehaviour
 {
     [Header("Piece Settings")]
-    [SerializeField] private int maxMoveDistance = 1;
+    [SerializeField] private int baseMoveDistance = 1;
 
 
     public HexTile Occupying => occupying;
+    public int MaxMoveDistance => maxMoveDistance;
     public bool HasTurn => hasTurn;
 
     private HexTile occupying = null;
+    private int maxMoveDistance;
     private bool hasTurn = false;
 
 
@@ -45,4 +47,7 @@ public class TilePiece : MonoBehaviour
 
     public void StartTurn() => hasTurn = true;
     public void EndTurn() => hasTurn = false;
+
+
+    private void Start() => maxMoveDistance = baseMoveDistance;
 }

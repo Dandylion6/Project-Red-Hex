@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class Pathfinding
@@ -41,7 +40,8 @@ public class Pathfinding
     {
         Result result = new();
 
-        List<HexTile> canCheck = new() { start };
+        List<HexTile> openTiles = new() { start };
+        HashSet<HexTile> closedTiles = new();
 
         Dictionary<HexTile, HexTile> cameFrom = new();
         Dictionary<HexTile, Node> nodes = new()
@@ -51,33 +51,40 @@ public class Pathfinding
 
         for (int i = 0; i < MAX_ITERATIONS; ++i)
         {
-            HexTile current = GetTileWithLowestF(canCheck, nodes);
+            if (openTiles.Count == 0) break;
+
+            HexTile current = GetTileWithLowestF(openTiles, nodes);
             if (current == end) // Finnished path.
             {
                 result.path = ReconstructPath(cameFrom, current);
-                result.tileDistance = result.path.Count;
+                result.tileDistance = Mathf.Max(result.path.Count - 1, 0);
                 result.isComplete = true;
+                return result;
             }
 
-            canCheck.Remove(current);
-            HexTile[] neighbors = GetNeighboringTiles(start);
+            openTiles.Remove(current);
+            closedTiles.Add(current);
+
+            HexTile[] neighbors = GetNeighboringTiles(current);
             for (int j = 0; j < neighbors.Length; ++j)
             {
                 HexTile neighbor = neighbors[j];
                 if (neighbor == null) continue;
+
                 if (!neighbor.IsWalkable) continue;
+                if (closedTiles.Contains(neighbor)) continue;
 
                 int tentativeG = nodes[current].g + 1;
-                int g = nodes.ContainsKey(neighbor) ? nodes[neighbor].g : 0;
+                int g = nodes.ContainsKey(neighbor) ? nodes[neighbor].g : int.MaxValue;
                 if (tentativeG >= g) continue;
 
                 // Record the better path.
                 Node newNode = new(tentativeG, GetHScore(neighbor, end));
-                nodes.Add(neighbor, newNode);
+                nodes[neighbor] = newNode;
                 cameFrom[neighbor] = current;
 
-                if (!canCheck.Contains(neighbor))
-                    canCheck.Add(neighbor);
+                if (!openTiles.Contains(neighbor))
+                    openTiles.Add(neighbor);
             }
         }
 
@@ -87,8 +94,9 @@ public class Pathfinding
 
     private int GetHScore(HexTile tile, HexTile end)
     {
-        float distance = Vector3.Distance(tile.transform.position, end.transform.position);
-        return Mathf.RoundToInt(distance);
+        int deltaQ = tile.AxialCoordinate.x - end.AxialCoordinate.x;
+        int deltaR = tile.AxialCoordinate.y - end.AxialCoordinate.y;
+        return (Mathf.Abs(deltaQ) + Mathf.Abs(deltaQ + deltaR) + Mathf.Abs(deltaR)) / 2;
     }
 
 
@@ -115,11 +123,12 @@ public class Pathfinding
     private Stack<HexTile> ReconstructPath(Dictionary<HexTile, HexTile> cameFrom, HexTile current)
     {
         Stack<HexTile> totalPath = new();
-        while (current != null)
+        while (cameFrom.ContainsKey(current))
         {
-            current = cameFrom[current];
             totalPath.Push(current);
+            current = cameFrom[current];
         }
+        totalPath.Push(current);
         return totalPath;
     }
 
@@ -131,8 +140,8 @@ public class Pathfinding
         if (tileMap.TryGetValue(tile.AxialCoordinate + Vector2Int.up, out HexTile up)) neighbors[0] = up;
         if (tileMap.TryGetValue(tile.AxialCoordinate + Vector2Int.down, out HexTile down)) neighbors[1] = down;
         if (tileMap.TryGetValue(tile.AxialCoordinate + new Vector2Int(-1, 1), out HexTile topLeft)) neighbors[2] = topLeft;
-        if (tileMap.TryGetValue(tile.AxialCoordinate + new Vector2Int(-1, -1), out HexTile bottomLeft)) neighbors[3] = bottomLeft;
-        if (tileMap.TryGetValue(tile.AxialCoordinate + new Vector2Int(1, 1), out HexTile topRight)) neighbors[4] = topRight;
+        if (tileMap.TryGetValue(tile.AxialCoordinate + new Vector2Int(-1, 0), out HexTile left)) neighbors[3] = left;
+        if (tileMap.TryGetValue(tile.AxialCoordinate + new Vector2Int(1, 0), out HexTile right)) neighbors[4] = right;
         if (tileMap.TryGetValue(tile.AxialCoordinate + new Vector2Int(1, -1), out HexTile bottomRight)) neighbors[5] = bottomRight;
 
         return neighbors;

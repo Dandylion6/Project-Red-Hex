@@ -21,11 +21,15 @@ public class MovementController : MonoBehaviour
         if (tile.Piece == GameManager.Instance.Player)
         {
             playerSelected = !playerSelected;
+            transform.position += playerSelected ? Vector3.up * 0.3f : Vector3.down * 0.3f;
             return;
         }
 
         if (playerSelected)
+        {
             playerPiece.MoveTo(tile);
+            playerSelected = false;
+        }
     }
 
 
