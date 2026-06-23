@@ -6,14 +6,10 @@ public class SettingsManager : Singleton<SettingsManager>
 
     private static SettingsData settingsData;
 
-    [SerializeField] private Scrollbar gameVolume;
-
-    [SerializeField] private Scrollbar musicVolume;
-
 
     public void setMusicVolume(Scrollbar musicVolume)
     {
-        settingsData.musicVolume = Mathf.Clamp(gameVolume.value, 0, 100);
+        settingsData.musicVolume = Mathf.Clamp(musicVolume.value, 0, 100);
         Debug.Log(settingsData.musicVolume);
     }
 
