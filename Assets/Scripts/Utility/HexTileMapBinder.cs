@@ -8,6 +8,9 @@ public class HexTileMapBinder : MonoBehaviour
     [SerializeField] private List<Vector2Int> axialCoordinates = new();
     [SerializeField] private List<HexTile> hexTiles = new();
 
+    public IReadOnlyList<Vector2Int> AxialCoordinates => axialCoordinates;
+    public IReadOnlyList<HexTile> HexTiles => hexTiles;
+
 
     public void GenerateTileMap()
     {
@@ -34,21 +37,9 @@ public class HexTileMapBinder : MonoBehaviour
     }
 
 
-    private void Start() => HexGridManager.Instance.SetTileMap(RebuildDictionary());
-
-
-    private Dictionary<Vector2Int, HexTile> RebuildDictionary()
+    private void Start()
     {
-        Dictionary<Vector2Int, HexTile> tileMap = new();
-        for (int i = 0; i < axialCoordinates.Count; ++i)
-        {
-            Vector2Int coordinate = axialCoordinates[i];
-            if (tileMap.ContainsKey(axialCoordinates[i])) continue; // Can't allow overlaps.
-            
-            HexTile tile = hexTiles[i];
-            tileMap.Add(coordinate, tile);
-        }
-        return tileMap;
+        HexGridManager.Instance.Setup(axialCoordinates, hexTiles);
     }
 }
 
