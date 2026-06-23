@@ -8,7 +8,7 @@ public class TurnManager : Singleton<TurnManager>
         UseItem,
         Move,
     }
-
+    
 
     public State CurrentState => currentState;
     public bool IsInCombat => isInCombat;
