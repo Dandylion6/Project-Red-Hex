@@ -228,6 +228,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0691c5a8017306d48b51010413b1b910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Consumable
+--- !u!1 &153258868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5336896057188726462, guid: 69a59ff0478c3154ebaa093b7b615eb3, type: 3}
+  m_PrefabInstance: {fileID: 1438087409}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &204777765
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,10 +449,34 @@ PrefabInstance:
     - target: {fileID: 3021548957203948871, guid: bb27c3770a457af438c18100ea835615, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1535343463}
+      objectReference: {fileID: 0}
     - target: {fileID: 3021548957203948871, guid: bb27c3770a457af438c18100ea835615, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: Item, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222220907000343059, guid: bb27c3770a457af438c18100ea835615, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222220907000343059, guid: bb27c3770a457af438c18100ea835615, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 153258868}
+    - target: {fileID: 6222220907000343059, guid: bb27c3770a457af438c18100ea835615, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222220907000343059, guid: bb27c3770a457af438c18100ea835615, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222220907000343059, guid: bb27c3770a457af438c18100ea835615, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222220907000343059, guid: bb27c3770a457af438c18100ea835615, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7002868488352378218, guid: bb27c3770a457af438c18100ea835615, type: 3}
       propertyPath: m_Name
@@ -600,12 +629,6 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7283816054059130062, guid: 8d7e3a45eca7f6249ba9682f9873b01a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2146187867}
-    - targetCorrespondingSourceObject: {fileID: 7283816054059130062, guid: 8d7e3a45eca7f6249ba9682f9873b01a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1535343464}
-    - targetCorrespondingSourceObject: {fileID: 7283816054059130062, guid: 8d7e3a45eca7f6249ba9682f9873b01a, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 65465835}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3816595526519767969, guid: 8d7e3a45eca7f6249ba9682f9873b01a, type: 3}
@@ -635,8 +658,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotBar
   hotBar:
-  - {fileID: 1535343463}
-  - {fileID: 2146187868}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 65465836}
 --- !u!1 &937273265
 GameObject:
@@ -944,6 +967,7 @@ Transform:
   - {fileID: 937273268}
   - {fileID: 381355808}
   - {fileID: 1275208799}
+  - {fileID: 737229819}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1438087409
@@ -1098,6 +1122,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1438087410}
+  - {fileID: 641698752}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1878828675
