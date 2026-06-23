@@ -2,30 +2,51 @@ using UnityEngine;
 
 public class TilePiece : MonoBehaviour
 {
+    [Header("Piece Settings")]
+    [SerializeField] private int baseMoveDistance = 1;
+
+
+    public HexTile Occupying => occupying;
+    public int MaxMoveDistance => Mathf.RoundToInt(baseMoveDistance + moveDistanceMultiplier);
     public bool HasTurn => hasTurn;
 
     private HexTile occupying = null;
+    private float moveDistanceMultiplier = 1.0f;
     private bool hasTurn = false;
 
 
-    public void MoveTo(Vector3 target)
+    public void AddMoveMultiplier(float multiplier) => moveDistanceMultiplier += multiplier;
+    public void RemoveMoveMultiplier(float multiplier) => moveDistanceMultiplier -= multiplier;
+
+
+    public void SpawnAt(HexTile tile)
     {
-        Vector2Int axialCoordinate = Hexagon.WorldToAxial(new(target.x, target.z));
-        HexTile tile = HexGridManager.Instance.GetTile(axialCoordinate);
-        MoveTo(tile);
+        tile.SetPiece(this);
+        occupying = tile;
+        transform.position = tile.transform.position;
     }
 
 
-    public void MoveTo(HexTile tile)
+    public bool MoveTo(Vector3 target)
     {
-        if (!tile.CanSetPiece(this)) return;
+        Vector2Int axialCoordinate = Hexagon.WorldToAxial(new(target.x, target.z));
+        HexTile tile = HexGridManager.Instance.GetTile(axialCoordinate);
+        return MoveTo(tile);
+    }
+
+
+    public bool MoveTo(HexTile tile)
+    {
+        if (!hasTurn) return false;
+        if (!tile.CanSetPiece(this)) return false;
         if (occupying != null) 
             occupying.RemovePiece();
         
-        transform.position = tile.transform.position;
-        
         tile.SetPiece(this);
         occupying = tile;
+        transform.position = tile.transform.position;
+
+        return true;
     }
 
 

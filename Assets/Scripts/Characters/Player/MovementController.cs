@@ -4,10 +4,13 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(TilePiece))]
 public class MovementController : MonoBehaviour
 {
+    [Header("Move Settings")]
+    [SerializeField] private float outOfCombatMoveMultiplier = 2.0f;
+
     private TilePiece playerPiece = null;
     private Camera mainCamera = null;
     private Vector2 currentScreenPosition = Vector2.zero;
-    private bool playerSelected = false;
+    private bool hasMultiplier = false;
 
 
     public void OnScreenInput(InputAction.CallbackContext context) => currentScreenPosition = context.ReadValue<Vector2>();
@@ -20,12 +23,31 @@ public class MovementController : MonoBehaviour
 
         if (tile.Piece == GameManager.Instance.Player)
         {
-            playerSelected = !playerSelected;
+            switch (TurnManager.Instance.CurrentState)
+            {
+                case TurnManager.State.None:
+                    {
+                        transform.position += Vector3.up * 0.3f;
+                        TurnManager.Instance.SetState(TurnManager.State.Move);
+                        break;
+                    }
+                case TurnManager.State.Move:
+                    {
+                        transform.position += Vector3.down * 0.3f;
+                        TurnManager.Instance.SetState(TurnManager.State.None);
+                        break;
+                    }
+                default: break;
+            }
             return;
         }
 
-        if (playerSelected)
-            playerPiece.MoveTo(tile);
+        if (TurnManager.Instance.CurrentState == TurnManager.State.Move)
+        {
+            if (!playerPiece.MoveTo(tile)) return;
+            TurnManager.Instance.SetState(TurnManager.State.None);
+            playerPiece.EndTurn();
+        }
     }
 
 
@@ -44,5 +66,17 @@ public class MovementController : MonoBehaviour
     {
         playerPiece = GetComponent<TilePiece>();
         mainCamera = Camera.main;
+    }
+
+
+    private void Update()
+    {
+        bool hasChanged = hasMultiplier != TurnManager.Instance.IsInCombat;
+        if (!hasChanged) return;
+
+        if (TurnManager.Instance.IsInCombat) playerPiece.AddMoveMultiplier(outOfCombatMoveMultiplier);
+        else playerPiece.RemoveMoveMultiplier(outOfCombatMoveMultiplier);
+        
+        hasMultiplier = TurnManager.Instance.IsInCombat;
     }
 }
