@@ -4,6 +4,7 @@ public class TilePiece : MonoBehaviour
 {
     [Header("Piece Settings")]
     [SerializeField] private int baseMoveDistance = 1;
+    [SerializeField][Min(1)] private int maxHealth = 5;
 
 
     public HexTile Occupying => occupying;
@@ -12,11 +13,22 @@ public class TilePiece : MonoBehaviour
 
     private HexTile occupying = null;
     private float moveDistanceMultiplier = 1.0f;
+    private int health = 0;
     private bool hasTurn = false;
 
 
     public void AddMoveMultiplier(float multiplier) => moveDistanceMultiplier += multiplier;
     public void RemoveMoveMultiplier(float multiplier) => moveDistanceMultiplier -= multiplier;
+
+
+    public void Heal(int amount) => health = Mathf.Min(health + amount, maxHealth);
+    public virtual void Die() => Destroy(gameObject);
+
+    public void TakeDamage(int damage)
+    {
+        health = Mathf.Max(health - damage, 0);
+        if (health == 0) Die();
+    }
 
 
     public void SpawnAt(HexTile tile)
@@ -52,4 +64,10 @@ public class TilePiece : MonoBehaviour
 
     public void StartTurn() => hasTurn = true;
     public void EndTurn() => hasTurn = false;
+
+
+    private void Awake()
+    {
+        health = maxHealth;
+    }
 }
