@@ -6,12 +6,14 @@ public class HexTile : MonoBehaviour
     [Header("Tile Settings")]
     [SerializeField] private bool isWalkable = true;
     [SerializeField][Range(-0.15f, 0.15f)] private float heightOffset = 0.0f;
+    [SerializeField] private bool ignoreHeight = false;
 
 
     public TilePiece Piece => piece;
     public Vector2Int AxialCoordinate => Hexagon.WorldToAxial(new(transform.position.x, transform.position.z));
     public bool IsWalkable => isWalkable;
     public float HeightOffset => heightOffset;
+    public bool IgnoreHeight => ignoreHeight;
 
     private Action<TilePiece> onPiecePlaced = null;
     private TilePiece piece = null;

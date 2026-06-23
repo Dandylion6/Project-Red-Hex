@@ -5,10 +5,10 @@ using UnityEngine;
 public class HeightGenerator : MonoBehaviour
 {
     [Header("Generation Settings")]
-    [SerializeField] private float scale = 20.0f;
+    [SerializeField] private float scale = 4.0f;
     [SerializeField] private Vector2 heightRange = new(-0.15f, 0.15f);
     [SerializeField][Min(1)] private int octaves = 3;
-    [SerializeField] private float persistence = 0.5f;
+    [SerializeField] private float persistence = 0.9f;
     [SerializeField] private float lucranarity = 2.0f;
     [SerializeField] private float seed = 0.0f;
     [SerializeField] private bool generateWithNewSeed = true;
@@ -24,8 +24,12 @@ public class HeightGenerator : MonoBehaviour
             Vector2Int axialCoordinate = binder.AxialCoordinates[i];
             HexTile tile = binder.HexTiles[i];
 
-            float noise = FractalNoise(axialCoordinate.x, axialCoordinate.y);
-            float height = Mathf.Lerp(heightRange.x, heightRange.y, noise) + tile.HeightOffset;
+            float height = tile.HeightOffset;
+            if (!tile.IgnoreHeight)
+            {
+                float noise = FractalNoise(axialCoordinate.x, axialCoordinate.y);
+                height += Mathf.Lerp(heightRange.x, heightRange.y, noise);
+            }
 
             Vector3 position = tile.transform.position;
             position.y = height;
