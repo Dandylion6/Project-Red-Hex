@@ -7,12 +7,16 @@ public class TilePiece : MonoBehaviour
 
 
     public HexTile Occupying => occupying;
-    public int MaxMoveDistance => maxMoveDistance;
+    public int MaxMoveDistance => Mathf.RoundToInt(baseMoveDistance + moveDistanceMultiplier);
     public bool HasTurn => hasTurn;
 
     private HexTile occupying = null;
-    private int maxMoveDistance;
+    private float moveDistanceMultiplier = 1.0f;
     private bool hasTurn = false;
+
+
+    public void AddMoveMultiplier(float multiplier) => moveDistanceMultiplier += multiplier;
+    public void RemoveMoveMultiplier(float multiplier) => moveDistanceMultiplier -= multiplier;
 
 
     public void SpawnAt(HexTile tile)
@@ -23,31 +27,29 @@ public class TilePiece : MonoBehaviour
     }
 
 
-    public void MoveTo(Vector3 target)
+    public bool MoveTo(Vector3 target)
     {
         Vector2Int axialCoordinate = Hexagon.WorldToAxial(new(target.x, target.z));
         HexTile tile = HexGridManager.Instance.GetTile(axialCoordinate);
-        MoveTo(tile);
+        return MoveTo(tile);
     }
 
 
-    public void MoveTo(HexTile tile)
+    public bool MoveTo(HexTile tile)
     {
-        if (!hasTurn) return;
-        if (!tile.CanSetPiece(this)) return;
+        if (!hasTurn) return false;
+        if (!tile.CanSetPiece(this)) return false;
         if (occupying != null) 
             occupying.RemovePiece();
         
-        transform.position = tile.transform.position;
-        
         tile.SetPiece(this);
         occupying = tile;
+        transform.position = tile.transform.position;
+
+        return true;
     }
 
 
     public void StartTurn() => hasTurn = true;
     public void EndTurn() => hasTurn = false;
-
-
-    private void Start() => maxMoveDistance = baseMoveDistance;
 }
