@@ -6,11 +6,32 @@ public class HotBar : MonoBehaviour
 {
     [SerializeField] private List<Item> hotBar;
 
-    private Item currentItem;
+    [SerializeField] private bool isItemSelected = false;
 
-    public void SelectItem(Item item)
+    [SerializeField] private Item currentItem;
+
+    public bool IsItemSelected => isItemSelected; 
+
+    
+
+    public void SelectItem(int index)
     {
-        currentItem = item;
+        
+        if (currentItem == hotBar[index] && isItemSelected) 
+        {
+            isItemSelected = false;
+
+            Debug.Log("Current item: " + currentItem);
+            Debug.Log("item mode" + isItemSelected);
+
+            return;
+        }
+
+        isItemSelected = true;
+        currentItem = hotBar[index];
+        
+        Debug.Log("Current item: " + currentItem);
+        Debug.Log("item mode" + isItemSelected);
     }
 
 }
