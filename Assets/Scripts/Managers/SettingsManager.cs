@@ -1,23 +1,26 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingsManager : Singleton<SettingsManager>
 {
-    private float musicVolume = 50f;
 
-    private float gameVolume = 50f;
+    private static SettingsData settingsData;
 
-    private bool activeVibrations;
+    [SerializeField] private Scrollbar gameVolume;
 
-    public void setMusicVolume(float sliderInt)
+    [SerializeField] private Scrollbar musicVolume;
+
+
+    public void setMusicVolume(Scrollbar musicVolume)
     {
-        musicVolume = Mathf.Clamp(sliderInt, 0, 100);
-        Debug.Log(musicVolume);
+        settingsData.musicVolume = Mathf.Clamp(gameVolume.value, 0, 100);
+        Debug.Log(settingsData.musicVolume);
     }
 
-    public void setGameVolume(float sliderInt)
+    public void setGameVolume(Scrollbar gameVolume)
     {
-        gameVolume = Mathf.Clamp(sliderInt, 0, 100);
-        Debug.Log(gameVolume);
+        settingsData.gameVolume = Mathf.Clamp(gameVolume.value, 0, 100);
+        Debug.Log(settingsData.gameVolume);
     }
 
 
