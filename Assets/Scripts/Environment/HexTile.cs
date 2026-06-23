@@ -5,11 +5,15 @@ public class HexTile : MonoBehaviour
 {
     [Header("Tile Settings")]
     [SerializeField] private bool isWalkable = true;
+    [SerializeField][Range(-0.15f, 0.15f)] private float heightMinimum = -0.1f;
+    [SerializeField][Range(-0.15f, 0.15f)] private float heightMaximum = 0.1f;
 
 
     public TilePiece Piece => piece;
     public Vector2Int AxialCoordinate => Hexagon.WorldToAxial(new(transform.position.x, transform.position.z));
     public bool IsWalkable => isWalkable;
+    public float HeightMinimum => heightMinimum;
+    public float HeightMaximum => heightMaximum;
 
     private Action<TilePiece> onPiecePlaced = null;
     private TilePiece piece = null;
