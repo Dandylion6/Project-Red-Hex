@@ -37,6 +37,18 @@ public struct Hexagon
     public readonly Vector2Int ToCoordinate() => new(q, r);
 
 
+    static public int HexDistance(Vector2 worldA, Vector2 worldB)
+    {
+        return HexDistance(WorldToAxial(worldA), WorldToAxial(worldB));
+    }
+
+
+    static public int HexDistance(Vector2Int axialA, Vector2Int axialB)
+    {
+        return Mathf.RoundToInt((axialA - axialB).magnitude);
+    }
+
+
     /// <summary>
     /// Converts axial coordinate to the nearest hex.
     /// </summary>

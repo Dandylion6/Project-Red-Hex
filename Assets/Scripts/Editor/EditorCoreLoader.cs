@@ -1,29 +1,43 @@
+#if UNITY_EDITOR
+
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[InitializeOnLoad]
 static public class EditorCoreLoader
 {
-    static EditorCoreLoader()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void Initialize()
     {
-        SceneManager.sceneLoaded += OnSceneLoad;
-    }
+        string mainScene = SceneManager.GetActiveScene().name;
 
+        if (mainScene == BaseScenes.CORE_SCENE) return;
+        if (mainScene == BaseScenes.MENU_SCENE) return;
 
-    static void OnSceneLoad(Scene scene, LoadSceneMode mode)
-    {
-        if (!Application.isEditor) return;
+        GameObject bootstrapperObject = new("[Editor Bootstrapper]");
+        Object.DontDestroyOnLoad(bootstrapperObject);
+        bootstrapperObject.AddComponent<BootstrapCoreLoader>().gameScene = mainScene;
 
-        if (scene.name == BaseScenes.CORE_SCENE) return;
-        if (scene.name == BaseScenes.MENU_SCENE)
-        {
-            SceneManager.sceneLoaded -= OnSceneLoad; // No need to add core scene anymore.
-            return;
-        }
-
-        // Loads the core scene for any other scene additively
-        SceneManager.LoadScene(BaseScenes.CORE_SCENE, LoadSceneMode.Additive);
-        SceneManager.sceneLoaded -= OnSceneLoad; // Only happens once.
+        SceneManager.LoadScene(BaseScenes.CORE_SCENE);
     }
 }
+
+
+public class BootstrapCoreLoader : MonoBehaviour
+{
+    public string gameScene = string.Empty;
+
+
+    private IEnumerator Start()
+    {
+        yield return null; // Wait for start to run first.
+
+        yield return SceneManager.LoadSceneAsync(gameScene, LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(gameScene));
+
+        Destroy(gameObject); // Finished bootstrapping for editor.
+    }
+}
+
+#endif

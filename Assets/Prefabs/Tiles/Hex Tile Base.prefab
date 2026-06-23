@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HexTile
   isWalkable: 1
   heightOffset: 0
+  ignoreHeight: 0
 --- !u!64 &1977829871318713785
 MeshCollider:
   m_ObjectHideFlags: 0

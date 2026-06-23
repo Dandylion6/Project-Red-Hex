@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d2d3bd461edafb54b843975286b0906d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.209831
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d2d3bd461edafb54b843975286b0906d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.151
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d2d3bd461edafb54b843975286b0906d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.843
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d2d3bd461edafb54b843975286b0906d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d398dfe7661b0274797c3944fcc60a2d, type: 2}
     - target: {fileID: 919132149155446097, guid: d2d3bd461edafb54b843975286b0906d, type: 3}
       propertyPath: m_Name
-      value: Low poly wolf
+      value: Dire Wolf
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

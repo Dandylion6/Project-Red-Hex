@@ -11,6 +11,7 @@ public class HexTile : MonoBehaviour
 
     public TilePiece Piece => piece;
     public Vector2Int AxialCoordinate => Hexagon.WorldToAxial(new(transform.position.x, transform.position.z));
+    public Vector2 WorldPosition => new(transform.position.x, transform.position.z);
     public bool IsWalkable => isWalkable;
     public float HeightOffset => heightOffset;
     public bool IgnoreHeight => ignoreHeight;
@@ -74,7 +75,7 @@ public class HexTile : MonoBehaviour
 
     private void SnapToGrid()
     {
-        Vector2Int hexAxial = Hexagon.WorldToAxial(new(transform.position.x, transform.position.z));
+        Vector2Int hexAxial = Hexagon.WorldToAxial(WorldPosition);
         Vector2 world = Hexagon.AxialToWorld(hexAxial);
         transform.position = new(world.x, transform.position.y, world.y);
     }

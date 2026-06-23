@@ -1,16 +1,18 @@
 using UnityEngine;
 
-public class PlacedPiece : TilePiece
+[RequireComponent(typeof(TilePiece))]
+public class PiecePlacer : MonoBehaviour
 {
     private void Start()
     {
+        TilePiece piece = GetComponent<TilePiece>();
         Vector2Int hexAxial = Hexagon.WorldToAxial(new(transform.position.x, transform.position.z));
         HexTile tile = HexGridManager.Instance.GetTile(hexAxial);
 
         if (tile == null) return;
 
-        transform.position = tile.transform.position;
-        tile.SetPiece(this);
+        piece.SpawnAt(tile);
+        Destroy(this); // Not needed anymore.
     }
 
 
