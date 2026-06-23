@@ -20,9 +20,15 @@ public class TilePiece : MonoBehaviour
     public void AddMoveMultiplier(float multiplier) => moveDistanceMultiplier += multiplier;
     public void RemoveMoveMultiplier(float multiplier) => moveDistanceMultiplier -= multiplier;
 
-
     public void Heal(int amount) => health = Mathf.Min(health + amount, maxHealth);
-    public virtual void Die() => Destroy(gameObject);
+    
+    
+    public virtual void Die()
+    {
+        TurnManager.Instance.RemovePieceFromTurns(this);
+        Destroy(gameObject);
+    }
+
 
     public void TakeDamage(int damage)
     {

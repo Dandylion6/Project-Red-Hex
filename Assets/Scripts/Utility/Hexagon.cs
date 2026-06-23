@@ -37,6 +37,12 @@ public struct Hexagon
     public readonly Vector2Int ToCoordinate() => new(q, r);
 
 
+    static public int HexDistance(HexTile tileA, HexTile tileB)
+    {
+        return HexDistance(tileA.AxialCoordinate, tileB.AxialCoordinate);
+    }
+
+
     static public int HexDistance(Vector2 worldA, Vector2 worldB)
     {
         return HexDistance(WorldToAxial(worldA), WorldToAxial(worldB));

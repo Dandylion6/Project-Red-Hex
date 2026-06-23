@@ -39,6 +39,8 @@ public class MovementController : MonoBehaviour
 
     private void ToggleState()
     {
+        if (TurnManager.Instance.PieceWithTurn != playerPiece) return;
+
         switch (TurnManager.Instance.CurrentState)
         {
             case TurnManager.State.None:
