@@ -10,28 +10,50 @@ public class HotBar : MonoBehaviour
 
     [SerializeField] private Item currentItem;
 
+    
+
     public bool IsItemSelected => isItemSelected; 
 
     
 
     public void SelectItem(int index)
     {
-        
-        if (currentItem == hotBar[index] && isItemSelected) 
+        switch (TurnManager.Instance.CurrentState) 
         {
-            isItemSelected = false;
+            case TurnManager.State.None:
+                {
 
-            Debug.Log("Current item: " + currentItem);
-            Debug.Log("item mode" + isItemSelected);
+                    TurnManager.Instance.SetState(TurnManager.State.UseItem);
+                    isItemSelected = true;
+                    currentItem = hotBar[index];
 
-            return;
+                    Debug.Log("Current item: " + currentItem);
+                    Debug.Log("item mode" + isItemSelected);
+                    break;
+                }
+
+            case TurnManager.State.UseItem:
+                {
+                    //DESELECT
+                    if (currentItem == hotBar[index] && isItemSelected)
+                    {
+                        isItemSelected = false;
+                        TurnManager.Instance.SetState(TurnManager.State.None);
+
+                        Debug.Log("Current item: " + currentItem);
+                        Debug.Log("item mode" + isItemSelected);
+
+                        
+                        return;
+                    }
+                    break;
+                }
         }
 
-        isItemSelected = true;
-        currentItem = hotBar[index];
-        
-        Debug.Log("Current item: " + currentItem);
-        Debug.Log("item mode" + isItemSelected);
+
+       
+
+
     }
 
 }
