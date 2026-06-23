@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: isWalkable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1749471133023849186, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
+      propertyPath: heightMaximum
+      value: -0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3363674685689751770, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
       propertyPath: m_Name
       value: Water Hex Tile Variant

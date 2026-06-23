@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HexTile
   isWalkable: 1
-  heightMinimum: -0.1
-  heightMaximum: 0.1
+  heightMinimum: -0.15
+  heightMaximum: 0.15
 --- !u!65 &3749954347594405722
 BoxCollider:
   m_ObjectHideFlags: 0

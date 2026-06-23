@@ -23,30 +23,37 @@ public class MovementController : MonoBehaviour
 
         if (tile.Piece == GameManager.Instance.Player)
         {
-            switch (TurnManager.Instance.CurrentState)
-            {
-                case TurnManager.State.None:
-                    {
-                        transform.position += Vector3.up * 0.3f;
-                        TurnManager.Instance.SetState(TurnManager.State.Move);
-                        break;
-                    }
-                case TurnManager.State.Move:
-                    {
-                        transform.position += Vector3.down * 0.3f;
-                        TurnManager.Instance.SetState(TurnManager.State.None);
-                        break;
-                    }
-                default: break;
-            }
+            ToggleState();
             return;
         }
 
+        if (!tile.IsWalkable) return; // Don't even try to traverse.
         if (TurnManager.Instance.CurrentState == TurnManager.State.Move)
         {
             if (!playerPiece.MoveTo(tile)) return;
             TurnManager.Instance.SetState(TurnManager.State.None);
             playerPiece.EndTurn();
+        }
+    }
+
+
+    private void ToggleState()
+    {
+        switch (TurnManager.Instance.CurrentState)
+        {
+            case TurnManager.State.None:
+                {
+                    transform.position += Vector3.up * 0.3f;
+                    TurnManager.Instance.SetState(TurnManager.State.Move);
+                    break;
+                }
+            case TurnManager.State.Move:
+                {
+                    transform.position += Vector3.down * 0.3f;
+                    TurnManager.Instance.SetState(TurnManager.State.None);
+                    break;
+                }
+            default: break;
         }
     }
 
