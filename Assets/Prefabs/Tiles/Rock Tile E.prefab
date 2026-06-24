@@ -591,9 +591,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d642963424bd634faf7051950cccfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HexTile
-  currentTile: {fileID: 0}
-  tileVariants:
-  - {fileID: 5974924476096807600, guid: 4898d7a6247ec1b4da3327bb7183cddd, type: 3}
   isWalkable: 0
   heightOffset: 0
   ignoreHeight: 0
