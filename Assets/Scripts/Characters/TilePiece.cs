@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 public class TilePiece : MonoBehaviour
@@ -5,6 +7,9 @@ public class TilePiece : MonoBehaviour
     [Header("Piece Settings")]
     [SerializeField] private int baseMoveDistance = 1;
     [SerializeField][Min(1)] private int maxHealth = 5;
+
+    [Header("Animation Settings")]
+    [SerializeField][Min(0.1f)] private float moveTime = 0.5f;
 
 
     public HexTile Occupying => occupying;
@@ -62,7 +67,23 @@ public class TilePiece : MonoBehaviour
         
         tile.SetPiece(this);
         occupying = tile;
-        transform.position = tile.transform.position;
+
+        Vector3 endPosition = tile.transform.position;
+        TurnManager.Instance.StartAction();
+
+        transform.DOMoveY(transform.position.y + 1.0f, moveTime * 0.4f).SetEase(Ease.InQuad).OnComplete(() =>
+        {
+            transform.DOMoveY(endPosition.y, moveTime * 0.6f).SetEase(Ease.OutSine).OnComplete(() =>
+            {
+                TurnManager.Instance.EndAction();
+                EndTurn();
+            }
+            ).Play();
+        }
+        ).Play();
+
+        transform.DOMoveX(endPosition.x, moveTime * 0.8f).SetEase(Ease.InOutCirc).Play();
+        transform.DOMoveZ(endPosition.z, moveTime * 0.8f).SetEase(Ease.InOutCirc).Play();
 
         return true;
     }

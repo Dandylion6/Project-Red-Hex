@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(TilePiece))]
@@ -17,17 +18,18 @@ public class MovementController : MonoBehaviour
     {
         if (TurnManager.Instance.PieceWithTurn != playerPiece) return;
 
+        Vector3 position = playerPiece.Occupying.transform.position;
         switch (TurnManager.Instance.CurrentState)
         {
             case TurnManager.State.None:
                 {
-                    transform.position += Vector3.up * 0.3f;
+                    transform.DOMoveY(position.y + 0.3f, 0.2f).SetEase(Ease.OutBack).Play();
                     TurnManager.Instance.SetState(TurnManager.State.Move);
                     break;
                 }
             case TurnManager.State.Move:
                 {
-                    transform.position += Vector3.down * 0.3f;
+                    transform.DOMoveY(position.y, 0.2f).SetEase(Ease.OutBounce).Play();
                     TurnManager.Instance.SetState(TurnManager.State.None);
                     break;
                 }
