@@ -12,14 +12,6 @@ PrefabInstance:
       propertyPath: currentTile
       value: 
       objectReference: {fileID: 5840432488164701692}
-    - target: {fileID: 1749471133023849186, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
-      propertyPath: tileVariants.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1749471133023849186, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
-      propertyPath: 'tileVariants.Array.data[0]'
-      value: 
-      objectReference: {fileID: 5974924476096807600, guid: 4898d7a6247ec1b4da3327bb7183cddd, type: 3}
     - target: {fileID: 3363674685689751770, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
       propertyPath: m_Name
       value: Rock Tile A
