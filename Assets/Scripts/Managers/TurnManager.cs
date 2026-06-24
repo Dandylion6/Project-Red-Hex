@@ -32,6 +32,8 @@ public class TurnManager : Singleton<TurnManager>
         if (piecesWithTurns.Count > 1) isInCombat = true;
     }
 
+    public bool IsPeiceWithTurn(TilePiece peice) => peice == pieceWithTurn;
+
 
     public void RemovePieceFromTurns(TilePiece piece)
     {

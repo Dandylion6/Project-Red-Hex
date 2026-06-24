@@ -12,6 +12,8 @@ public class HotBar : MonoBehaviour
 
     
 
+    
+
     public bool IsItemSelected => isItemSelected; 
 
     
@@ -29,6 +31,11 @@ public class HotBar : MonoBehaviour
 
                     Debug.Log("Current item: " + currentItem);
                     Debug.Log("item mode" + isItemSelected);
+
+                    if (TurnManager.Instance.IsPeiceWithTurn(GameManager.Instance.Player))
+                    {
+                        currentItem.Use();
+                    }
                     break;
                 }
 
@@ -45,7 +52,7 @@ public class HotBar : MonoBehaviour
 
                         TurnManager.Instance.SetState(TurnManager.State.UseItem);
                         isItemSelected = true;
-                        return;
+                        return;  
                     }
 
                     currentItem = hotBar[index];

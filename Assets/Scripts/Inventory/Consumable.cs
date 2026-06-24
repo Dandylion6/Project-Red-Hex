@@ -1,3 +1,4 @@
+using Unity.Hierarchy;
 using UnityEngine;
 
 public class Consumable : Item
@@ -6,11 +7,11 @@ public class Consumable : Item
 
     public float getCount => count;
 
-    public override void Use()
+    public override bool Use()
     {
         count --;
 
         //consumable functionality
-
+        return false;
     }
 }
