@@ -7,11 +7,10 @@ public class Consumable : Item
 
     public float getCount => count;
 
-    public override bool Use()
+    public override void Use()
     {
         count --;
 
         //consumable functionality
-        return false;
     }
 }

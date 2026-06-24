@@ -1,40 +1,15 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(TilePiece))]
+[RequireComponent(typeof(TileSelect))]
 public class MovementController : MonoBehaviour
 {
     [Header("Move Settings")]
     [SerializeField] private float outOfCombatMoveMultiplier = 2.0f;
 
     private TilePiece playerPiece = null;
-    private Camera mainCamera = null;
-    private Vector2 currentScreenPosition = Vector2.zero;
+    private TileSelect tileSelect = null;
     private bool hasMultiplier = false;
-
-
-    public void OnScreenInput(InputAction.CallbackContext context) => currentScreenPosition = context.ReadValue<Vector2>();
-
-
-    public void OnInputClick(InputAction.CallbackContext context)
-    {
-        if (!context.performed) return;
-        if (!GetHitTile(out HexTile tile)) return;
-
-        if (tile.Piece == GameManager.Instance.Player)
-        {
-            ToggleState();
-            return;
-        }
-
-        if (!tile.IsWalkable) return; // Don't even try to traverse.
-        if (TurnManager.Instance.CurrentState == TurnManager.State.Move)
-        {
-            if (!playerPiece.MoveTo(tile)) return;
-            TurnManager.Instance.SetState(TurnManager.State.None);
-            playerPiece.EndTurn();
-        }
-    }
 
 
     private void ToggleState()
@@ -60,26 +35,17 @@ public class MovementController : MonoBehaviour
     }
 
 
-    private bool GetHitTile(out HexTile tile)
-    {
-        tile = null;
-        Ray ray = mainCamera.ScreenPointToRay(currentScreenPosition);
-
-        if (!Physics.Raycast(ray, out RaycastHit hit)) return false;
-        if (!hit.collider.TryGetComponent(out tile)) return false;
-        return true;
-    }
-
-
     private void Start()
     {
         playerPiece = GetComponent<TilePiece>();
-        mainCamera = Camera.main;
+        tileSelect = GetComponent<TileSelect>();
     }
 
 
     private void Update()
     {
+        UpdateSelection();
+
         bool hasChanged = hasMultiplier != TurnManager.Instance.IsInCombat;
         if (!hasChanged) return;
 
@@ -87,5 +53,22 @@ public class MovementController : MonoBehaviour
         else playerPiece.RemoveMoveMultiplier(outOfCombatMoveMultiplier);
         
         hasMultiplier = TurnManager.Instance.IsInCombat;
+    }
+
+
+    private void UpdateSelection()
+    {
+        if (!TurnManager.Instance.IsPeiceWithTurn(playerPiece)) return;
+        if (!tileSelect.SelectedTile) return;
+        if (!tileSelect.SelectedTile.IsWalkable) return; // Don't even try to traverse.
+
+        if (tileSelect.SelectedTile == playerPiece.Occupying)
+            ToggleState();
+
+        if (TurnManager.Instance.CurrentState != TurnManager.State.Move) return;
+        if (!playerPiece.MoveTo(tileSelect.SelectedTile)) return;
+
+        TurnManager.Instance.SetState(TurnManager.State.None);
+        playerPiece.EndTurn();
     }
 }
