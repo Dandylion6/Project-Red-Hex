@@ -12,5 +12,6 @@ public class Consumable : Item
         count --;
 
         //consumable functionality
+        
     }
 }
