@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: heightOffset
       value: -0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1749471133023849186, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
+      propertyPath: tileVariants.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749471133023849186, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
+      propertyPath: 'tileVariants.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1501283184929980373, guid: e17c9d9a6932a654da9ba1271228b7c4, type: 3}
     - target: {fileID: 3363674685689751770, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
       propertyPath: m_Name
       value: Gravel Tile A
