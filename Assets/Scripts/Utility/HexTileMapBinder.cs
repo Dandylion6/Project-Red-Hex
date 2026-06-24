@@ -1,15 +1,19 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-public class HexTileMapBinder : MonoBehaviour
+public class HexTileMapBinder : Singleton<HexTileMapBinder>
 {
     [SerializeField] private List<Vector2Int> axialCoordinates = new();
     [SerializeField] private List<HexTile> hexTiles = new();
 
     public IReadOnlyList<Vector2Int> AxialCoordinates => axialCoordinates;
     public IReadOnlyList<HexTile> HexTiles => hexTiles;
+    public bool IsSetup => isSetup;
+
+    private bool isSetup = false;
 
 
     public void GenerateTileMap()
@@ -40,6 +44,7 @@ public class HexTileMapBinder : MonoBehaviour
     private void Start()
     {
         HexGridManager.Instance.Setup(axialCoordinates, hexTiles);
+        isSetup = true;
     }
 }
 

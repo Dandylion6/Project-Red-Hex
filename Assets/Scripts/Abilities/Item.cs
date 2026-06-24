@@ -1,23 +1,21 @@
-using Unity.Hierarchy;
 using UnityEngine;
-[System.Serializable]
+
 public abstract class Item : MonoBehaviour
 {
-
+    protected TilePiece Player => player;
+    protected TileSelect TileSelect => tileSelect;
 
     private TilePiece player;
 
     private TileSelect tileSelect;
 
     
-   
-    protected TilePiece Player => player;
-    protected TileSelect TileSelect => tileSelect;
+    public abstract void Use();
+    
 
     public void Start()
     {
         player = GameManager.Instance.Player;
         tileSelect = player.GetComponent<TileSelect>();
     }
-    public abstract void Use();
 }

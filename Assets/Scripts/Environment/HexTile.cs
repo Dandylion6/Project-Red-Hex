@@ -80,10 +80,8 @@ public class HexTile : MonoBehaviour
     }
 
 
-    private void OnDrawGizmosSelected()
-    {
-        if (Application.isEditor && !Application.isPlaying) SnapToGrid();
-    }
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected() => SnapToGrid();
 
 
     private void OnDrawGizmos()
@@ -99,4 +97,5 @@ public class HexTile : MonoBehaviour
         Vector2 world = Hexagon.AxialToWorld(hexAxial);
         transform.position = new(world.x, transform.position.y, world.y);
     }
+#endif
 }

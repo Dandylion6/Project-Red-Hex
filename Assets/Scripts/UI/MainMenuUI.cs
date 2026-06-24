@@ -1,19 +1,23 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
-    private const string CORE_SCENE = "CoreScene";
-
-    
     [Header("Main Menu Settings")]
     [SerializeField] private string startingScene = "Scene Name";
 
 
-    public void OnPlayPress()
+    public void OnPlayPress() => StartCoroutine(LoadGame());
+
+
+    private IEnumerator LoadGame()
     {
-        SceneManager.LoadScene(startingScene);
-        SceneManager.LoadScene(CORE_SCENE, LoadSceneMode.Additive);
+        DontDestroyOnLoad(gameObject);
+        yield return SceneManager.LoadSceneAsync(BaseScenes.CORE_SCENE);
+
+        SceneManager.LoadScene(startingScene, LoadSceneMode.Additive);
+        Destroy(gameObject);
     }
 
 
