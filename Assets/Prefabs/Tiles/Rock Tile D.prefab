@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2285704807322447900, guid: bd7f0f1447d3ac14ebef074ca4e23f51, type: 3}
+      propertyPath: isWalkable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2977168106859156004, guid: bd7f0f1447d3ac14ebef074ca4e23f51, type: 3}
       propertyPath: m_Name
-      value: Rock Tile D Variant
+      value: Rock Tile D
       objectReference: {fileID: 0}
     - target: {fileID: 4955958849162276067, guid: bd7f0f1447d3ac14ebef074ca4e23f51, type: 3}
       propertyPath: m_LocalPosition.x
