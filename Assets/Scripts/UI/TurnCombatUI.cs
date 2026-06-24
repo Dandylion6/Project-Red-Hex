@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class TurnCombatUI : MonoBehaviour
@@ -6,6 +7,8 @@ public class TurnCombatUI : MonoBehaviour
     [SerializeField] private Canvas canvas = null;
     [SerializeField] private HotBarSlotUI prefabSlot = null;
     [SerializeField] private RectTransform slotParent = null;
+    [SerializeField] private TMP_Text turnCounter = null;
+
 
     private HotBar hotBar = null;
 
@@ -27,5 +30,7 @@ public class TurnCombatUI : MonoBehaviour
         bool stateChanged = TurnManager.Instance.IsInCombat != canvas.enabled;
         if (stateChanged)
             canvas.enabled = TurnManager.Instance.IsInCombat;
+
+        turnCounter.text = "~ Turn " + TurnManager.Instance.TurnsInCombat + " ~";
     }
 }
