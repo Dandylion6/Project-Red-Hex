@@ -706,6 +706,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -578.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5845895703648715288, guid: bb27c3770a457af438c18100ea835615, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6222220907000343059, guid: bb27c3770a457af438c18100ea835615, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6

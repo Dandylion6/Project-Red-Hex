@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1749471133023849186, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
+      propertyPath: currentTile
+      value: 
+      objectReference: {fileID: 5840432488164701692}
     - target: {fileID: 3363674685689751770, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
       propertyPath: m_Name
       value: Rock Tile A
@@ -127,5 +131,10 @@ PrefabInstance:
 --- !u!4 &4472890755021794770 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 17911261307894050, guid: b4d07346af73b4a48b2650dbdfdf510c, type: 3}
+  m_PrefabInstance: {fileID: 4480312258916750576}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5840432488164701692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8007442075341201676, guid: b4d07346af73b4a48b2650dbdfdf510c, type: 3}
   m_PrefabInstance: {fileID: 4480312258916750576}
   m_PrefabAsset: {fileID: 0}

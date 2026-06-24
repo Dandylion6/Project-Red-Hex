@@ -13,6 +13,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1749471133023849186, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
+      propertyPath: currentTile
+      value: 
+      objectReference: {fileID: 5696165207584559573}
+    - target: {fileID: 1749471133023849186, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
       propertyPath: heightOffset
       value: -0.04
       objectReference: {fileID: 0}
@@ -135,6 +139,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a803eb0c5c62b4428ab51961e25fa5d, type: 3}
+--- !u!1 &5696165207584559573 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2759233979689884162, guid: 6a803eb0c5c62b4428ab51961e25fa5d, type: 3}
+  m_PrefabInstance: {fileID: 7585782219883285463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8184440913912207928 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1788743898386338287, guid: 6a803eb0c5c62b4428ab51961e25fa5d, type: 3}
