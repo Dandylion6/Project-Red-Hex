@@ -31,7 +31,6 @@ public class BootstrapCoreLoader : MonoBehaviour
     private IEnumerator Start()
     {
         yield return null; // Wait for start to run first.
-
         yield return SceneManager.LoadSceneAsync(gameScene, LoadSceneMode.Additive);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(gameScene));
 

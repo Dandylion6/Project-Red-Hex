@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(TilePiece))]
 public class PiecePlacer : MonoBehaviour
 {
-    private void Start()
+    private void PlacePiece()
     {
         TilePiece piece = GetComponent<TilePiece>();
         Vector2Int hexAxial = Hexagon.WorldToAxial(new(transform.position.x, transform.position.z));
@@ -16,10 +16,15 @@ public class PiecePlacer : MonoBehaviour
     }
 
 
-    private void OnDrawGizmosSelected()
+    private void Update()
     {
-        if (Application.isEditor && !Application.isPlaying) SnapToGrid();
+        if (HexTileMapBinder.Instance.IsSetup)
+            PlacePiece();
     }
+
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected() => SnapToGrid();
 
 
     private void SnapToGrid()
@@ -28,4 +33,5 @@ public class PiecePlacer : MonoBehaviour
         Vector2 world = Hexagon.AxialToWorld(hexAxial);
         transform.position = new(world.x, transform.position.y, world.y);
     }
+#endif
 }

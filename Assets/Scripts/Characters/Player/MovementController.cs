@@ -7,6 +7,7 @@ public class MovementController : MonoBehaviour
     [Header("Move Settings")]
     [SerializeField] private float outOfCombatMoveMultiplier = 2.0f;
 
+
     private TilePiece playerPiece = null;
     private TileSelect tileSelect = null;
     private bool hasMultiplier = false;
@@ -68,6 +69,7 @@ public class MovementController : MonoBehaviour
         if (TurnManager.Instance.CurrentState != TurnManager.State.Move) return;
         if (!playerPiece.MoveTo(tileSelect.SelectedTile)) return;
 
+        PlayerCamera.Instance.SetTarget(tileSelect.SelectedTile);
         TurnManager.Instance.SetState(TurnManager.State.None);
         playerPiece.EndTurn();
     }
