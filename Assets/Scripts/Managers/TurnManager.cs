@@ -8,21 +8,38 @@ public class TurnManager : Singleton<TurnManager>
         UseItem,
         Move,
     }
-    
 
+
+    public TilePiece PieceWithTurn => pieceWithTurn;
     public State CurrentState => currentState;
     public bool IsInCombat => isInCombat;
 
 
     private readonly List<TilePiece> piecesWithTurns = new();
 
-    private TilePiece activePiece = null;
+    private TilePiece pieceWithTurn = null;
     private State currentState = State.None;
     private int currentTurnIndex = -1;
     private bool isInCombat = false;
 
 
     public void SetState(State state) => currentState = state;
+
+
+    public void AddPieceToTurns(TilePiece piece)
+    {
+        if (!piecesWithTurns.Contains(piece)) piecesWithTurns.Add(piece);
+        if (piecesWithTurns.Count > 1) isInCombat = true;
+    }
+
+    public bool IsPeiceWithTurn(TilePiece peice) => peice == pieceWithTurn;
+
+
+    public void RemovePieceFromTurns(TilePiece piece)
+    {
+        if (piecesWithTurns.Contains(piece)) piecesWithTurns.Remove(piece);
+        if (piecesWithTurns.Count <= 1) isInCombat = false;
+    }
 
 
     private void Start()
@@ -34,7 +51,7 @@ public class TurnManager : Singleton<TurnManager>
 
     private void Update()
     {
-        if (activePiece != null && !activePiece.HasTurn)
+        if (pieceWithTurn != null && !pieceWithTurn.HasTurn)
             AdvanceTurn();
     }
 
@@ -42,7 +59,7 @@ public class TurnManager : Singleton<TurnManager>
     private void AdvanceTurn()
     {
         currentTurnIndex = (currentTurnIndex + 1) % piecesWithTurns.Count;
-        activePiece = piecesWithTurns[currentTurnIndex];
-        activePiece.StartTurn();
+        pieceWithTurn = piecesWithTurns[currentTurnIndex];
+        pieceWithTurn.StartTurn();
     }
 }

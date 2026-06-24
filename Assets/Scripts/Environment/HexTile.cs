@@ -1,9 +1,11 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HexTile : MonoBehaviour
 {
     [Header("Tile Settings")]
+    [SerializeField] private GameObject currentTile = null;
+    [SerializeField] private List<GameObject> tileVariants = new(); 
     [SerializeField] private bool isWalkable = true;
     [SerializeField][Range(-0.15f, 0.15f)] private float heightOffset = 0.0f;
     [SerializeField] private bool ignoreHeight = false;
@@ -16,12 +18,12 @@ public class HexTile : MonoBehaviour
     public float HeightOffset => heightOffset;
     public bool IgnoreHeight => ignoreHeight;
 
-    private Action<TilePiece> onPiecePlaced = null;
+    private System.Action<TilePiece> onPiecePlaced = null;
     private TilePiece piece = null;
 
 
-    public void SubscribeToOnPiecePlaced(Action<TilePiece> callback) => onPiecePlaced += callback;
-    public void UnsubscibeToOnPiecePlaced(Action<TilePiece> callback) => onPiecePlaced -= callback;
+    public void SubscribeToOnPiecePlaced(System.Action<TilePiece> callback) => onPiecePlaced += callback;
+    public void UnsubscibeToOnPiecePlaced(System.Action<TilePiece> callback) => onPiecePlaced -= callback;
 
 
     public bool TrySetPiece(TilePiece piece)
@@ -67,9 +69,27 @@ public class HexTile : MonoBehaviour
     }
 
 
+    private void Start()
+    {
+        if (tileVariants.Count == 0) return;
+        int variantIndex = Random.Range(-1, tileVariants.Count);
+        if (variantIndex == -1) return; // Will not change the tile.
+
+        Instantiate(tileVariants[variantIndex], transform);
+        if (currentTile != null) Destroy(currentTile);
+    }
+
+
     private void OnDrawGizmosSelected()
     {
         if (Application.isEditor && !Application.isPlaying) SnapToGrid();
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = isWalkable ? Color.green : Color.yellow;
+        Gizmos.DrawWireSphere(transform.position + Vector3.up, 0.2f);
     }
 
 

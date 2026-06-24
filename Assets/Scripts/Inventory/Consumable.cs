@@ -1,3 +1,4 @@
+using Unity.Hierarchy;
 using UnityEngine;
 
 public class Consumable : Item
@@ -11,6 +12,5 @@ public class Consumable : Item
         count --;
 
         //consumable functionality
-
     }
 }
