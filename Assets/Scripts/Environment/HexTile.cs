@@ -76,7 +76,7 @@ public class HexTile : MonoBehaviour
         if (variantIndex == -1) return; // Will not change the tile.
 
         Instantiate(tileVariants[variantIndex], transform);
-        if (currentTile == null) Destroy(currentTile);
+        if (currentTile != null) Destroy(currentTile);
     }
 
 
@@ -89,7 +89,7 @@ public class HexTile : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = isWalkable ? Color.green : Color.yellow;
-        Gizmos.DrawWireSphere(transform.position + Vector3.up, 0.4f);
+        Gizmos.DrawWireSphere(transform.position + Vector3.up, 0.2f);
     }
 
 
