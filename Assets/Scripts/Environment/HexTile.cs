@@ -12,12 +12,14 @@ public class HexTile : MonoBehaviour
 
 
     public TilePiece Piece => piece;
+    public HexOverlay Overlay => overlay;
     public Vector2Int AxialCoordinate => Hexagon.WorldToAxial(new(transform.position.x, transform.position.z));
     public Vector2 WorldPosition => new(transform.position.x, transform.position.z);
     public bool IsWalkable => isWalkable;
     public float HeightOffset => heightOffset;
     public bool IgnoreHeight => ignoreHeight;
 
+    private HexOverlay overlay = null;
     private System.Action<TilePiece> onPiecePlaced = null;
     private TilePiece piece = null;
 
@@ -71,6 +73,8 @@ public class HexTile : MonoBehaviour
 
     private void Start()
     {
+        TryGetComponent(out overlay);
+
         if (tileVariants.Count == 0) return;
         int variantIndex = Random.Range(-1, tileVariants.Count);
         if (variantIndex == -1) return; // Will not change the tile.

@@ -46,7 +46,7 @@ public class TurnManager : Singleton<TurnManager>
     public bool IsPeiceWithTurn(TilePiece peice)
     {
         if (peice != pieceWithTurn) return false;
-        if (isInAction) return false; // Can't do anything while in action.
+        if (isInAction) return false; // Can't 
         return true;
     }
 
