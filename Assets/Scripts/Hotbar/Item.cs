@@ -20,4 +20,7 @@ public abstract class Item : MonoBehaviour
         tileSelect = player.GetComponent<TileSelect>();
     }
     public abstract void Use();
+
+
+    private void Start() => player = GameManager.Instance.Player;
 }
