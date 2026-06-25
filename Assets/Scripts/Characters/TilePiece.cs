@@ -15,7 +15,7 @@ public class TilePiece : MonoBehaviour
 
 
     public HexTile Occupying => occupying;
-    public int MaxMoveDistance => Mathf.RoundToInt(baseMoveDistance + moveDistanceMultiplier);
+    public int MaxMoveDistance => Mathf.RoundToInt(baseMoveDistance * moveDistanceMultiplier);
 
     private HexTile occupying = null;
     private float moveDistanceMultiplier = 1.0f;

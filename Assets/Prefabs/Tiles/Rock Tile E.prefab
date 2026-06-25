@@ -595,6 +595,7 @@ MonoBehaviour:
   tileVariants:
   - {fileID: 5974924476096807600, guid: 4898d7a6247ec1b4da3327bb7183cddd, type: 3}
   isWalkable: 0
+  isObstacle: 1
   heightOffset: 0
   ignoreHeight: 0
 --- !u!64 &5402572035192541680

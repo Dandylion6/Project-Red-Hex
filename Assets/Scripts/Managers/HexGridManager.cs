@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using UnityEngine;
 
@@ -83,8 +82,7 @@ public class HexGridManager : Singleton<HexGridManager>
                 if (result.isComplete) AddToOverlay(tile);
             }
 
-            if (distance >= hexRange)
-                continue;
+            if (distance >= hexRange) continue;
 
             HexTile[] neighbors = GetNeighboringTiles(tile);
             foreach (HexTile neighbor in neighbors)
@@ -125,6 +123,8 @@ public class HexGridManager : Singleton<HexGridManager>
             foreach (HexTile neighbor in neighbors)
             {
                 if (neighbor == null) continue;
+                if (neighbor.IsObstacle) continue;
+
                 if (visited.Add(neighbor))
                     open.Enqueue((neighbor, distance + 1));
             }
@@ -140,8 +140,8 @@ public class HexGridManager : Singleton<HexGridManager>
         for (int i = 1; i <= steps; ++i)
         {
             float t = (float)i / steps;
-            float q = Mathf.Lerp(start.AxialCoordinate.x + 1e-6f, end.AxialCoordinate.x, t);
-            float r = Mathf.Lerp(start.AxialCoordinate.y + 1e-6f, end.AxialCoordinate.y, t);
+            float q = Mathf.Lerp(start.AxialCoordinate.x, end.AxialCoordinate.x , t) + 1e-6f; // Minor bias.
+            float r = Mathf.Lerp(start.AxialCoordinate.y, end.AxialCoordinate.y, t) + 1e-6f;
 
             Vector2Int axialCoordinate = Hexagon.CubeRound(q, r);
             if (!tileMap.TryGetValue(axialCoordinate, out HexTile next)) return false;
