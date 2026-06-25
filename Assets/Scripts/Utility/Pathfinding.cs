@@ -65,7 +65,7 @@ public class Pathfinding
             openTiles.Remove(current);
             closedTiles.Add(current);
 
-            HexTile[] neighbors = GetNeighboringTiles(current);
+            HexTile[] neighbors = HexGridManager.Instance.GetNeighboringTiles(current);
             for (int j = 0; j < neighbors.Length; ++j)
             {
                 HexTile neighbor = neighbors[j];
@@ -130,20 +130,5 @@ public class Pathfinding
         }
         totalPath.Push(current);
         return totalPath;
-    }
-
-
-    private HexTile[] GetNeighboringTiles(HexTile tile)
-    {
-        HexTile[] neighbors = new HexTile[6];
-
-        if (tileMap.TryGetValue(tile.AxialCoordinate + Vector2Int.up, out HexTile up)) neighbors[0] = up;
-        if (tileMap.TryGetValue(tile.AxialCoordinate + Vector2Int.down, out HexTile down)) neighbors[1] = down;
-        if (tileMap.TryGetValue(tile.AxialCoordinate + new Vector2Int(-1, 1), out HexTile topLeft)) neighbors[2] = topLeft;
-        if (tileMap.TryGetValue(tile.AxialCoordinate + new Vector2Int(-1, 0), out HexTile left)) neighbors[3] = left;
-        if (tileMap.TryGetValue(tile.AxialCoordinate + new Vector2Int(1, 0), out HexTile right)) neighbors[4] = right;
-        if (tileMap.TryGetValue(tile.AxialCoordinate + new Vector2Int(1, -1), out HexTile bottomRight)) neighbors[5] = bottomRight;
-
-        return neighbors;
     }
 }

@@ -27,6 +27,8 @@ public class Enemy : TilePiece
 
     private void EnterCombatCheck()
     {
+        if (TurnManager.Instance.IsInAction) return; // Must wait for actions first.
+
         int hexDistance = Hexagon.HexDistance(player.Occupying, Occupying);
         if (hexDistance > combatRange) return;
 

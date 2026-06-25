@@ -25,12 +25,14 @@ public class MovementController : MonoBehaviour
                 {
                     transform.DOMoveY(position.y + 0.3f, 0.2f).SetEase(Ease.OutBack).Play();
                     TurnManager.Instance.SetState(TurnManager.State.Move);
+                    HexGridManager.Instance.DisplayRange(playerPiece.Occupying, playerPiece.MaxMoveDistance);
                     break;
                 }
             case TurnManager.State.Move:
                 {
                     transform.DOMoveY(position.y, 0.2f).SetEase(Ease.OutBounce).Play();
                     TurnManager.Instance.SetState(TurnManager.State.None);
+                    HexGridManager.Instance.ClearOverlayOfType(HexOverlay.Type.Range);
                     break;
                 }
             default: break;
@@ -73,6 +75,6 @@ public class MovementController : MonoBehaviour
 
         PlayerCamera.Instance.SetTarget(tileSelect.SelectedTile);
         TurnManager.Instance.SetState(TurnManager.State.None);
-        playerPiece.EndTurn();
+        HexGridManager.Instance.ClearOverlayOfType(HexOverlay.Type.Range);
     }
 }
