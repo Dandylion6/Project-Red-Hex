@@ -58,6 +58,7 @@ public class TurnManager : Singleton<TurnManager>
         {
             isInCombat = false;
             turnsInCombat = 0;
+            pieceWithTurn = GameManager.Instance.Player; // Player regains the turn after finishing combat.
         }
     }
 
