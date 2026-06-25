@@ -34,7 +34,7 @@ public class HotBar : MonoBehaviour
 
     private void SetAsTarget(Item item)
     {
-        if (!TurnManager.Instance.IsPeiceWithTurn(player)) return;
+        if (!TurnManager.Instance.HasTurn(player)) return;
         
         TurnManager.Instance.SetState(TurnManager.State.UseItem);
         currentItem = item;
@@ -62,6 +62,7 @@ public class HotBar : MonoBehaviour
     private void DeselectCurrentItem()
     {
         TurnManager.Instance.SetState(TurnManager.State.None);
+        HexGridManager.Instance.ClearOverlayOfType(HexOverlay.Type.Range);
         currentItem = null;
         onSelectionChanged?.Invoke(null);
     }
@@ -73,7 +74,7 @@ public class HotBar : MonoBehaviour
     private void Update()
     {
         // When it isn't the player's turn they can't choose any item to use.
-        if (!TurnManager.Instance.IsPeiceWithTurn(player) && currentItem != null)
+        if (!TurnManager.Instance.HasTurn(player) && currentItem != null)
             DeselectCurrentItem();
     }
 }

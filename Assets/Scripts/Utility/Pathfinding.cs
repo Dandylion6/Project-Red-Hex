@@ -72,6 +72,7 @@ public class Pathfinding
                 if (neighbor == null) continue;
 
                 if (!neighbor.IsWalkable) continue;
+                if (neighbor.IsObstacle) continue;
                 if (closedTiles.Contains(neighbor)) continue;
 
                 int tentativeG = nodes[current].g + 1;

@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630f631bf5556f24694e3411a7aab3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementController
-  outOfCombatMoveMultiplier: 2
+  outOfCombatMoveMultiplier: 1
 --- !u!114 &2841289693349301114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,8 +185,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14b259ded6571047be3c8f85807b718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TilePiece
-  baseMoveDistance: 2
+  baseMoveDistance: 1
   maxHealth: 5
+  moveTime: 0.6
+  moveHeight: 1.4
+  heightUp:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  heightDown:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0
+      outSlope: -0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.059487358
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 3.4298463
+      outSlope: -1.089658
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.040328927
+      outWeight: 0.09614205
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.6571421
+      outSlope: 0.6571421
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.08695662
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &6903526123890732383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,22 +299,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ff6c9169-a28f-4927-8770-7a7ae0c8eb87
     m_ActionName: 'Player/Click[/Mouse/leftButton]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6903526123890732383}
-        m_TargetAssemblyTypeName: TileSelect, Assembly-CSharp
-        m_MethodName: OnScreenInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 3c078ab1-eeee-45d4-95ec-78e2817ad5b0
-    m_ActionName: 'Player/Move[/Mouse/position]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -319,5 +362,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01dec2791deca7a4aa201761d338d1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  weaponRange: 0
-  weaponDamage: 0
+  weaponRange: 4
+  weaponDamage: 10

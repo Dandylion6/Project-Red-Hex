@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class HexGridManager : Singleton<HexGridManager>
 {
+    public enum DisplayType
+    {
+        Move,
+        Attack
+    }
+
+
     public int TileCount => tileMap.Count;
 
     private Dictionary<Vector2Int, HexTile> tileMap = new();
@@ -44,11 +51,22 @@ public class HexGridManager : Singleton<HexGridManager>
     }
 
 
-    public void DisplayRange(HexTile origin, int hexRange)
+    public void DisplayRange(HexTile origin, int hexRange, DisplayType type = DisplayType.Move)
     {
         ClearOverlayOfType(HexOverlay.Type.Range);
+        switch (type)
+        {
+            case DisplayType.Move: DisplayMoveRange(origin, hexRange);
+                break;
+            case DisplayType.Attack: DisplayHitRange(origin, hexRange);
+                break;
+        }
+    }
 
-        Queue<(HexTile tile, int distance)> open = new(); 
+
+    private void DisplayMoveRange(HexTile origin, int hexRange)
+    {
+        Queue<(HexTile tile, int distance)> open = new();
         HashSet<HexTile> visited = new();
 
         open.Enqueue((origin, 0));
@@ -60,8 +78,42 @@ public class HexGridManager : Singleton<HexGridManager>
 
             if (tile.Overlay != null)
             {
-                tile.Overlay.SetType(HexOverlay.Type.Range);
-                overlayTiles.Add(tile);
+                Pathfinding.Result result = pathfinding.CalculatePath(origin, tile);
+                if (result.isComplete) AddToOverlay(tile);
+            }
+
+            if (distance >= hexRange) continue;
+
+            HexTile[] neighbors = GetNeighboringTiles(tile);
+            foreach (HexTile neighbor in neighbors)
+            {
+                if (neighbor == null) continue;
+                if (neighbor.Piece != null) continue;
+                if (!neighbor.IsWalkable) continue;
+                if (neighbor.IsObstacle) continue;
+
+                if (visited.Add(neighbor))
+                    open.Enqueue((neighbor, distance + 1));
+            }
+        }
+    }
+
+
+    private void DisplayHitRange(HexTile origin, int hexRange)
+    {
+        Queue<(HexTile tile, int distance)> open = new();
+        HashSet<HexTile> visited = new();
+
+        open.Enqueue((origin, 0));
+        visited.Add(origin);
+
+        while (open.Count > 0)
+        {
+            (HexTile tile, int distance) = open.Dequeue();
+
+            if (tile.Overlay != null && InLineOfSight(origin, tile))
+            {
+                AddToOverlay(tile);
             }
 
             if (distance >= hexRange)
@@ -71,10 +123,38 @@ public class HexGridManager : Singleton<HexGridManager>
             foreach (HexTile neighbor in neighbors)
             {
                 if (neighbor == null) continue;
+                if (neighbor.IsObstacle) continue;
+
                 if (visited.Add(neighbor))
                     open.Enqueue((neighbor, distance + 1));
             }
         }
+    }
+
+
+    public bool InLineOfSight(HexTile start, HexTile end)
+    {
+        int steps = Hexagon.HexDistance(start, end);
+        if (steps == 0) return true;
+
+        for (int i = 1; i <= steps; ++i)
+        {
+            float t = (float)i / steps;
+            float q = Mathf.Lerp(start.AxialCoordinate.x, end.AxialCoordinate.x , t) + 1e-6f; // Minor bias.
+            float r = Mathf.Lerp(start.AxialCoordinate.y, end.AxialCoordinate.y, t) + 1e-6f;
+
+            Vector2Int axialCoordinate = Hexagon.CubeRound(q, r);
+            if (!tileMap.TryGetValue(axialCoordinate, out HexTile next)) return false;
+            if (next.IsObstacle) return false;
+        }
+        return true;
+    }
+
+
+    private void AddToOverlay(HexTile tile)
+    {
+        tile.Overlay.SetType(HexOverlay.Type.Range);
+        overlayTiles.Add(tile);
     }
 
 

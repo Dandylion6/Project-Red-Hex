@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Weapon : Item
@@ -13,6 +12,7 @@ public class Weapon : Item
     public override void Use()
     {
         isUsing = true;
+        HexGridManager.Instance.DisplayRange(Player.Occupying, weaponRange, HexGridManager.DisplayType.Attack);
     }
 
 
@@ -21,17 +21,13 @@ public class Weapon : Item
         if (!isUsing) return;
         if (TileSelect.SelectedTile == null) return;
 
-        //checks if within range
-        if (Hexagon.HexDistance(Player.Occupying, TileSelect.SelectedTile) <= weaponRange)
-        {
+        if (!HexGridManager.Instance.InLineOfSight(Player.Occupying, TileSelect.SelectedTile)) return;
 
-            Enemy enemy = TileSelect.SelectedTile.Piece as Enemy;
-            if (enemy != null)
-            {
-                enemy.TakeDamage(weaponDamage);
-            }
-        }
+        Enemy enemy = TileSelect.SelectedTile.Piece as Enemy;
+        if (enemy == null) return;
 
-        Player.EndTurn();
+        enemy.TakeDamage(weaponDamage);
+        HexGridManager.Instance.ClearOverlayOfType(HexOverlay.Type.Range);
+        TurnManager.Instance.EndTurn();
     }
 }

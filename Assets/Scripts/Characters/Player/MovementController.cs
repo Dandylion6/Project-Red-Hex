@@ -16,8 +16,6 @@ public class MovementController : MonoBehaviour
 
     private void ToggleState()
     {
-        if (TurnManager.Instance.PieceWithTurn != playerPiece) return;
-
         Vector3 position = playerPiece.Occupying.transform.position;
         switch (TurnManager.Instance.CurrentState)
         {
@@ -51,19 +49,21 @@ public class MovementController : MonoBehaviour
     {
         UpdateSelection();
 
-        bool hasChanged = hasMultiplier != TurnManager.Instance.IsInCombat;
+        bool outOfCombat = !TurnManager.Instance.IsInCombat;
+        bool hasChanged = hasMultiplier != outOfCombat;
+
         if (!hasChanged) return;
 
-        if (TurnManager.Instance.IsInCombat) playerPiece.AddMoveMultiplier(outOfCombatMoveMultiplier);
+        if (outOfCombat) playerPiece.AddMoveMultiplier(outOfCombatMoveMultiplier);
         else playerPiece.RemoveMoveMultiplier(outOfCombatMoveMultiplier);
         
-        hasMultiplier = TurnManager.Instance.IsInCombat;
+        hasMultiplier = outOfCombat;
     }
 
 
     private void UpdateSelection()
     {
-        if (!TurnManager.Instance.IsPeiceWithTurn(playerPiece)) return;
+        if (!TurnManager.Instance.HasTurn(playerPiece)) return;
         if (!tileSelect.SelectedTile) return;
         if (!tileSelect.SelectedTile.IsWalkable) return; // Don't even try to traverse.
 
