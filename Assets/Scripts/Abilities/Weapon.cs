@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Weapon : Item
@@ -13,6 +12,7 @@ public class Weapon : Item
     public override void Use()
     {
         isUsing = true;
+        HexGridManager.Instance.DisplayRange(Player.Occupying, weaponRange, HexGridManager.DisplayType.Attack);
     }
 
 
@@ -29,9 +29,8 @@ public class Weapon : Item
             if (enemy != null)
             {
                 enemy.TakeDamage(weaponDamage);
+                TurnManager.Instance.EndTurn();
             }
         }
-
-        TurnManager.Instance.EndTurn();
     }
 }

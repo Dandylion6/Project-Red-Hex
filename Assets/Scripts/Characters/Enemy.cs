@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : TilePiece
@@ -12,9 +13,17 @@ public class Enemy : TilePiece
     private bool isInCombat = false;
 
 
+    public virtual void Die()
+    {
+        base.Die();
+        TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
+    }
+
+
     private void Start()
     {
         player = GameManager.Instance.Player;
+        TurnManager.Instance.SubscribeToOnTurnChanged(OnTurnChanged);
     }
 
 
@@ -34,5 +43,21 @@ public class Enemy : TilePiece
 
         TurnManager.Instance.AddPieceToTurns(this);
         isInCombat = true;
+    }
+
+
+    protected virtual void OnTurnChanged(TilePiece piece)
+    {
+        if (piece != this) return;
+        if (!TurnManager.Instance.HasTurn(this)) return;
+        StartCoroutine(TakeTurn());
+    }
+
+    
+    protected virtual IEnumerator TakeTurn()
+    {
+        Debug.Log("Enemy taking turn.");
+        yield return new WaitForSeconds(1.0f);
+        TurnManager.Instance.EndTurn();
     }
 }

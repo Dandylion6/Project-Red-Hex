@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630f631bf5556f24694e3411a7aab3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementController
-  outOfCombatMoveMultiplier: 2
+  outOfCombatMoveMultiplier: 1.5
 --- !u!114 &2841289693349301114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +188,7 @@ MonoBehaviour:
   baseMoveDistance: 2
   maxHealth: 5
   moveTime: 0.6
+  moveHeight: 1.4
   heightUp:
     serializedVersion: 2
     m_Curve:
@@ -228,19 +229,19 @@ MonoBehaviour:
       time: 0.5
       value: 1
       inSlope: 3.4298463
-      outSlope: -1.9024334
+      outSlope: -1.089658
       tangentMode: 1
       weightedMode: 0
       inWeight: 0.040328927
-      outWeight: 0.06674826
+      outWeight: 0.09614205
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.9000227
-      outSlope: 0.9000227
+      inSlope: 0.6571421
+      outSlope: 0.6571421
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.07824241
+      inWeight: 0.08695662
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
