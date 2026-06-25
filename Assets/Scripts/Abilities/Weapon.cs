@@ -21,16 +21,13 @@ public class Weapon : Item
         if (!isUsing) return;
         if (TileSelect.SelectedTile == null) return;
 
-        //checks if within range
-        if (Hexagon.HexDistance(Player.Occupying, TileSelect.SelectedTile) <= weaponRange)
-        {
+        if (!HexGridManager.Instance.InLineOfSight(Player.Occupying, TileSelect.SelectedTile)) return;
 
-            Enemy enemy = TileSelect.SelectedTile.Piece as Enemy;
-            if (enemy != null)
-            {
-                enemy.TakeDamage(weaponDamage);
-                TurnManager.Instance.EndTurn();
-            }
-        }
+        Enemy enemy = TileSelect.SelectedTile.Piece as Enemy;
+        if (enemy == null) return;
+
+        enemy.TakeDamage(weaponDamage);
+        HexGridManager.Instance.ClearOverlayOfType(HexOverlay.Type.Range);
+        TurnManager.Instance.EndTurn();
     }
 }
