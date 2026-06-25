@@ -9,6 +9,7 @@ public class TilePiece : MonoBehaviour
 
     [Header("Animation Settings")]
     [SerializeField][Min(0.1f)] private float moveTime = 0.5f;
+    [SerializeField] private float moveHeight = 1.4f;
     [SerializeField] private AnimationCurve heightUp = new();
     [SerializeField] private AnimationCurve heightDown = new();
 
@@ -69,10 +70,14 @@ public class TilePiece : MonoBehaviour
         Vector3 endPosition = tile.transform.position;
         TurnManager.Instance.StartAction();
 
-        transform.DOMoveY(transform.position.y + 1.0f, moveTime * 0.5f).SetEase(heightUp).OnComplete(() =>
+        transform.DOMoveY(transform.position.y + moveHeight, moveTime * 0.5f).SetEase(heightUp).OnComplete(() =>
         {
             transform.DOMoveY(endPosition.y, moveTime * 0.5f).SetEase(heightDown)
-                .OnComplete(TurnManager.Instance.EndAction).Play();
+                .OnComplete(() =>
+                {
+                    TurnManager.Instance.EndAction();
+                    TurnManager.Instance.EndTurn();
+                }).Play();
         }
         ).Play();
 

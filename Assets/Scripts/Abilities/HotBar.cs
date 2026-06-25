@@ -62,6 +62,7 @@ public class HotBar : MonoBehaviour
     private void DeselectCurrentItem()
     {
         TurnManager.Instance.SetState(TurnManager.State.None);
+        HexGridManager.Instance.ClearOverlayOfType(HexOverlay.Type.Range);
         currentItem = null;
         onSelectionChanged?.Invoke(null);
     }

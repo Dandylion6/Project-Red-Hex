@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -35,7 +34,7 @@ public class HexTileMapBinder : Singleton<HexTileMapBinder>
         for (int i = 0; i < sceneHexTiles.Length; ++i)
         {
             HexTile tile = sceneHexTiles[i];
-            axialCoordinates.Add(tile.AxialCoordinate);
+            axialCoordinates.Add(Hexagon.WorldToAxial(new(tile.transform.position.x, tile.transform.position.z)));
             hexTiles.Add(tile);
         }
 

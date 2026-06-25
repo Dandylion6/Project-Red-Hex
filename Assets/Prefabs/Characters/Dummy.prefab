@@ -48,6 +48,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   baseMoveDistance: 1
   maxHealth: 5
+  moveTime: 0.6
+  moveHeight: 1.4
+  heightUp:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  heightDown:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.059487358
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 3.4298463
+      outSlope: -1.089658
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.040328927
+      outWeight: 0.09614205
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.6571421
+      outSlope: 0.6571421
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.08695662
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   combatRange: 2
 --- !u!114 &3812371408674673286
 MonoBehaviour:
