@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630f631bf5556f24694e3411a7aab3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementController
-  outOfCombatMoveMultiplier: 1.5
+  outOfCombatMoveMultiplier: 1
 --- !u!114 &2841289693349301114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14b259ded6571047be3c8f85807b718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TilePiece
-  baseMoveDistance: 2
+  baseMoveDistance: 1
   maxHealth: 5
   moveTime: 0.6
   moveHeight: 1.4
@@ -299,22 +299,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ff6c9169-a28f-4927-8770-7a7ae0c8eb87
     m_ActionName: 'Player/Click[/Mouse/leftButton]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6903526123890732383}
-        m_TargetAssemblyTypeName: TileSelect, Assembly-CSharp
-        m_MethodName: OnScreenInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 3c078ab1-eeee-45d4-95ec-78e2817ad5b0
-    m_ActionName: 'Player/Move[/Mouse/position]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

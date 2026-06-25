@@ -49,13 +49,15 @@ public class MovementController : MonoBehaviour
     {
         UpdateSelection();
 
-        bool hasChanged = hasMultiplier != TurnManager.Instance.IsInCombat;
+        bool outOfCombat = !TurnManager.Instance.IsInCombat;
+        bool hasChanged = hasMultiplier != outOfCombat;
+
         if (!hasChanged) return;
 
-        if (TurnManager.Instance.IsInCombat) playerPiece.AddMoveMultiplier(outOfCombatMoveMultiplier);
+        if (outOfCombat) playerPiece.AddMoveMultiplier(outOfCombatMoveMultiplier);
         else playerPiece.RemoveMoveMultiplier(outOfCombatMoveMultiplier);
         
-        hasMultiplier = TurnManager.Instance.IsInCombat;
+        hasMultiplier = outOfCombat;
     }
 
 
