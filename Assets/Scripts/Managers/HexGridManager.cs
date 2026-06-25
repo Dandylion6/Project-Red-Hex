@@ -60,8 +60,12 @@ public class HexGridManager : Singleton<HexGridManager>
 
             if (tile.Overlay != null)
             {
-                tile.Overlay.SetType(HexOverlay.Type.Range);
-                overlayTiles.Add(tile);
+                Pathfinding.Result result = pathfinding.CalculatePath(origin, tile);
+                if (result.isComplete)
+                {
+                    tile.Overlay.SetType(HexOverlay.Type.Range);
+                    overlayTiles.Add(tile);
+                }
             }
 
             if (distance >= hexRange)
@@ -71,6 +75,9 @@ public class HexGridManager : Singleton<HexGridManager>
             foreach (HexTile neighbor in neighbors)
             {
                 if (neighbor == null) continue;
+                if (neighbor.Piece != null) continue;
+                if (!neighbor.IsWalkable) continue;
+
                 if (visited.Add(neighbor))
                     open.Enqueue((neighbor, distance + 1));
             }

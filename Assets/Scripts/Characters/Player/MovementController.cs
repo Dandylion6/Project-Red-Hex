@@ -16,8 +16,6 @@ public class MovementController : MonoBehaviour
 
     private void ToggleState()
     {
-        if (TurnManager.Instance.PieceWithTurn != playerPiece) return;
-
         Vector3 position = playerPiece.Occupying.transform.position;
         switch (TurnManager.Instance.CurrentState)
         {
@@ -63,7 +61,7 @@ public class MovementController : MonoBehaviour
 
     private void UpdateSelection()
     {
-        if (!TurnManager.Instance.IsPeiceWithTurn(playerPiece)) return;
+        if (!TurnManager.Instance.HasTurn(playerPiece)) return;
         if (!tileSelect.SelectedTile) return;
         if (!tileSelect.SelectedTile.IsWalkable) return; // Don't even try to traverse.
 

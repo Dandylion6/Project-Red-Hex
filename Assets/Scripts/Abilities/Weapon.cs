@@ -32,6 +32,6 @@ public class Weapon : Item
             }
         }
 
-        Player.EndTurn();
+        TurnManager.Instance.EndTurn();
     }
 }
