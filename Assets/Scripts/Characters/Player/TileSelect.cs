@@ -1,12 +1,18 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TileSelect : MonoBehaviour
+public class TileSelect : Singleton<TileSelect>
 {
     public HexTile SelectedTile => selectedTile;
 
-    private HexTile selectedTile = null;
+    private Action<HexTile> onSelectionChanged = null;
     private Camera mainCamera = null;
+    private HexTile selectedTile = null;
+
+
+    public void SubscribeToOnSelectionChanged(Action<HexTile> callback) => onSelectionChanged += callback;
+    public void UnsubscibeFromOnSelectionChanged(Action<HexTile> callback) => onSelectionChanged -= callback;
 
 
     public void OnInputClick(InputAction.CallbackContext context)
@@ -14,11 +20,17 @@ public class TileSelect : MonoBehaviour
         if (!context.performed) return;
 
         Vector2 screenPosition = Pointer.current?.position.ReadValue() ?? Vector2.zero;
-        if (!GetHitTile(screenPosition, out selectedTile)) return;
+
+        if (GetHitTile(screenPosition, out selectedTile))
+            onSelectionChanged?.Invoke(selectedTile);
     }
 
 
-    public void ClearSelect() => selectedTile = null;
+    public void ClearSelect()
+    {
+        selectedTile = null;
+        onSelectionChanged?.Invoke(null);
+    }
 
 
     private bool GetHitTile(Vector2 screenPosition, out HexTile tile)
@@ -33,9 +45,4 @@ public class TileSelect : MonoBehaviour
 
 
     private void Start() => mainCamera = Camera.main;
-
-    private void LateUpdate()
-    {
-        selectedTile = null;
-    }
 }

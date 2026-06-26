@@ -13,7 +13,7 @@ public class Enemy : TilePiece
     private bool isInCombat = false;
 
 
-    public virtual void Die()
+    public override void Die()
     {
         base.Die();
         TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
