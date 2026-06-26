@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 728532620277674737, guid: fb954b4670a920a43be80f79f5cd1c88, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.79357
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 728532620277674737, guid: fb954b4670a920a43be80f79f5cd1c88, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 728532620277674737, guid: fb954b4670a920a43be80f79f5cd1c88, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.36318874
+      value: -0.8660254
       objectReference: {fileID: 0}
     - target: {fileID: 728532620277674737, guid: fb954b4670a920a43be80f79f5cd1c88, type: 3}
       propertyPath: m_LocalRotation.w
@@ -67,13 +67,35 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 728532620277674737, guid: fb954b4670a920a43be80f79f5cd1c88, type: 3}
       insertIndex: 0
       addedObject: {fileID: 6503578174234116862}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5613631593349721141, guid: fb954b4670a920a43be80f79f5cd1c88, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2336323339641888993}
   m_SourcePrefab: {fileID: 100100000, guid: fb954b4670a920a43be80f79f5cd1c88, type: 3}
 --- !u!4 &2277256703718554076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 728532620277674737, guid: fb954b4670a920a43be80f79f5cd1c88, type: 3}
   m_PrefabInstance: {fileID: 1550984738417281837}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6368534453436753688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5613631593349721141, guid: fb954b4670a920a43be80f79f5cd1c88, type: 3}
+  m_PrefabInstance: {fileID: 1550984738417281837}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-2336323339641888993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6368534453436753688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f56ab38dbdab747965f53e0964cfe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HexOverlay
+  spriteRenderer: {fileID: 0}
+  rangeColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &5758676054267463623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87,8 +109,16 @@ PrefabInstance:
       value: MoonShard 1
       objectReference: {fileID: 0}
     - target: {fileID: 1561540398501610809, guid: 773e4ec616f47d24f8a9c31a41fce1ec, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 189.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1561540398501610809, guid: 773e4ec616f47d24f8a9c31a41fce1ec, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 189.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1561540398501610809, guid: 773e4ec616f47d24f8a9c31a41fce1ec, type: 3}
       propertyPath: m_LocalScale.z
-      value: 99.999985
+      value: 189.09998
       objectReference: {fileID: 0}
     - target: {fileID: 1561540398501610809, guid: 773e4ec616f47d24f8a9c31a41fce1ec, type: 3}
       propertyPath: m_LocalPosition.x

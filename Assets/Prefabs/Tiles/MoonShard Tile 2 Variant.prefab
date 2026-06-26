@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3005442468685797739, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.70643
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 3005442468685797739, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3005442468685797739, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.6933155
+      value: -5.196152
       objectReference: {fileID: 0}
     - target: {fileID: 3005442468685797739, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -58,8 +58,30 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3005442468685797739, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
       insertIndex: 0
       addedObject: {fileID: 8547623439340471315}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4909881054297384876, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5942221172194925204}
   m_SourcePrefab: {fileID: 100100000, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
+--- !u!1 &3457044340585663006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4909881054297384876, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
+  m_PrefabInstance: {fileID: 7771670672064048562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5942221172194925204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457044340585663006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f56ab38dbdab747965f53e0964cfe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HexOverlay
+  spriteRenderer: {fileID: 0}
+  rangeColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &4787325633574286553 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3005442468685797739, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
@@ -73,6 +95,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4787325633574286553}
     m_Modifications:
+    - target: {fileID: 3101052867294249, guid: baa3d4d74a5df3c4da46ff2ff14923e2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 162.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101052867294249, guid: baa3d4d74a5df3c4da46ff2ff14923e2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 162.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101052867294249, guid: baa3d4d74a5df3c4da46ff2ff14923e2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 162.93
+      objectReference: {fileID: 0}
     - target: {fileID: 3101052867294249, guid: baa3d4d74a5df3c4da46ff2ff14923e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0376153

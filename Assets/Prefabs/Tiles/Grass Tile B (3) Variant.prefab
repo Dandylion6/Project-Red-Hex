@@ -199,6 +199,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1564146370001452817, guid: 7ae8f6a31434c4649b8a2264e3bc5bb9, type: 3}
+      propertyPath: isWalkable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564146370001452817, guid: 7ae8f6a31434c4649b8a2264e3bc5bb9, type: 3}
       propertyPath: currentTile
       value: 
       objectReference: {fileID: 0}
