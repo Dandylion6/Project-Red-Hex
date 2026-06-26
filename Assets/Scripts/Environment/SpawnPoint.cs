@@ -21,8 +21,8 @@ public class SpawnPoint : MonoBehaviour
         // Will move the player to this tile.
         if (lastScene == goToScene)
         {
-            PlayerCamera.Instance.SnapToTarget(tile);
             player.SpawnAt(tile);
+            PlayerCamera.Instance.SnapToTarget(tile);
         }
 
         tile.SubscribeToOnPiecePlaced(MoveToNextScene);
