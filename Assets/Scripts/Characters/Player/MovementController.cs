@@ -28,9 +28,9 @@ public class MovementController : MonoBehaviour
                 }
             case TurnManager.State.Move:
                 {
+                    HexGridManager.Instance.ClearOverlay();
                     transform.DOMoveY(position.y, 0.2f).SetEase(Ease.OutBounce).Play();
                     TurnManager.Instance.SetState(TurnManager.State.None);
-                    HexGridManager.Instance.ClearOverlayOfType(HexOverlay.Type.Range);
                     break;
                 }
             default: break;
@@ -73,8 +73,8 @@ public class MovementController : MonoBehaviour
         if (TurnManager.Instance.CurrentState != TurnManager.State.Move) return;
         if (!playerPiece.MoveTo(tileSelect.SelectedTile)) return;
 
+        HexGridManager.Instance.ClearOverlay();
         PlayerCamera.Instance.SetTarget(tileSelect.SelectedTile);
         TurnManager.Instance.SetState(TurnManager.State.None);
-        HexGridManager.Instance.ClearOverlayOfType(HexOverlay.Type.Range);
     }
 }

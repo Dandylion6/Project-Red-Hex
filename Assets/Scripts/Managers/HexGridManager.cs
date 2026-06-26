@@ -6,8 +6,9 @@ public class HexGridManager : Singleton<HexGridManager>
 {
     public enum DisplayType
     {
-        Move,
-        Attack
+        Basic, // Will show raw range from an origin.
+        Move, // Will show whether hexagons can be moved to.
+        Attack // Will show range that are in line of sight.
     }
 
 
@@ -53,9 +54,11 @@ public class HexGridManager : Singleton<HexGridManager>
 
     public void DisplayRange(HexTile origin, int hexRange, DisplayType type = DisplayType.Move)
     {
-        ClearOverlayOfType(HexOverlay.Type.Range);
+        ClearOverlay();
         switch (type)
         {
+            case DisplayType.Basic: DisplayRawRange(origin, hexRange);
+                break;
             case DisplayType.Move: DisplayMoveRange(origin, hexRange);
                 break;
             case DisplayType.Attack: DisplayHitRange(origin, hexRange);
@@ -132,6 +135,33 @@ public class HexGridManager : Singleton<HexGridManager>
     }
 
 
+    private void DisplayRawRange(HexTile origin, int hexRange)
+    {
+        Queue<(HexTile tile, int distance)> open = new();
+        HashSet<HexTile> visited = new();
+
+        open.Enqueue((origin, 0));
+        visited.Add(origin);
+
+        while (open.Count > 0)
+        {
+            (HexTile tile, int distance) = open.Dequeue();
+
+            if (tile.Overlay != null) AddToOverlay(tile);
+
+            if (distance >= hexRange) continue;
+
+            HexTile[] neighbors = GetNeighboringTiles(tile);
+            foreach (HexTile neighbor in neighbors)
+            {
+                if (neighbor == null) continue;
+                if (visited.Add(neighbor))
+                    open.Enqueue((neighbor, distance + 1));
+            }
+        }
+    }
+
+
     public bool InLineOfSight(HexTile start, HexTile end)
     {
         int steps = Hexagon.HexDistance(start, end);
@@ -158,13 +188,12 @@ public class HexGridManager : Singleton<HexGridManager>
     }
 
 
-    public void ClearOverlayOfType(HexOverlay.Type type)
+    public void ClearOverlay()
     {
         foreach(HexTile tile in overlayTiles)
         {
             if (tile.Overlay == null) continue;
-            if (tile.Overlay.CurrentType == type)
-                tile.Overlay.SetType(HexOverlay.Type.None);
+            tile.Overlay.SetType(HexOverlay.Type.None);
         }
     }
 

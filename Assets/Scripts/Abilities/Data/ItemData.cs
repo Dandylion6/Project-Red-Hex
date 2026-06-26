@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Data/Items/Item")]
 public class ItemData : ScriptableObject
@@ -16,4 +18,12 @@ public class ItemData : ScriptableObject
     public Sprite ItemSprite => itemSprite;
     public string Description => description;
     public int Cooldown => cooldown;
+
+
+    public virtual Queue<ItemStatEntry> GetStats()
+    {
+        Queue<ItemStatEntry> entries = new();
+        entries.Enqueue(new("Cooldown", Cooldown.ToString()));
+        return entries;
+    }
 }
