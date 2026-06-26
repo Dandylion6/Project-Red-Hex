@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class TurnManager : Singleton<TurnManager>
 {
@@ -46,6 +44,14 @@ public class TurnManager : Singleton<TurnManager>
     {
         if (peice != pieceWithTurn) return false;
         return true;
+    }
+
+
+    public void StartAction()
+    {
+        TilePiece lastPiece = pieceWithTurn;
+        pieceWithTurn = null; // No one is allowed to act until end of turn.
+        onTurnChanged?.Invoke(null, lastPiece);
     }
 
 
@@ -112,8 +118,8 @@ public class TurnManager : Singleton<TurnManager>
         TilePiece lastPiece = pieceWithTurn;
         pieceWithTurn = activePieces[currentTurnIndex];
 
-        if (isInCombat)
-            ++turnsInCombat;
+        bool combatCycleDone = isInCombat && currentTurnIndex == 0;
+        if (combatCycleDone) ++turnsInCombat;
 
         onTurnChanged?.Invoke(pieceWithTurn, lastPiece);
     }

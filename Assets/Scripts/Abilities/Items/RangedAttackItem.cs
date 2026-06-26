@@ -44,6 +44,9 @@ public class RangedAttackItem : Item<RangedAttackData>
 
     protected override IEnumerator ActionSequence()
     {
+        StartCooldown();
+        TurnManager.Instance.StartAction();
+
         yield return new WaitForSeconds(0.5f);
 
         target.TakeDamage(Data.Damage);

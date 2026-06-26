@@ -18,10 +18,13 @@ public abstract class Item : MonoBehaviour
     }
 
 
-    protected abstract ItemData BaseData {  get; } // Will be overriden by T type.
+    public abstract ItemData BaseData { get; } // Will be overriden by T type.
+    public int CooldownLeft => cooldownLeft;
+
     protected TilePiece Player => player;
 
     private TilePiece player = null;
+    private int cooldownLeft = 0;
 
 
     /// <summary>Called when the player selects a tile while this item is selected.</summary>
@@ -34,12 +37,15 @@ public abstract class Item : MonoBehaviour
     protected abstract void OnItemDeselected();
 
     protected abstract IEnumerator ActionSequence();
-    
+
+    protected void StartCooldown() => cooldownLeft = BaseData.Cooldown;
+
 
     public void Start()
     {
         player = GameManager.Instance.Player;
         HotBar.Instance.SubscribeToOnSelectionChanged(OnItemSelectionChanged);
+        TurnManager.Instance.SubscribeToOnTurnChanged(UpdateCooldown);
     }
 
 
@@ -64,7 +70,19 @@ public abstract class Item : MonoBehaviour
     }
 
 
-    private void OnDestroy() => TileSelect.Instance.UnsubscibeFromOnSelectionChanged(OnTileSelect);
+    private void UpdateCooldown(TilePiece currentPiece, TilePiece lastPiece)
+    {
+        // Every time the player gets the turn the cooldown is reduced.
+        if (currentPiece == player) 
+            cooldownLeft = Mathf.Max(cooldownLeft - 1, 0);
+    }
+
+
+    private void OnDestroy()
+    {
+        TileSelect.Instance.UnsubscibeFromOnSelectionChanged(OnTileSelect);
+        TurnManager.Instance.UnsubscribeFromOnTurnChanged(UpdateCooldown);
+    }
 }
 
 
@@ -74,9 +92,11 @@ public abstract class Item : MonoBehaviour
 /// </summary>
 public abstract class Item<T> : Item where T : ItemData
 {
+    [Header("Settings")]
     [SerializeField] T data = null;
 
 
+    public override ItemData BaseData => data;
+    
     protected T Data => data;
-    protected override ItemData BaseData => data;
 }

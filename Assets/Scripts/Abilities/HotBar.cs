@@ -35,6 +35,7 @@ public class HotBar : Singleton<HotBar>
 
     private void SetAsTarget(Item item)
     {
+        if (item.CooldownLeft > 0) return;
         TurnManager.Instance.SetState(TurnManager.State.UseItem);
 
         Item lastItem = currentItem;
