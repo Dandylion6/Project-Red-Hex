@@ -18,14 +18,14 @@ public class SpawnPoint : MonoBehaviour
         tile = GetComponent<HexTile>();
         TilePiece player = GameManager.Instance.Player;
 
-        tile.SubscribeToOnPiecePlaced(MoveToNextScene);
-
         // Will move the player to this tile.
         if (lastScene == goToScene)
         {
             PlayerCamera.Instance.SnapToTarget(tile);
             player.SpawnAt(tile);
         }
+
+        tile.SubscribeToOnPiecePlaced(MoveToNextScene);
     }
 
 
@@ -38,4 +38,7 @@ public class SpawnPoint : MonoBehaviour
         lastScene = currentScene;
         if (goToScene != string.Empty) SceneManager.LoadScene(goToScene, LoadSceneMode.Additive);
     }
+
+
+    private void OnDestroy() => tile.UnsubscibeToOnPiecePlaced(MoveToNextScene);
 }
