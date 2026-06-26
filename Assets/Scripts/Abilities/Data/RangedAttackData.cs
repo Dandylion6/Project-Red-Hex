@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Ranged Attack", menuName = "Data/Items/RangedAttack")]
+[CreateAssetMenu(fileName = "New Ranged Attack", menuName = "Data/Items/Ranged Attack")]
 public class RangedAttackData : ItemData
 {
     [Header("Ranged Attack Data")]

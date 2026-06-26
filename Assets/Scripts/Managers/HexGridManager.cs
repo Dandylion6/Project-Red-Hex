@@ -54,7 +54,6 @@ public class HexGridManager : Singleton<HexGridManager>
 
     public void DisplayRange(HexTile origin, int hexRange, DisplayType type = DisplayType.Move)
     {
-        ClearOverlay();
         switch (type)
         {
             case DisplayType.Basic: DisplayRawRange(origin, hexRange);

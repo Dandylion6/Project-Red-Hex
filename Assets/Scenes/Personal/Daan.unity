@@ -191,6 +191,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d642963424bd634faf7051950cccfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HexTile
+--- !u!1 &63901377 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3363674685689751770, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
+  m_PrefabInstance: {fileID: 1392766910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &368341067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -620,7 +625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4843674726837638685, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.02597453
+      value: 0.04079987
       objectReference: {fileID: 0}
     - target: {fileID: 4843674726837638685, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -908,7 +913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4843674726837638685, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.04079987
+      value: 0.04647494
       objectReference: {fileID: 0}
     - target: {fileID: 4843674726837638685, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1336,59 +1341,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HexTileMapBinder
   axialCoordinates:
-  - {x: -1, y: 0}
-  - {x: -1, y: 2}
-  - {x: 0, y: -2}
-  - {x: 2, y: -1}
-  - {x: 1, y: -2}
-  - {x: 2, y: 2}
   - {x: 2, y: 1}
-  - {x: 2, y: -2}
-  - {x: -1, y: 1}
-  - {x: 1, y: 2}
-  - {x: 3, y: -1}
-  - {x: 3, y: 0}
-  - {x: 0, y: 0}
   - {x: 4, y: 0}
+  - {x: 0, y: 2}
+  - {x: 3, y: -1}
+  - {x: 0, y: 1}
+  - {x: 2, y: -1}
+  - {x: -1, y: 1}
+  - {x: 1, y: 1}
+  - {x: 0, y: 0}
   - {x: 1, y: -1}
   - {x: 4, y: -2}
-  - {x: 0, y: -1}
-  - {x: 0, y: 1}
-  - {x: 1, y: 0}
-  - {x: 2, y: 0}
-  - {x: -1, y: -1}
+  - {x: 2, y: 2}
+  - {x: 1, y: -2}
   - {x: 3, y: 1}
-  - {x: 0, y: 2}
-  - {x: 3, y: -2}
+  - {x: 0, y: -2}
+  - {x: 2, y: 0}
+  - {x: 2, y: -2}
+  - {x: -1, y: -1}
+  - {x: -1, y: 0}
+  - {x: -1, y: 2}
   - {x: 4, y: -1}
-  - {x: 1, y: 1}
+  - {x: 3, y: -2}
+  - {x: 1, y: 0}
+  - {x: 1, y: 2}
+  - {x: 0, y: -1}
+  - {x: 3, y: 0}
   hexTiles:
-  - {fileID: 1672456070}
-  - {fileID: 1763524772}
-  - {fileID: 836584868}
-  - {fileID: 784551249}
-  - {fileID: 964882759}
-  - {fileID: 924174329}
   - {fileID: 44139380}
-  - {fileID: 542617182}
-  - {fileID: 1851401673}
-  - {fileID: 1906068449}
-  - {fileID: 1352072112}
-  - {fileID: 1696766338}
-  - {fileID: 2106052845}
   - {fileID: 1259231845}
+  - {fileID: 686718274}
+  - {fileID: 1352072112}
+  - {fileID: 1374194956}
+  - {fileID: 784551249}
+  - {fileID: 1851401673}
+  - {fileID: 1608263577}
+  - {fileID: 2106052845}
   - {fileID: 1392766911}
   - {fileID: 873370082}
-  - {fileID: 414547764}
-  - {fileID: 1374194956}
-  - {fileID: 368341068}
-  - {fileID: 665310959}
-  - {fileID: 765465066}
+  - {fileID: 924174329}
+  - {fileID: 964882759}
   - {fileID: 699851900}
-  - {fileID: 686718274}
-  - {fileID: 431164746}
+  - {fileID: 836584868}
+  - {fileID: 665310959}
+  - {fileID: 542617182}
+  - {fileID: 765465066}
+  - {fileID: 1672456070}
+  - {fileID: 1763524772}
   - {fileID: 2034636974}
-  - {fileID: 1608263577}
+  - {fileID: 431164746}
+  - {fileID: 368341068}
+  - {fileID: 1906068449}
+  - {fileID: 414547764}
+  - {fileID: 1696766338}
 --- !u!4 &1340578967
 Transform:
   m_ObjectHideFlags: 0
@@ -1608,19 +1613,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3363674685689751770, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1392766915}
   m_SourcePrefab: {fileID: 100100000, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
 --- !u!114 &1392766911 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1749471133023849186, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
   m_PrefabInstance: {fileID: 1392766910}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 63901377}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d642963424bd634faf7051950cccfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HexTile
+--- !u!114 &1392766915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63901377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211b750980c274f48b7c62ec76236af9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TeleportPoint
+  currentScene: Daan
+  goToScene: Level_1
 --- !u!1001 &1608263576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1936,8 +1958,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ff8293cdcc66f34b9cd21516a860835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnPoint
-  currentScene: 
-  goToScene: 
 --- !u!1001 &1906068448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2295,19 +2315,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2776572914163552594, guid: 7a02a3bbd0279f0469a19c2037567d53, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.5000018
       objectReference: {fileID: 0}
     - target: {fileID: 2776572914163552594, guid: 7a02a3bbd0279f0469a19c2037567d53, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2776572914163552594, guid: 7a02a3bbd0279f0469a19c2037567d53, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.86602443
       objectReference: {fileID: 0}
     - target: {fileID: 2776572914163552594, guid: 7a02a3bbd0279f0469a19c2037567d53, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2776572914163552594, guid: 7a02a3bbd0279f0469a19c2037567d53, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2315,7 +2335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2776572914163552594, guid: 7a02a3bbd0279f0469a19c2037567d53, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -120
       objectReference: {fileID: 0}
     - target: {fileID: 2776572914163552594, guid: 7a02a3bbd0279f0469a19c2037567d53, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

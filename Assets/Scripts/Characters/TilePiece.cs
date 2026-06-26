@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class TilePiece : MonoBehaviour
+public class TilePiece : MonoBehaviour, IDamageable
 {
     [Header("Piece Settings")]
     [SerializeField] private int baseMoveDistance = 1;
@@ -69,18 +69,14 @@ public class TilePiece : MonoBehaviour
         occupying = tile;
 
         Vector3 endPosition = tile.transform.position;
-        TurnManager.Instance.StartAction();
-
         transform.DOMoveY(transform.position.y + moveHeight, moveTime * 0.5f).SetEase(heightUp).OnComplete(() =>
         {
             transform.DOMoveY(endPosition.y, moveTime * 0.5f).SetEase(heightDown)
                 .OnComplete(() =>
                 {
-                    TurnManager.Instance.EndAction();
-                    TurnManager.Instance.EndTurn();
-
                     tile.SetPiece(this);
                     occupying = tile;
+                    TurnManager.Instance.EndTurn();
                 }).Play();
         }
         ).Play();

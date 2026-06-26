@@ -5,8 +5,8 @@ using UnityEngine;
 public class HotBar : Singleton<HotBar>
 {
     [Header("References")]
-    [SerializeField] private List<Item> items;
-
+    [SerializeField] private Transform hotbarParent = null;
+    [SerializeField] private List<Item> items = new();
 
     public IReadOnlyList<Item> Items => items;
     public Item CurrentItem => currentItem;
@@ -37,9 +37,9 @@ public class HotBar : Singleton<HotBar>
     {
         TurnManager.Instance.SetState(TurnManager.State.UseItem);
 
-        Item lastIrem = currentItem;
+        Item lastItem = currentItem;
         currentItem = item;
-        onSelectionChanged?.Invoke(item, lastIrem);
+        onSelectionChanged?.Invoke(item, lastItem);
     }
 
 

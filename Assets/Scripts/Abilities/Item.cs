@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -31,6 +32,8 @@ public abstract class Item : MonoBehaviour
 
     /// <summary>Called when this item is deselected. Use to clean up any visuals shown in <see cref="OnItemSelected"/>.</summary>
     protected abstract void OnItemDeselected();
+
+    protected abstract IEnumerator ActionSequence();
     
 
     public void Start()

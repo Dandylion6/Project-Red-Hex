@@ -36,8 +36,6 @@ public class Enemy : TilePiece
 
     private void EnterCombatCheck()
     {
-        if (TurnManager.Instance.IsInAction) return; // Must wait for actions first.
-
         int hexDistance = Hexagon.HexDistance(player.Occupying, Occupying);
         if (hexDistance > combatRange) return;
 
@@ -46,7 +44,7 @@ public class Enemy : TilePiece
     }
 
 
-    protected virtual void OnTurnChanged(TilePiece piece)
+    protected virtual void OnTurnChanged(TilePiece piece, TilePiece lastPiece)
     {
         if (piece != this) return;
         if (!TurnManager.Instance.HasTurn(this)) return;

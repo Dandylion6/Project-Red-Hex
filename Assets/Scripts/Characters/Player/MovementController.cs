@@ -10,7 +10,6 @@ public class MovementController : MonoBehaviour
 
 
     private TilePiece playerPiece = null;
-    private TileSelect tileSelect = null;
     private bool hasMultiplier = false;
 
 
@@ -41,14 +40,26 @@ public class MovementController : MonoBehaviour
     private void Start()
     {
         playerPiece = GetComponent<TilePiece>();
-        tileSelect = GetComponent<TileSelect>();
+        TurnManager.Instance.SubscribeToOnTurnChanged(OnTurnChanged);
+        OnTurnChanged(playerPiece, null); // Gives the player the turn to begin.
+    }
+
+
+    private void OnTurnChanged(TilePiece withTurn, TilePiece lastTurn)
+    {
+        if (withTurn == lastTurn) return;
+
+        bool playerHasTurn = withTurn == playerPiece;
+        bool playerHadLastTurn = lastTurn == playerPiece;
+
+        if (playerHasTurn) TileSelect.Instance.SubscribeToOnSelectionChanged(UpdateSelection);
+        else TileSelect.Instance.UnsubscibeFromOnSelectionChanged(UpdateSelection);
+
     }
 
 
     private void Update()
     {
-        UpdateSelection();
-
         bool outOfCombat = !TurnManager.Instance.IsInCombat;
         bool hasChanged = hasMultiplier != outOfCombat;
 
@@ -61,20 +72,24 @@ public class MovementController : MonoBehaviour
     }
 
 
-    private void UpdateSelection()
+    private void UpdateSelection(HexTile tile)
     {
-        if (!TurnManager.Instance.HasTurn(playerPiece)) return;
-        if (!tileSelect.SelectedTile) return;
-        if (!tileSelect.SelectedTile.IsWalkable) return; // Don't even try to traverse.
-
-        if (tileSelect.SelectedTile == playerPiece.Occupying)
+        if (!tile.IsWalkable) return; // Don't even try to traverse.
+        if (tile == playerPiece.Occupying)
             ToggleState();
 
         if (TurnManager.Instance.CurrentState != TurnManager.State.Move) return;
-        if (!playerPiece.MoveTo(tileSelect.SelectedTile)) return;
+        if (!playerPiece.MoveTo(tile)) return;
 
-        HexGridManager.Instance.ClearOverlay();
-        PlayerCamera.Instance.SetTarget(tileSelect.SelectedTile);
+        PlayerCamera.Instance.SetTarget(tile);
         TurnManager.Instance.SetState(TurnManager.State.None);
+        HexGridManager.Instance.ClearOverlay();
+    }
+
+
+    private void OnDestroy()
+    {
+        TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
+        TileSelect.Instance.UnsubscibeFromOnSelectionChanged(UpdateSelection);
     }
 }
