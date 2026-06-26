@@ -38,7 +38,6 @@ public class TilePiece : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         health = Mathf.Max(health - damage, 0);
-        // Add shake
         if (health == 0) Die();
     }
 
