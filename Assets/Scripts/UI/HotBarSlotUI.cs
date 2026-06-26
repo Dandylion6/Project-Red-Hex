@@ -19,17 +19,16 @@ public class HotBarSlotUI : MonoBehaviour
         this.item = item;
 
         hotBar.SubscribeToOnSelectionChanged(OnSelectionChanged);
-
-        OnSelectionChanged(item); // Syncing to current.
+        OnSelectionChanged(item, null); // Syncing to current.
     }
 
 
     public void OnButtonClick() => hotBar.SelectItem(item);
 
 
-    private void OnSelectionChanged(Item item)
+    private void OnSelectionChanged(Item currentItem, Item lastItem)
     {
-        float offset = item == this.item ? selectionOffset : -selectionOffset;
+        float offset = currentItem == this.item ? selectionOffset : -selectionOffset;
         slot.anchoredPosition += Vector2.up * offset;
     }
 
