@@ -44,7 +44,9 @@ public class TilePiece : MonoBehaviour
 
     public void SpawnAt(HexTile tile)
     {
+        if (occupying != null) occupying.RemovePiece();
         tile.SetPiece(this);
+
         occupying = tile;
         transform.position = tile.transform.position;
     }
@@ -64,7 +66,6 @@ public class TilePiece : MonoBehaviour
         if (occupying != null) 
             occupying.RemovePiece();
 
-        tile.SetPiece(this);
         occupying = tile;
 
         Vector3 endPosition = tile.transform.position;
@@ -77,6 +78,9 @@ public class TilePiece : MonoBehaviour
                 {
                     TurnManager.Instance.EndAction();
                     TurnManager.Instance.EndTurn();
+
+                    tile.SetPiece(this);
+                    occupying = tile;
                 }).Play();
         }
         ).Play();
