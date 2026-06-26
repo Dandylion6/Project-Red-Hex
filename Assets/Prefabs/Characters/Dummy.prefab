@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   baseMoveDistance: 1
-  maxHealth: 5
+  maxHealth: 12
   moveTime: 0.6
   moveHeight: 1.4
   heightUp:

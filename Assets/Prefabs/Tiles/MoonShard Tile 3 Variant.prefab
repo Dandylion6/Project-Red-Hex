@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3227630291173078348
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4794457866215158450}
+    m_Modifications:
+    - target: {fileID: 559439262303737099, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 559439262303737099, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100.000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 559439262303737099, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.020329952
+      objectReference: {fileID: 0}
+    - target: {fileID: 559439262303737099, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.57045525
+      objectReference: {fileID: 0}
+    - target: {fileID: 559439262303737099, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.013624191
+      objectReference: {fileID: 0}
+    - target: {fileID: 559439262303737099, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6026679
+      objectReference: {fileID: 0}
+    - target: {fileID: 559439262303737099, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.75010586
+      objectReference: {fileID: 0}
+    - target: {fileID: 559439262303737099, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.06079529
+      objectReference: {fileID: 0}
+    - target: {fileID: 559439262303737099, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.26539877
+      objectReference: {fileID: 0}
+    - target: {fileID: 559439262303737099, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 559439262303737099, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 559439262303737099, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7285533041301667212, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+      propertyPath: m_Name
+      value: MoonShard 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+--- !u!4 &3101115017952239687 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 559439262303737099, guid: c83d73291fb1768429758d2ea4cac504, type: 3}
+  m_PrefabInstance: {fileID: 3227630291173078348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6747647209492260681
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.70643
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.058455206
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.9612646
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8267271541571906364, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+      propertyPath: m_Name
+      value: MoonShard Tile 3 Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 3101115017952239687}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+--- !u!4 &4794457866215158450 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+  m_PrefabInstance: {fileID: 6747647209492260681}
+  m_PrefabAsset: {fileID: 0}
