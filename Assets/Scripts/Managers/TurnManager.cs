@@ -91,6 +91,7 @@ public class TurnManager : Singleton<TurnManager>
 
     private bool IsStartOfCombat()
     {
+        if (activePieces.Count <= 1) return false;
         if (isInCombat) return false;
         if (turnsInCombat > 1) return false;
         return true;

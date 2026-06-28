@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(HexTile))]
@@ -7,6 +8,7 @@ public class HexOverlay : MonoBehaviour
     public enum Type
     {
         None,
+        Target,
         Range,
     }
 
@@ -14,6 +16,7 @@ public class HexOverlay : MonoBehaviour
     [Header("Overlay Settings")]
     [SerializeField] private SpriteRenderer spriteRenderer = null;
     [SerializeField] private Color rangeColor = Color.white;
+    [SerializeField] private Color targetColor = Color.limeGreen;
 
 
     public Type CurrentType => currentType;
@@ -40,8 +43,9 @@ public class HexOverlay : MonoBehaviour
                     }).Play();
                     return;
                 }
-            case Type.Range:
-                color = rangeColor;
+            case Type.Range: color = rangeColor;
+                break;
+            case Type.Target: color = targetColor;
                 break;
         }
 

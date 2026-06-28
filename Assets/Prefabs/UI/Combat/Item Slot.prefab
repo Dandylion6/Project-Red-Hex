@@ -178,7 +178,7 @@ MonoBehaviour:
   cooldownTimer: {fileID: 8666157862346654336}
   selectionOffset: 12
   selectionSizeChange: 18
-  selectionTint: {r: 0.6901961, g: 0.98039216, b: 0.74796647, a: 1}
+  selectionTint: {r: 1, g: 0.99652654, b: 0.8745098, a: 1}
   animationTime: 0.5
 --- !u!114 &2081729996080819863
 MonoBehaviour:

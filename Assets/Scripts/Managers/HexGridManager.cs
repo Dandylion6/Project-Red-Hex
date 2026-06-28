@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HexGridManager : Singleton<HexGridManager>
@@ -78,11 +79,7 @@ public class HexGridManager : Singleton<HexGridManager>
         {
             (HexTile tile, int distance) = open.Dequeue();
 
-            if (tile.Overlay != null)
-            {
-                Pathfinding.Result result = pathfinding.CalculatePath(origin, tile);
-                if (result.isComplete) AddToOverlay(tile);
-            }
+            if (tile.Overlay != null) AddToOverlay(tile);
 
             if (distance >= hexRange) continue;
 
@@ -115,7 +112,8 @@ public class HexGridManager : Singleton<HexGridManager>
 
             if (tile.Overlay != null && InLineOfSight(origin, tile))
             {
-                AddToOverlay(tile);
+                bool isTarget = tile.Piece && tile.Piece as Enemy;
+                AddToOverlay(tile, isTarget ? HexOverlay.Type.Target : HexOverlay.Type.Range);
             }
 
             if (distance >= hexRange)
@@ -163,16 +161,23 @@ public class HexGridManager : Singleton<HexGridManager>
 
     public bool InLineOfSight(HexTile start, HexTile end)
     {
+        return InLineOfSight(start, end, 0.01f) || InLineOfSight(start, end, -0.01f);
+    }
+
+
+    public bool InLineOfSight(HexTile start, HexTile end, float bias)
+    {
         int steps = Hexagon.HexDistance(start, end);
         if (steps == 0) return true;
 
         for (int i = 1; i <= steps; ++i)
         {
             float t = (float)i / steps;
-            float q = Mathf.Lerp(start.AxialCoordinate.x, end.AxialCoordinate.x , t) + 1e-6f; // Minor bias.
-            float r = Mathf.Lerp(start.AxialCoordinate.y, end.AxialCoordinate.y, t) + 1e-6f;
+            float q = Mathf.Lerp(start.AxialCoordinate.x, end.AxialCoordinate.x , t) + bias;
+            float r = Mathf.Lerp(start.AxialCoordinate.y, end.AxialCoordinate.y, t) + bias;
 
             Vector2Int axialCoordinate = Hexagon.CubeRound(q, r);
+
             if (!tileMap.TryGetValue(axialCoordinate, out HexTile next)) return false;
             if (next.IsObstacle) return false;
         }
@@ -180,10 +185,10 @@ public class HexGridManager : Singleton<HexGridManager>
     }
 
 
-    private void AddToOverlay(HexTile tile)
+    private void AddToOverlay(HexTile tile, HexOverlay.Type type = HexOverlay.Type.Range)
     {
-        tile.Overlay.SetType(HexOverlay.Type.Range);
         overlayTiles.Add(tile);
+        tile.Overlay.SetType(type);
     }
 
 
