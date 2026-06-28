@@ -1,32 +1,42 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TileSelect : MonoBehaviour
+public class TileSelect : Singleton<TileSelect>
 {
     public HexTile SelectedTile => selectedTile;
 
-    private HexTile selectedTile = null;
+    private Action<HexTile> onSelectionChanged = null;
     private Camera mainCamera = null;
-    private Vector2 currentScreenPosition = Vector2.zero;
+    private HexTile selectedTile = null;
 
 
-    public void OnScreenInput(InputAction.CallbackContext context) => currentScreenPosition = context.ReadValue<Vector2>();
+    public void SubscribeToOnSelectionChanged(Action<HexTile> callback) => onSelectionChanged += callback;
+    public void UnsubscibeFromOnSelectionChanged(Action<HexTile> callback) => onSelectionChanged -= callback;
 
 
     public void OnInputClick(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (!GetHitTile(out selectedTile)) return;
+
+        Vector2 screenPosition = Pointer.current?.position.ReadValue() ?? Vector2.zero;
+
+        if (GetHitTile(screenPosition, out selectedTile))
+            onSelectionChanged?.Invoke(selectedTile);
     }
 
 
-    public void ClearSelect() => selectedTile = null;
+    public void ClearSelect()
+    {
+        selectedTile = null;
+        onSelectionChanged?.Invoke(null);
+    }
 
 
-    private bool GetHitTile(out HexTile tile)
+    private bool GetHitTile(Vector2 screenPosition, out HexTile tile)
     {
         tile = null;
-        Ray ray = mainCamera.ScreenPointToRay(currentScreenPosition);
+        Ray ray = mainCamera.ScreenPointToRay(screenPosition);
 
         if (!Physics.Raycast(ray, out RaycastHit hit)) return false;
         if (!hit.collider.TryGetComponent(out tile)) return false;
@@ -35,9 +45,4 @@ public class TileSelect : MonoBehaviour
 
 
     private void Start() => mainCamera = Camera.main;
-
-    private void LateUpdate()
-    {
-        selectedTile = null;
-    }
 }

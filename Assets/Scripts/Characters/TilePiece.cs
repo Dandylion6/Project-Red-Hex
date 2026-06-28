@@ -1,8 +1,7 @@
 using DG.Tweening;
-using System.Collections;
 using UnityEngine;
 
-public class TilePiece : MonoBehaviour
+public class TilePiece : MonoBehaviour, IDamageable
 {
     [Header("Piece Settings")]
     [SerializeField] private int baseMoveDistance = 1;
@@ -10,16 +9,17 @@ public class TilePiece : MonoBehaviour
 
     [Header("Animation Settings")]
     [SerializeField][Min(0.1f)] private float moveTime = 0.5f;
+    [SerializeField] private float moveHeight = 1.4f;
+    [SerializeField] private AnimationCurve heightUp = new();
+    [SerializeField] private AnimationCurve heightDown = new();
 
 
     public HexTile Occupying => occupying;
-    public int MaxMoveDistance => Mathf.RoundToInt(baseMoveDistance + moveDistanceMultiplier);
-    public bool HasTurn => hasTurn;
+    public int MaxMoveDistance => Mathf.RoundToInt(baseMoveDistance * moveDistanceMultiplier);
 
     private HexTile occupying = null;
     private float moveDistanceMultiplier = 1.0f;
     private int health = 0;
-    private bool hasTurn = false;
 
 
     public void AddMoveMultiplier(float multiplier) => moveDistanceMultiplier += multiplier;
@@ -44,7 +44,9 @@ public class TilePiece : MonoBehaviour
 
     public void SpawnAt(HexTile tile)
     {
+        if (occupying != null) occupying.RemovePiece();
         tile.SetPiece(this);
+
         occupying = tile;
         transform.position = tile.transform.position;
     }
@@ -60,37 +62,30 @@ public class TilePiece : MonoBehaviour
 
     public bool MoveTo(HexTile tile)
     {
-        if (!hasTurn) return false;
         if (!tile.CanSetPiece(this)) return false;
         if (occupying != null) 
             occupying.RemovePiece();
-        
-        tile.SetPiece(this);
+
         occupying = tile;
 
         Vector3 endPosition = tile.transform.position;
-        TurnManager.Instance.StartAction();
-
-        transform.DOMoveY(transform.position.y + 1.0f, moveTime * 0.4f).SetEase(Ease.InQuad).OnComplete(() =>
+        transform.DOMoveY(transform.position.y + moveHeight, moveTime * 0.5f).SetEase(heightUp).OnComplete(() =>
         {
-            transform.DOMoveY(endPosition.y, moveTime * 0.6f).SetEase(Ease.OutSine).OnComplete(() =>
-            {
-                TurnManager.Instance.EndAction();
-                EndTurn();
-            }
-            ).Play();
+            transform.DOMoveY(endPosition.y, moveTime * 0.5f).SetEase(heightDown)
+                .OnComplete(() =>
+                {
+                    tile.SetPiece(this);
+                    occupying = tile;
+                    TurnManager.Instance.EndTurn();
+                }).Play();
         }
         ).Play();
 
-        transform.DOMoveX(endPosition.x, moveTime * 0.8f).SetEase(Ease.InOutCirc).Play();
-        transform.DOMoveZ(endPosition.z, moveTime * 0.8f).SetEase(Ease.InOutCirc).Play();
+        transform.DOMoveX(endPosition.x, moveTime).SetEase(Ease.InOutCubic).Play();
+        transform.DOMoveZ(endPosition.z, moveTime).SetEase(Ease.InOutCubic).Play();
 
         return true;
     }
-
-
-    public void StartTurn() => hasTurn = true;
-    public void EndTurn() => hasTurn = false;
 
 
     private void Awake()

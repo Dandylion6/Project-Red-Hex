@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2285704807322447900, guid: bd7f0f1447d3ac14ebef074ca4e23f51, type: 3}
+      propertyPath: isObstacle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2285704807322447900, guid: bd7f0f1447d3ac14ebef074ca4e23f51, type: 3}
       propertyPath: isWalkable
       value: 0
       objectReference: {fileID: 0}

@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -110,3 +111,5 @@ public class HeightGenHierarchyObject
         Selection.activeObject = gameObject;
     }
 }
+
+#endif

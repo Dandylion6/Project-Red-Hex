@@ -3,13 +3,11 @@ using UnityEngine;
 public struct Hexagon
 {
     public int q, r;
-    public float size;
 
-    public Hexagon(int q, int r, float size = 1.0f)
+    public Hexagon(int q, int r)
     {
         this.q = q;
         this.r = r;
-        this.size = size;
     }
 
 
@@ -51,14 +49,15 @@ public struct Hexagon
 
     static public int HexDistance(Vector2Int axialA, Vector2Int axialB)
     {
-        return Mathf.RoundToInt((axialA - axialB).magnitude);
+        Vector2Int delta = axialA - axialB;
+        return (Mathf.Abs(delta.x) + Mathf.Abs(delta.y) + Mathf.Abs(delta.x + delta.y)) / 2;
     }
 
 
     /// <summary>
     /// Converts axial coordinate to the nearest hex.
     /// </summary>
-    private static Vector2Int CubeRound(float q, float r)
+    public static Vector2Int CubeRound(float q, float r)
     {
         float depth = -q - r;
 

@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630f631bf5556f24694e3411a7aab3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementController
-  outOfCombatMoveMultiplier: 2
+  outOfCombatMoveMultiplier: 1
 --- !u!114 &2841289693349301114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,8 +185,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14b259ded6571047be3c8f85807b718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TilePiece
-  baseMoveDistance: 2
+  baseMoveDistance: 1
   maxHealth: 5
+  moveTime: 0.6
+  moveHeight: 1.4
+  heightUp:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  heightDown:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0
+      outSlope: -0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.059487358
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 3.4298463
+      outSlope: -1.089658
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.040328927
+      outWeight: 0.09614205
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.6571421
+      outSlope: 0.6571421
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.08695662
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &6903526123890732383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,22 +299,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ff6c9169-a28f-4927-8770-7a7ae0c8eb87
     m_ActionName: 'Player/Click[/Mouse/leftButton]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6903526123890732383}
-        m_TargetAssemblyTypeName: TileSelect, Assembly-CSharp
-        m_MethodName: OnScreenInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 3c078ab1-eeee-45d4-95ec-78e2817ad5b0
-    m_ActionName: 'Player/Move[/Mouse/position]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -273,51 +316,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8226156cd08884b89ab21170a22401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotBar
+  hotbarParent: {fileID: 3158939587390684397}
   items:
-  - {fileID: 2084941885240918914}
---- !u!1 &7510990964903295239
-GameObject:
+  - {fileID: 735500901023643703}
+--- !u!1001 &666601378278139663
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5442394915066329246}
-  - component: {fileID: 2084941885240918914}
-  m_Layer: 0
-  m_Name: Musket
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5442394915066329246
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7510990964903295239}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3158939587390684397}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2084941885240918914
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3158939587390684397}
+    m_Modifications:
+    - target: {fileID: 4811950228270112657, guid: 2d1ba10f8199a1b4f9169b8a7b6cb4ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811950228270112657, guid: 2d1ba10f8199a1b4f9169b8a7b6cb4ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811950228270112657, guid: 2d1ba10f8199a1b4f9169b8a7b6cb4ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811950228270112657, guid: 2d1ba10f8199a1b4f9169b8a7b6cb4ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811950228270112657, guid: 2d1ba10f8199a1b4f9169b8a7b6cb4ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811950228270112657, guid: 2d1ba10f8199a1b4f9169b8a7b6cb4ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811950228270112657, guid: 2d1ba10f8199a1b4f9169b8a7b6cb4ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811950228270112657, guid: 2d1ba10f8199a1b4f9169b8a7b6cb4ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811950228270112657, guid: 2d1ba10f8199a1b4f9169b8a7b6cb4ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811950228270112657, guid: 2d1ba10f8199a1b4f9169b8a7b6cb4ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7024586375155899912, guid: 2d1ba10f8199a1b4f9169b8a7b6cb4ee, type: 3}
+      propertyPath: m_Name
+      value: Musket
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2d1ba10f8199a1b4f9169b8a7b6cb4ee, type: 3}
+--- !u!114 &735500901023643703 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 249167235312230200, guid: 2d1ba10f8199a1b4f9169b8a7b6cb4ee, type: 3}
+  m_PrefabInstance: {fileID: 666601378278139663}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7510990964903295239}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01dec2791deca7a4aa201761d338d1a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 4faebd8bac0d67342b52efd9616f01a8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  weaponRange: 0
-  weaponDamage: 0
+  m_EditorClassIdentifier: Assembly-CSharp::RangedAttackItem
+--- !u!4 &5442394915066329246 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4811950228270112657, guid: 2d1ba10f8199a1b4f9169b8a7b6cb4ee, type: 3}
+  m_PrefabInstance: {fileID: 666601378278139663}
+  m_PrefabAsset: {fileID: 0}
