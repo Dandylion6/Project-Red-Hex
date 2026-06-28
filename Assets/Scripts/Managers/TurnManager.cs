@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.Hardware;
+using UnityEngine;
 
 public class TurnManager : Singleton<TurnManager>
 {
@@ -20,6 +22,8 @@ public class TurnManager : Singleton<TurnManager>
     private readonly List<TilePiece> activePieces = new();
 
     private Action<TilePiece, TilePiece> onTurnChanged = null;
+    private Action<TilePiece> onPieceAdded = null;
+    private Action<TilePiece> onPieceRemoved = null;
     private TilePiece pieceWithTurn = null;
     private State currentState = State.None;
     private int currentTurnIndex = -1;
@@ -30,6 +34,12 @@ public class TurnManager : Singleton<TurnManager>
     public void SubscribeToOnTurnChanged(Action<TilePiece, TilePiece> callback) => onTurnChanged += callback;
     public void UnsubscribeFromOnTurnChanged(Action<TilePiece, TilePiece> callback) => onTurnChanged -= callback;
 
+    public void SubscribeToOnPieceAdded(Action<TilePiece> callback) => onPieceAdded += callback;
+    public void UnsubscribeFromOnPieceAdded(Action<TilePiece> callback) => onPieceAdded -= callback;
+
+    public void SubscribeToOnPieceRemoved(Action<TilePiece> callback) => onPieceRemoved += callback;
+    public void UnsubscribeFromOnPieceRemoved(Action<TilePiece> callback) => onPieceRemoved -= callback;
+
 
     public void SetState(State state) => currentState = state;
 
@@ -39,6 +49,8 @@ public class TurnManager : Singleton<TurnManager>
         if (activePieces.Contains(piece)) return;
 
         activePieces.Add(piece);
+        onPieceAdded?.Invoke(piece);
+
         if (IsStartOfCombat()) BeginCombat(); // Starting combat will give the player the first turn.
     }
 
@@ -64,7 +76,11 @@ public class TurnManager : Singleton<TurnManager>
 
     public void RemovePieceFromTurns(TilePiece piece)
     {
-        if (activePieces.Contains(piece)) activePieces.Remove(piece);
+        if (!activePieces.Contains(piece)) return;
+
+        activePieces.Remove(piece);
+        onPieceRemoved?.Invoke(piece);
+
         if (activePieces.Count <= 1)
         {
             isInCombat = false;

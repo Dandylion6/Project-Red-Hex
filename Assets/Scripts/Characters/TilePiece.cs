@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
 
 public class TilePiece : MonoBehaviour, IDamageable
@@ -16,7 +17,12 @@ public class TilePiece : MonoBehaviour, IDamageable
 
     public HexTile Occupying => occupying;
     public int MaxMoveDistance => Mathf.RoundToInt(baseMoveDistance * moveDistanceMultiplier);
+    public int MaxHealth => maxHealth;
+    public int Health => health;
 
+    private Action<HexTile> onMove = null;
+    private Action<int> onDamageTaken = null;
+    private Action<int> onHeal = null;
     private HexTile occupying = null;
     private float moveDistanceMultiplier = 1.0f;
     private int health = 0;
@@ -25,19 +31,31 @@ public class TilePiece : MonoBehaviour, IDamageable
     public void AddMoveMultiplier(float multiplier) => moveDistanceMultiplier += multiplier;
     public void RemoveMoveMultiplier(float multiplier) => moveDistanceMultiplier -= multiplier;
 
-    public void Heal(int amount) => health = Mathf.Min(health + amount, maxHealth);
-    
-    
-    public virtual void Die()
+    public void SubscribeToOnMove(Action<HexTile> callback) => onMove += callback;
+    public void UnsubscribeFromOnMove(Action<HexTile> callback) => onMove -= callback;
+
+    public void SubscribeToOnDamageTaken(Action<int> callback) => onDamageTaken += callback;
+    public void UnsubscribeFromOnDamageTaken(Action<int> callback) => onDamageTaken -= callback;
+
+    public void SubscribeToOnHeal(Action<int> callback) => onHeal += callback;
+    public void UnsubscribeToOnHeal(Action<int> callback) => onHeal -= callback;
+
+
+    public void Heal(int amount)
     {
-        TurnManager.Instance.RemovePieceFromTurns(this);
-        Destroy(gameObject);
+        health = Mathf.Min(health + amount, maxHealth);
+        onHeal?.Invoke(amount);
     }
+    
+    
+    public virtual void Die() => Destroy(gameObject);
 
 
     public void TakeDamage(int damage)
     {
         health = Mathf.Max(health - damage, 0);
+        onDamageTaken?.Invoke(damage);
+
         if (health == 0) Die();
     }
 
@@ -49,6 +67,7 @@ public class TilePiece : MonoBehaviour, IDamageable
 
         occupying = tile;
         transform.position = tile.transform.position;
+        onMove?.Invoke(tile);
     }
 
 
@@ -78,19 +97,23 @@ public class TilePiece : MonoBehaviour, IDamageable
                     tile.SetPiece(this);
                     occupying = tile;
                     TurnManager.Instance.EndTurn();
+                    onMove?.Invoke(tile);
                 }).Play();
         }
         ).Play();
 
-        transform.DOMoveX(endPosition.x, moveTime).SetEase(Ease.InOutCubic).Play();
-        transform.DOMoveZ(endPosition.z, moveTime).SetEase(Ease.InOutCubic).Play();
+        transform.DOMoveX(endPosition.x, moveTime).SetEase(Ease.OutQuad).Play();
+        transform.DOMoveZ(endPosition.z, moveTime).SetEase(Ease.OutQuad).Play();
 
         return true;
     }
 
 
-    private void Awake()
+    private void Awake() => health = maxHealth;
+
+    private void OnDestroy()
     {
-        health = maxHealth;
+        if (TurnManager.Instance == null) return;
+        TurnManager.Instance.RemovePieceFromTurns(this);
     }
 }

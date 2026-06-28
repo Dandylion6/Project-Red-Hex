@@ -2223,6 +2223,10 @@ PrefabInstance:
       value: Dummy Piece
       objectReference: {fileID: 0}
     - target: {fileID: 7016999103712717462, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
+      propertyPath: maxHealth
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016999103712717462, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
       propertyPath: combatRange
       value: 3
       objectReference: {fileID: 0}
