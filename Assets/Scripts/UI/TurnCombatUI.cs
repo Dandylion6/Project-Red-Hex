@@ -44,6 +44,7 @@ public class TurnCombatUI : MonoBehaviour
 
         turnRotate = turnPivot.DOAnchorPosY(turnEndHeight, 1.0f).SetEase(Ease.InOutBack).SetAutoKill(false).Pause();
         canvas.enabled = false;
+        descriptionBox.alpha = 0.0f;
     }
 
 

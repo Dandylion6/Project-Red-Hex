@@ -2224,7 +2224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7016999103712717462, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
       propertyPath: combatRange
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
