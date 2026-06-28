@@ -47,8 +47,6 @@ public class RangedAttackItem : Item<RangedAttackData>
         StartCooldown();
         TurnManager.Instance.StartAction();
 
-        Player.Heal(10);
-
         yield return new WaitForSeconds(0.5f);
 
         target.TakeDamage(Data.Damage);
