@@ -27,6 +27,9 @@ public class HexOverlay : MonoBehaviour
 
     public void SetType(Type type)
     {
+        spriteRenderer.DOKill();
+        spriteRenderer.transform.DOKill();
+
         currentType = type;
         if (tile != null && !tile.IsWalkable)
             currentType = Type.None;
@@ -36,11 +39,8 @@ public class HexOverlay : MonoBehaviour
         {
             case Type.None:
                 {
+                    spriteRenderer.transform.DOScale(Vector3.one * 0.1f, 0.2f).SetEase(Ease.OutCirc).OnComplete(() => spriteRenderer.enabled = false).Play();
                     spriteRenderer.DOFade(0.0f, 0.1f).SetEase(Ease.OutCirc).Play();
-                    spriteRenderer.transform.DOScale(Vector3.one * 0.1f, 0.2f).SetEase(Ease.OutCirc).OnComplete(() =>
-                    {
-                        spriteRenderer.enabled = false;
-                    }).Play();
                     return;
                 }
             case Type.Range: color = rangeColor;
