@@ -27,13 +27,6 @@ public class Enemy : TilePiece
     }
 
 
-    private void Update()
-    {
-        if (!isInCombat)
-            EnterCombatCheck();
-    }
-
-
     private void EnterCombatCheck()
     {
         int hexDistance = Hexagon.HexDistance(player.Occupying, Occupying);
@@ -46,6 +39,8 @@ public class Enemy : TilePiece
 
     protected virtual void OnTurnChanged(TilePiece piece, TilePiece lastPiece)
     {
+        if (!isInCombat) EnterCombatCheck();
+
         if (piece != this) return;
         if (!TurnManager.Instance.HasTurn(this)) return;
         StartCoroutine(TakeTurn());

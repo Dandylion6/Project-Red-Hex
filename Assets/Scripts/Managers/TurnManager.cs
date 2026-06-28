@@ -36,7 +36,10 @@ public class TurnManager : Singleton<TurnManager>
 
     public void AddPieceToTurns(TilePiece piece)
     {
-        if (!activePieces.Contains(piece)) activePieces.Add(piece);
+        if (activePieces.Contains(piece)) return;
+
+        activePieces.Add(piece);
+        if (IsStartOfCombat()) BeginCombat(); // Starting combat will give the player the first turn.
     }
 
 
@@ -55,12 +58,7 @@ public class TurnManager : Singleton<TurnManager>
     }
 
 
-    public void EndTurn()
-    {
-        if (IsStartOfCombat()) BeginCombat(); // Starting combat will give the player the first turn.
-        else AdvanceTurn();
-    }
-
+    public void EndTurn() => AdvanceTurn();
 
 
 

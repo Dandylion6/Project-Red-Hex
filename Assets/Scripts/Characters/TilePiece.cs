@@ -69,6 +69,7 @@ public class TilePiece : MonoBehaviour, IDamageable
         occupying = tile;
 
         Vector3 endPosition = tile.transform.position;
+        transform.DOKill();
         transform.DOMoveY(transform.position.y + moveHeight, moveTime * 0.5f).SetEase(heightUp).OnComplete(() =>
         {
             transform.DOMoveY(endPosition.y, moveTime * 0.5f).SetEase(heightDown)

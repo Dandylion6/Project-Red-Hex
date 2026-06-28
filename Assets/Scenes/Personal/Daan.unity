@@ -1342,58 +1342,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HexTileMapBinder
   axialCoordinates:
   - {x: 2, y: 1}
-  - {x: 4, y: 0}
-  - {x: 0, y: 2}
-  - {x: 3, y: -1}
-  - {x: 0, y: 1}
   - {x: 2, y: -1}
-  - {x: -1, y: 1}
-  - {x: 1, y: 1}
-  - {x: 0, y: 0}
-  - {x: 1, y: -1}
-  - {x: 4, y: -2}
-  - {x: 2, y: 2}
-  - {x: 1, y: -2}
-  - {x: 3, y: 1}
-  - {x: 0, y: -2}
-  - {x: 2, y: 0}
-  - {x: 2, y: -2}
-  - {x: -1, y: -1}
-  - {x: -1, y: 0}
-  - {x: -1, y: 2}
-  - {x: 4, y: -1}
-  - {x: 3, y: -2}
+  - {x: 3, y: 0}
   - {x: 1, y: 0}
   - {x: 1, y: 2}
+  - {x: 3, y: -1}
+  - {x: -1, y: 1}
+  - {x: 2, y: -2}
+  - {x: 3, y: -2}
+  - {x: 1, y: -1}
+  - {x: 0, y: -2}
+  - {x: 2, y: 2}
+  - {x: 0, y: 1}
+  - {x: 4, y: -1}
+  - {x: 0, y: 2}
+  - {x: 4, y: -2}
+  - {x: 3, y: 1}
+  - {x: 4, y: 0}
   - {x: 0, y: -1}
-  - {x: 3, y: 0}
+  - {x: -1, y: -1}
+  - {x: 0, y: 0}
+  - {x: 2, y: 0}
+  - {x: -1, y: 0}
+  - {x: -1, y: 2}
+  - {x: 1, y: -2}
+  - {x: 1, y: 1}
   hexTiles:
   - {fileID: 44139380}
-  - {fileID: 1259231845}
-  - {fileID: 686718274}
-  - {fileID: 1352072112}
-  - {fileID: 1374194956}
   - {fileID: 784551249}
-  - {fileID: 1851401673}
-  - {fileID: 1608263577}
-  - {fileID: 2106052845}
-  - {fileID: 1392766911}
-  - {fileID: 873370082}
-  - {fileID: 924174329}
-  - {fileID: 964882759}
-  - {fileID: 699851900}
-  - {fileID: 836584868}
-  - {fileID: 665310959}
-  - {fileID: 542617182}
-  - {fileID: 765465066}
-  - {fileID: 1672456070}
-  - {fileID: 1763524772}
-  - {fileID: 2034636974}
-  - {fileID: 431164746}
+  - {fileID: 1696766338}
   - {fileID: 368341068}
   - {fileID: 1906068449}
+  - {fileID: 1352072112}
+  - {fileID: 1851401673}
+  - {fileID: 542617182}
+  - {fileID: 431164746}
+  - {fileID: 1392766911}
+  - {fileID: 836584868}
+  - {fileID: 924174329}
+  - {fileID: 1374194956}
+  - {fileID: 2034636974}
+  - {fileID: 686718274}
+  - {fileID: 873370082}
+  - {fileID: 699851900}
+  - {fileID: 1259231845}
   - {fileID: 414547764}
-  - {fileID: 1696766338}
+  - {fileID: 765465066}
+  - {fileID: 2106052845}
+  - {fileID: 665310959}
+  - {fileID: 1672456070}
+  - {fileID: 1763524772}
+  - {fileID: 964882759}
+  - {fileID: 1608263577}
 --- !u!4 &1340578967
 Transform:
   m_ObjectHideFlags: 0
@@ -2192,7 +2192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 503653889759991706, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.8660259
       objectReference: {fileID: 0}
     - target: {fileID: 503653889759991706, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2200,7 +2200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 503653889759991706, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.4999992
       objectReference: {fileID: 0}
     - target: {fileID: 503653889759991706, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2212,7 +2212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 503653889759991706, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 503653889759991706, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2221,6 +2221,10 @@ PrefabInstance:
     - target: {fileID: 3477380227627585475, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
       propertyPath: m_Name
       value: Dummy Piece
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016999103712717462, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
+      propertyPath: combatRange
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

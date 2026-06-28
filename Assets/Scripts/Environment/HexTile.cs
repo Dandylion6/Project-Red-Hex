@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class HexTile : MonoBehaviour
@@ -111,7 +112,9 @@ public class HexTile : MonoBehaviour
     {
         Vector2Int hexAxial = Hexagon.WorldToAxial(WorldPosition);
         Vector2 world = Hexagon.AxialToWorld(hexAxial);
+
         transform.position = new(world.x, transform.position.y, world.y);
+        EditorSceneManager.MarkAllScenesDirty();
     }
 #endif
 }
