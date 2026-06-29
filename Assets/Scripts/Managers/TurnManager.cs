@@ -1,4 +1,6 @@
+using NUnit.Framework.Internal.Filters;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Hardware;
 using UnityEngine;
@@ -50,8 +52,6 @@ public class TurnManager : Singleton<TurnManager>
 
         activePieces.Add(piece);
         onPieceAdded?.Invoke(piece);
-
-        if (IsStartOfCombat()) BeginCombat(); // Starting combat will give the player the first turn.
     }
 
 
@@ -70,7 +70,11 @@ public class TurnManager : Singleton<TurnManager>
     }
 
 
-    public void EndTurn() => AdvanceTurn();
+    public void EndTurn()
+    {
+        if (IsStartOfCombat()) BeginCombat(); // Starting combat will give the player the first turn.)
+        else AdvanceTurn();
+    }
 
 
 
@@ -83,23 +87,30 @@ public class TurnManager : Singleton<TurnManager>
 
         if (activePieces.Count <= 1)
         {
+            GivePlayerTurn();
             isInCombat = false;
             turnsInCombat = 0;
-
-            TilePiece lastPiece = pieceWithTurn;
-            pieceWithTurn = GameManager.Instance.Player; // Player regains the turn after finishing combat.
-            currentState = State.None;
-            
-            currentTurnIndex = 0;
-            onTurnChanged?.Invoke(pieceWithTurn, lastPiece);
         }
     }
 
 
-    private void Start()
+    private void GivePlayerTurn()
+    {
+        TilePiece lastPiece = pieceWithTurn;
+        pieceWithTurn = GameManager.Instance.Player; // Player regains the turn after finishing combat.
+        currentState = State.None;
+
+        currentTurnIndex = 0;
+        onTurnChanged?.Invoke(pieceWithTurn, lastPiece);
+    }
+
+
+    private IEnumerator Start()
     {
         activePieces.Add(GameManager.Instance.Player);
-        pieceWithTurn = GameManager.Instance.Player;
+        yield return null;
+
+        GivePlayerTurn();
     }
 
 

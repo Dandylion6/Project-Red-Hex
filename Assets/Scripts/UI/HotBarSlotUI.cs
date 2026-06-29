@@ -34,7 +34,6 @@ public class HotBarSlotUI : MonoBehaviour
         cooldown.SetActive(false);
 
         HotBar.Instance.SubscribeToOnSelectionChanged(OnSelectionChanged);
-        TurnManager.Instance.SubscribeToOnTurnChanged(OnTurnChanged);
 
         idleHeight = slot.rectTransform.anchoredPosition.y;
         selectedHeight = idleHeight + selectionOffset;
@@ -68,16 +67,12 @@ public class HotBarSlotUI : MonoBehaviour
     }
 
 
-    private void OnTurnChanged(TilePiece currentPiece, TilePiece lastPiece)
+    private void Update()
     {
         cooldown.SetActive(item.CooldownLeft > 0);
         cooldownTimer.text = item.CooldownLeft.ToString();
     }
 
 
-    private void OnDestroy()
-    {
-        HotBar.Instance.UnsubscribeFromOnSelectionChanged(OnSelectionChanged);
-        TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
-    }
+    private void OnDestroy() => HotBar.Instance.UnsubscribeFromOnSelectionChanged(OnSelectionChanged);
 }

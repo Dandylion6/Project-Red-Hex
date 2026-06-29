@@ -41,7 +41,6 @@ public class MovementController : MonoBehaviour
     {
         playerPiece = GetComponent<TilePiece>();
         TurnManager.Instance.SubscribeToOnTurnChanged(OnTurnChanged);
-        OnTurnChanged(playerPiece, null); // Gives the player the turn to begin.
     }
 
 
