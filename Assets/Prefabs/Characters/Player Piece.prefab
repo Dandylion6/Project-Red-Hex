@@ -113,6 +113,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 544227809806171481, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
+      propertyPath: baseMoveDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5554768637425275207, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -198,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630f631bf5556f24694e3411a7aab3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementController
-  outOfCombatMoveMultiplier: 1
+  outOfCombatMoveMultiplier: 0.5
 --- !u!114 &3768787272121592101
 MonoBehaviour:
   m_ObjectHideFlags: 0
