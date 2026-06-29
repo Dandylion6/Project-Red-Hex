@@ -69,6 +69,7 @@ public class HotBarSlotUI : MonoBehaviour
 
     private void Update()
     {
+        if (!TurnManager.Instance.HasTurn(GameManager.Instance.Player)) return;
         cooldown.SetActive(item.CooldownLeft > 0);
         cooldownTimer.text = item.CooldownLeft.ToString();
     }
