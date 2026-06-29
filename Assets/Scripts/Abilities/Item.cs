@@ -38,7 +38,7 @@ public abstract class Item : MonoBehaviour
 
     protected abstract IEnumerator ActionSequence();
 
-    protected void StartCooldown() => cooldownLeft = BaseData.Cooldown;
+    protected void StartCooldown() => cooldownLeft = BaseData.Cooldown + 1; // Makes sure cooldown starts next turn.
 
 
     public void Start()

@@ -132,30 +132,8 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
       insertIndex: 0
       addedObject: {fileID: 3101115017952239687}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8267271541571906364, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -2567613996805805711}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
---- !u!1 &3395514869706378357 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8267271541571906364, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
-  m_PrefabInstance: {fileID: 6747647209492260681}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &-2567613996805805711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3395514869706378357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05f56ab38dbdab747965f53e0964cfe8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HexOverlay
-  spriteRenderer: {fileID: 0}
-  rangeColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &4794457866215158450 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
