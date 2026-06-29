@@ -1,5 +1,82 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &909524120398275598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2675088164695162248}
+  m_Layer: 0
+  m_Name: Actions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2675088164695162248
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909524120398275598}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8536048684671396042}
+  m_Father: {fileID: 5867498901092762930}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6780026813695650806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8536048684671396042}
+  - component: {fileID: 8316278020920852613}
+  m_Layer: 0
+  m_Name: Move Action
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8536048684671396042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6780026813695650806}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2675088164695162248}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8316278020920852613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6780026813695650806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070848a2f1642534297abd2c60e6cd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveAction
+  cooldown: 0
 --- !u!1001 &2052246755224310901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55,7 +132,10 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 544227809806171481, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5554768637425275207, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2675088164695162248}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8910922489494767902, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
       insertIndex: -1
@@ -63,7 +143,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8910922489494767902, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1445172782563371505}
+    - targetCorrespondingSourceObject: {fileID: 8910922489494767902, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 705091074983033443}
   m_SourcePrefab: {fileID: 100100000, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
+--- !u!4 &5867498901092762930 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5554768637425275207, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
+  m_PrefabInstance: {fileID: 2052246755224310901}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7481322608000490859 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8910922489494767902, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
@@ -155,3 +243,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5fed40f08bbd9944982e5bbb9e39bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PiecePlacer
+--- !u!114 &705091074983033443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7481322608000490859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baca48f728435af429588d5b87018bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DecisionBrain
+  decisions:
+  - {fileID: 8316278020920852613}

@@ -55,9 +55,9 @@ public class TurnManager : Singleton<TurnManager>
     }
 
 
-    public bool HasTurn(TilePiece peice)
+    public bool HasTurn(TilePiece piece)
     {
-        if (peice != pieceWithTurn) return false;
+        if (piece != pieceWithTurn) return false;
         return true;
     }
 

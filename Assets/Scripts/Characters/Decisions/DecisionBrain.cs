@@ -8,13 +8,21 @@ public class DecisionBrain : MonoBehaviour
     [SerializeField] private List<AIDecision> decisions = new();
 
 
+    public TilePiece Player => player;
+    public TilePiece Piece => piece;
+
+    private TilePiece player = null;
     private TilePiece piece = null;
 
 
     private void Start()
     {
+        player = GameManager.Instance.Player;
         piece = GetComponent<TilePiece>();
         TurnManager.Instance.SubscribeToOnTurnChanged(OnTurnChanged);
+
+        foreach(AIDecision decision in decisions)
+            decision.Initialize(this);
     }
 
 
@@ -26,10 +34,17 @@ public class DecisionBrain : MonoBehaviour
         {
             if (!decision.IsValidAction()) continue;
             StartCoroutine(decision.ActionSequence());
-            break;
+            return;
         }
+
+        // Can't do anything.
+        TurnManager.Instance.EndTurn();
     }
 
 
-    private void OnDestroy() => TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
+    private void OnDestroy()
+    {
+        if (TurnManager.Instance == null) return;
+        TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
+    }
 }
