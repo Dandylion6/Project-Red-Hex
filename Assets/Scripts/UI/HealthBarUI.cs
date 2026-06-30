@@ -15,7 +15,6 @@ public class HealthBarUI : MonoBehaviour
     [SerializeField] private Color allyColor = Color.white;
     [SerializeField] private Color enemyColor = Color.white;
     [SerializeField] private Vector2 screenOffset = Vector2.zero;
-    [SerializeField] private float worldHeightOffset = 1.0f;
 
     [Header("Animation Settings")]
     [SerializeField][Min(0.01f)] private float fadeTime = 0.2f;
@@ -98,7 +97,7 @@ public class HealthBarUI : MonoBehaviour
     {
         if (piece == null) return;
 
-        Vector3 worldPosition = piece.transform.position + Vector3.up * worldHeightOffset;
+        Vector3 worldPosition = piece.transform.position + Vector3.up * piece.HealthBarHeight;
         Vector2 screenPosition = mainCamera.WorldToScreenPoint(worldPosition);
         transform.position = screenPosition + screenOffset;
     }

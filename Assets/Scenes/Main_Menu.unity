@@ -127,6 +127,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 495195703346022611, guid: 69a59ff0478c3154ebaa093b7b615eb3, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 495195703346022611, guid: 69a59ff0478c3154ebaa093b7b615eb3, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 495195703346022611, guid: 69a59ff0478c3154ebaa093b7b615eb3, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 2400
+      objectReference: {fileID: 0}
+    - target: {fileID: 495195703346022611, guid: 69a59ff0478c3154ebaa093b7b615eb3, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 1144361229675029387, guid: 69a59ff0478c3154ebaa093b7b615eb3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -400
+      objectReference: {fileID: 0}
     - target: {fileID: 1451174026602272760, guid: 69a59ff0478c3154ebaa093b7b615eb3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.045
@@ -205,15 +225,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6496247152628983147, guid: 69a59ff0478c3154ebaa093b7b615eb3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6496247152628983147, guid: 69a59ff0478c3154ebaa093b7b615eb3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6496247152628983147, guid: 69a59ff0478c3154ebaa093b7b615eb3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6496247152628983147, guid: 69a59ff0478c3154ebaa093b7b615eb3, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -604,6 +624,10 @@ PrefabInstance:
     - target: {fileID: 2949732963109323481, guid: bb5df566f681ad24395acf5d405f86fa, type: 3}
       propertyPath: m_Name
       value: Main Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5801650860972203990, guid: bb5df566f681ad24395acf5d405f86fa, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 2400
       objectReference: {fileID: 0}
     - target: {fileID: 7274090144511856604, guid: bb5df566f681ad24395acf5d405f86fa, type: 3}
       propertyPath: startingScene

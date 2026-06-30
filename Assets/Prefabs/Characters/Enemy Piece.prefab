@@ -152,6 +152,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5554768637425275207, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
   m_PrefabInstance: {fileID: 2052246755224310901}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &7436160817596210715 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8883780524294261358, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
+  m_PrefabInstance: {fileID: 2052246755224310901}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7481322608000490859 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8910922489494767902, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
@@ -169,6 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d162314a2ed008041904c36f56a64d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  character: {fileID: 7436160817596210715}
   baseMoveDistance: 1
   maxHealth: 5
   moveTime: 0.6

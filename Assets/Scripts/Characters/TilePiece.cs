@@ -5,8 +5,10 @@ using UnityEngine;
 public class TilePiece : MonoBehaviour, IDamageable
 {
     [Header("Piece Settings")]
+    [SerializeField] private Transform character = null;
     [SerializeField] private int baseMoveDistance = 1;
     [SerializeField][Min(1)] private int maxHealth = 5;
+    [SerializeField] private float healthBarHeight = 1.0f;
 
     [Header("Animation Settings")]
     [SerializeField][Min(0.1f)] private float moveTime = 0.5f;
@@ -19,6 +21,7 @@ public class TilePiece : MonoBehaviour, IDamageable
     public int MaxMoveDistance => Mathf.RoundToInt(baseMoveDistance * moveDistanceMultiplier);
     public int MaxHealth => maxHealth;
     public int Health => health;
+    public float HealthBarHeight => healthBarHeight;
 
     private Action<HexTile> onMove = null;
     private Action<int> onDamageTaken = null;
@@ -81,6 +84,8 @@ public class TilePiece : MonoBehaviour, IDamageable
 
     public void RotateTo(HexTile tile)
     {
+        if (character == null) return;
+
         Vector3 endPosition = tile.transform.position;
         Vector3 direction = endPosition - occupying.transform.position;
         direction.y = 0.0f;
@@ -89,8 +94,8 @@ public class TilePiece : MonoBehaviour, IDamageable
 
         Quaternion look = Quaternion.LookRotation(direction.normalized, Vector3.up);
 
-        transform.DOKill();
-        transform.DORotate(look.eulerAngles, 0.4f).SetEase(Ease.OutBack).Play();
+        character.DOKill();
+        character.DORotate(look.eulerAngles, 0.4f).SetEase(Ease.OutBack).Play();
     }
 
 
@@ -139,5 +144,12 @@ public class TilePiece : MonoBehaviour, IDamageable
     {
         if (TurnManager.Instance == null) return;
         TurnManager.Instance.RemovePieceFromTurns(this);
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.purple;
+        Gizmos.DrawSphere(transform.position + Vector3.up * healthBarHeight, 0.1f);
     }
 }
