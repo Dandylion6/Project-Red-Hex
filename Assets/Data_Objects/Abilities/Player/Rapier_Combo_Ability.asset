@@ -19,6 +19,6 @@ MonoBehaviour:
   damage: 2
   attackRange: 1
   ignoresObstacles: 0
-  hitChance: 65
+  hitChance: 40
   minHits: 1
   maxHits: 3

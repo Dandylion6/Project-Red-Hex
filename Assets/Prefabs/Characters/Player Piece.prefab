@@ -188,6 +188,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 544227809806171481, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
+      propertyPath: maxHealth
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 544227809806171481, guid: 5c0d377c7f8097f438a1293e69eaa352, type: 3}
       propertyPath: baseMoveDistance
       value: 2
       objectReference: {fileID: 0}

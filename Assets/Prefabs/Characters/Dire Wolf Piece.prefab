@@ -129,7 +129,7 @@ PrefabInstance:
       objectReference: {fileID: 2664309565262271021}
     - target: {fileID: 3959154606130706494, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: maxHealth
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3959154606130706494, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: combatRange
@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7481322608000490859, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: m_Name
-      value: Dummy Piece Variant
+      value: Dire Wolf Piece
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
