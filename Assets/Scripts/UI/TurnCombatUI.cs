@@ -6,7 +6,7 @@ using UnityEngine;
 public class TurnCombatUI : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Canvas canvas = null;
+    [SerializeField] private CanvasGroup canvas = null;
     [SerializeField] private HotBarSlotUI prefabSlot = null;
     [SerializeField] private RectTransform slotParent = null;
     [Space]
@@ -43,14 +43,17 @@ public class TurnCombatUI : MonoBehaviour
         }
 
         turnRotate = turnPivot.DOAnchorPosY(turnEndHeight, 1.0f).SetEase(Ease.InOutBack).SetAutoKill(false).Pause();
-        canvas.enabled = false;
+        canvas.alpha = 0.0f;
         descriptionBox.alpha = 0.0f;
     }
 
 
     private void OnTurnChanged(TilePiece currentPiece, TilePiece lastPiece)
     {
-        canvas.enabled = TurnManager.Instance.IsInCombat;
+        float fade = TurnManager.Instance.IsInCombat ? 1.0f : 0.0f;
+        canvas.DOKill();
+        canvas.DOFade(fade, 0.4f).SetEase(Ease.InOutSine).Play();
+        
         if (currentTurnIndex == TurnManager.Instance.TurnsInCombat) return;
 
         currentTurnCounter.text = "- Turn " + currentTurnIndex + " -";
