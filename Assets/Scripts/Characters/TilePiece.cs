@@ -1,6 +1,8 @@
 using DG.Tweening;
 using System;
+using Unity.VectorGraphics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TilePiece : MonoBehaviour, IDamageable
 {
@@ -22,6 +24,7 @@ public class TilePiece : MonoBehaviour, IDamageable
     public int MaxHealth => maxHealth;
     public int Health => health;
     public float HealthBarHeight => healthBarHeight;
+    public bool IsDead => isDead;
 
     private Action<HexTile> onMove = null;
     private Action<int> onDamageTaken = null;
@@ -45,6 +48,8 @@ public class TilePiece : MonoBehaviour, IDamageable
     public void UnsubscribeToOnHeal(Action<int> callback) => onHeal -= callback;
 
 
+    public void SetHealth(int health) => this.health = Mathf.Min(health, maxHealth);
+
     public void Heal(int amount)
     {
         health = Mathf.Min(health + amount, maxHealth);
@@ -54,8 +59,16 @@ public class TilePiece : MonoBehaviour, IDamageable
     
     public virtual void Die()
     {
-        isDead = true;
         transform.DOKill();
+
+        if (this == GameManager.Instance.Player)
+        {
+            TurnManager.Instance.RemovePieceFromTurns(this);
+            GameManager.Instance.RestartSceneAsync();
+            return;
+        }
+
+        isDead = true;
         Destroy(gameObject);
     }
 
@@ -140,7 +153,7 @@ public class TilePiece : MonoBehaviour, IDamageable
 
     private void Awake() => health = maxHealth;
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         if (TurnManager.Instance == null) return;
         TurnManager.Instance.RemovePieceFromTurns(this);

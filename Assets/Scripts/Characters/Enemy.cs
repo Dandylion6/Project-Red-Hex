@@ -54,4 +54,14 @@ public class Enemy : TilePiece
         yield return new WaitForSeconds(1.0f);
         TurnManager.Instance.EndTurn();
     }
+
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        if (IsDead) return;
+
+        if (TurnManager.Instance == null) return;
+        TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
+    }
 }

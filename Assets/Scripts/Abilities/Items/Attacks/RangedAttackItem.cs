@@ -28,6 +28,7 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
         AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.MusketFire, SettingsManager.Instance.GameVolume, true, Player.transform.position);
         targetTile = tile;
         StartCoroutine(ActionSequence());
+        Player.RotateTo(tile);
     }
 
 
