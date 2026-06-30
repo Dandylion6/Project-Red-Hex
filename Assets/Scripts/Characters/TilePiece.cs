@@ -26,6 +26,7 @@ public class TilePiece : MonoBehaviour, IDamageable
     private HexTile occupying = null;
     private float moveDistanceMultiplier = 1.0f;
     private int health = 0;
+    private bool isDead = false;
 
 
     public void AddMoveMultiplier(float multiplier) => moveDistanceMultiplier += multiplier;
@@ -50,6 +51,7 @@ public class TilePiece : MonoBehaviour, IDamageable
     
     public virtual void Die()
     {
+        isDead = true;
         transform.DOKill();
         Destroy(gameObject);
     }
@@ -60,8 +62,8 @@ public class TilePiece : MonoBehaviour, IDamageable
         health = Mathf.Max(health - damage, 0);
         onDamageTaken?.Invoke(damage);
 
+        if (isDead) return;
         if (health > 0) return;
-        if (gameObject == null) return;
         Die();
     }
 
