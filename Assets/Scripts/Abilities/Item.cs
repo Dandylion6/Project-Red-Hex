@@ -51,21 +51,19 @@ public abstract class Item : MonoBehaviour
 
     private void OnItemSelectionChanged(Item currentItem, Item lastItem)
     {
-        bool isSelected = currentItem != null;
-        bool isCurrentItem = currentItem == this;
-
-        if (isSelected && isCurrentItem)
-        {
-            TileSelect.Instance.SubscribeToOnSelectionChanged(OnTileSelect);
-            OnItemSelected();
-            return;
-        }
-
         bool isLastItem = lastItem == this;
-        if (!isSelected && isLastItem)
+        if (isLastItem)
         {
             TileSelect.Instance.UnsubscibeFromOnSelectionChanged(OnTileSelect);
             OnItemDeselected();
+            return;
+        }
+
+        bool isSelected = currentItem == this;
+        if (isSelected)
+        {
+            TileSelect.Instance.SubscribeToOnSelectionChanged(OnTileSelect);
+            OnItemSelected();
         }
     }
 

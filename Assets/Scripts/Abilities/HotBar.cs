@@ -63,6 +63,7 @@ public class HotBar : Singleton<HotBar>
         Item lastItem = currentItem;
         currentItem = null;
         onSelectionChanged?.Invoke(null, lastItem);
+        HexGridManager.Instance.ClearOverlay();
     }
 
 

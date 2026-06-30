@@ -15,7 +15,7 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
     }
 
 
-    protected override void OnItemDeselected() => HexGridManager.Instance.ClearOverlay();
+    protected override void OnItemDeselected() => target = null;
 
 
     protected override void OnTileSelect(HexTile tile)
