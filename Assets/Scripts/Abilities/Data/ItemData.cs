@@ -23,7 +23,7 @@ public class ItemData : ScriptableObject
     public virtual Queue<ItemStatEntry> GetStats()
     {
         Queue<ItemStatEntry> entries = new();
-        entries.Enqueue(new("Cooldown", Cooldown.ToString()));
+        if (cooldown > 0) entries.Enqueue(new("Cooldown", Cooldown.ToString()));
         return entries;
     }
 }

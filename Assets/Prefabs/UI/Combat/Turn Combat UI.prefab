@@ -1170,8 +1170,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1228,6 +1228,7 @@ GameObject:
   - component: {fileID: 8628300760627579647}
   - component: {fileID: 5934006496333595548}
   - component: {fileID: 7275801233798434750}
+  - component: {fileID: 3427475412452364562}
   m_Layer: 5
   m_Name: Turn Combat UI
   m_TagString: Untagged
@@ -1269,7 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3be613ebdda0546b942a034a6ef826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurnCombatUI
-  canvas: {fileID: 8628300760627579647}
+  canvas: {fileID: 3427475412452364562}
   prefabSlot: {fileID: 2369959797524573516, guid: 76585ca4eab01da46bb25fe2b13f72aa, type: 3}
   slotParent: {fileID: 4262011666341730679}
   turnPivot: {fileID: 3224815129968439892}
@@ -1345,6 +1346,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &3427475412452364562
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8725168032891773880}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &9206526583332137599
 GameObject:
   m_ObjectHideFlags: 0
