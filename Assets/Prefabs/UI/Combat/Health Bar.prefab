@@ -61,8 +61,8 @@ MonoBehaviour:
   fadeEasing: 4
   minDamageShakeIntensity: 6
   maxDamageShakeIntensity: 12
-  minIntensityDamage: 2
-  maxIntensityDamage: 8
+  minIntensityDamage: 1
+  maxIntensityDamage: 3
   healPunchStrength: 10
   healPunchTime: 0.65
 --- !u!1 &1997202818650582616

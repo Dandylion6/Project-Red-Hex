@@ -16,6 +16,6 @@ MonoBehaviour:
   itemSprite: {fileID: 0}
   description: 
   cooldown: 0
-  damage: 2
+  damage: 4
   attackRange: 1
   ignoresObstacles: 0
