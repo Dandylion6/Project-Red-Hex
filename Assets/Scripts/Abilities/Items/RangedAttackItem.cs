@@ -1,8 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class RangedAttackItem : Item<RangedAttackData>
+public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
 {
+    protected IDamageable Target => target;
+
     private IDamageable target = null;
 
 
@@ -25,7 +27,7 @@ public class RangedAttackItem : Item<RangedAttackData>
     }
 
 
-    private bool CanAttack(HexTile tile, out IDamageable damageable)
+    protected virtual bool CanAttack(HexTile tile, out IDamageable damageable)
     {
         damageable = null;
 
@@ -52,4 +54,10 @@ public class RangedAttackItem : Item<RangedAttackData>
         target.TakeDamage(Data.Damage);
         TurnManager.Instance.EndTurn();
     }
+}
+
+
+public class RangedAttackItem : RangedAttackItem<RangedAttackData>
+{
+
 }
