@@ -4,25 +4,22 @@ using System.Collections.Generic;
 public class ConsumableItemData : ItemData
 {
     [Header("Consumable Data")]
-    [SerializeField][Min(1)] private int healBy = 1;
 
-    private int count = 0;
 
-    public int getHealBy => healBy;
+    [SerializeField] private int count = 5;
 
-    public int getCount => count;
+    public int Count => count;
 
-    public void useConsumable()
+    public void SetCount(int count)
     {
-        count--;
+        this.count = count;
     }
 
     public override Queue<ItemStatEntry> GetStats()
     {
         Queue<ItemStatEntry> entries = base.GetStats();
 
-        entries.Enqueue(new("Heal by", healBy.ToString()));
-
+        entries.Enqueue(new ItemStatEntry("Amount", count.ToString()));
         return entries;
     }
 }

@@ -1,35 +1,44 @@
 using System.Collections;
 using UnityEngine;
 
-public class ConsumableItem : Item<ConsumableItemData>
+public abstract class ConsumableItem<T> : Item<T> where T : ConsumableItemData
 {
+    private int count = 5;
+    
     protected override IEnumerator ActionSequence()
     {
             StartCooldown();
             TurnManager.Instance.StartAction();
-            Data.useConsumable();
+            Data.SetCount(--count);
             yield return new WaitForSeconds(0.5f);
+
+            TurnManager.Instance.EndTurn();
     }
 
     protected override void OnTileSelect(HexTile tile)
     {
-        if (canConsume(tile))
+        if (CanConsume(tile))
         {
             StartCoroutine(ActionSequence());
         }
         
     }
 
-    public bool canConsume(HexTile tile)
+    protected bool CanConsume(HexTile tile)
     {
-        if (tile.Piece == GameManager.Instance.Player && Data.getCount >= 1 && GameManager.Instance.Player.Health < GameManager.Instance.Player.MaxHealth)
-            {
-                return true;
-            }
+        if (Data.Count >= 1 && tile.Piece == GameManager.Instance.Player)
+        {
+            return true;
+        }
         else
         {
             return false;
         }
+    }
+
+    protected void UseConsumable()
+    {
+        Data.SetCount(--count);
     }
 
 
@@ -41,5 +50,13 @@ public class ConsumableItem : Item<ConsumableItemData>
 
         HexGridManager.DisplayType displayType = HexGridManager.DisplayType.Basic;
         HexGridManager.Instance.DisplayRange(Player.Occupying, 0, displayType);
+
+        Data.SetCount(count);
     }
 }
+
+public class ConsumableItem : ConsumableItem<ConsumableItemData> 
+{
+
+}
+
