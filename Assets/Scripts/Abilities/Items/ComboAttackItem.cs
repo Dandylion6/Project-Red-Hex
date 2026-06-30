@@ -5,8 +5,6 @@ public class ComboAttackItem : RangedAttackItem<ComboAttackData>
 {
     protected override IEnumerator ActionSequence()
     {
-        IDamageable target = Target;
-
         StartCooldown();
         TurnManager.Instance.StartAction();
 
@@ -16,22 +14,22 @@ public class ComboAttackItem : RangedAttackItem<ComboAttackData>
 
             if (i < Data.MinHits)
             {
-                Hit(target);
+                Hit();
                 continue;
             }
 
-            if (!CanHit(target)) break;
+            if (!CanHit()) break;
 
-            Hit(target);
+            Hit();
         }
 
         TurnManager.Instance.EndTurn();
     }
 
 
-    private bool CanHit(IDamageable damageable)
+    private bool CanHit()
     {
-        if (damageable == null) return false;
+        if (Target == null) return false;
 
         float chance = Random.Range(0.0f, 100.0f);
         if (chance > Data.HitChance) return false;
@@ -39,9 +37,9 @@ public class ComboAttackItem : RangedAttackItem<ComboAttackData>
     }
 
 
-    private void Hit(IDamageable target)
+    private void Hit()
     {
-        if (target == null) return;
-        target.TakeDamage(Data.Damage);
+        if (Target == null) return;
+        Target.TakeDamage(Data.Damage);
     }
 }
