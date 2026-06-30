@@ -2,26 +2,27 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HotBar : MonoBehaviour
+public class HotBar : Singleton<HotBar>
 {
     [Header("References")]
-    [SerializeField] private List<Item> items;
-
+    [SerializeField] private Transform hotbarParent = null;
+    [SerializeField] private List<Item> items = new();
 
     public IReadOnlyList<Item> Items => items;
     public Item CurrentItem => currentItem;
 
-    private Action<Item> onSelectionChanged = null;
+    private Action<Item, Item> onSelectionChanged = null; // has current item and last item as parameters.
     private Item currentItem = null;
     private TilePiece player = null;
 
 
-    public void SubscribeToOnSelectionChanged(Action<Item> callback) => onSelectionChanged += callback;
-    public void UnsubscribeFromOnSelectionChanged(Action<Item> callback) => onSelectionChanged -= callback;
+    public void SubscribeToOnSelectionChanged(Action<Item, Item> callback) => onSelectionChanged += callback;
+    public void UnsubscribeFromOnSelectionChanged(Action<Item, Item> callback) => onSelectionChanged -= callback;
 
 
     public void SelectItem(Item item)
     {
+        if (!TurnManager.Instance.HasTurn(player)) return;
         switch (TurnManager.Instance.CurrentState)
         {
             case TurnManager.State.None: SetAsTarget(item);
@@ -34,13 +35,12 @@ public class HotBar : MonoBehaviour
 
     private void SetAsTarget(Item item)
     {
-        if (!TurnManager.Instance.HasTurn(player)) return;
-        
+        if (item.CooldownLeft > 0) return;
         TurnManager.Instance.SetState(TurnManager.State.UseItem);
-        currentItem = item;
 
-        onSelectionChanged?.Invoke(item);
-        currentItem.Use();
+        Item lastItem = currentItem;
+        currentItem = item;
+        onSelectionChanged?.Invoke(item, lastItem);
     }
 
 
@@ -52,19 +52,18 @@ public class HotBar : MonoBehaviour
             DeselectCurrentItem();
             return;
         }
-
-        TurnManager.Instance.SetState(TurnManager.State.UseItem);
-        currentItem = item;
-        onSelectionChanged?.Invoke(currentItem);
+        SetAsTarget(item);
     }
 
 
     private void DeselectCurrentItem()
     {
         TurnManager.Instance.SetState(TurnManager.State.None);
-        HexGridManager.Instance.ClearOverlayOfType(HexOverlay.Type.Range);
+
+        Item lastItem = currentItem;
         currentItem = null;
-        onSelectionChanged?.Invoke(null);
+        onSelectionChanged?.Invoke(null, lastItem);
+        HexGridManager.Instance.ClearOverlay();
     }
 
 

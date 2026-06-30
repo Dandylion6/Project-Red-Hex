@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
+#endif
 using UnityEngine;
 
 public class HexTileMapBinder : Singleton<HexTileMapBinder>
@@ -14,6 +16,14 @@ public class HexTileMapBinder : Singleton<HexTileMapBinder>
 
     private bool isSetup = false;
 
+
+    private void Start()
+    {
+        HexGridManager.Instance.Setup(axialCoordinates, hexTiles);
+        isSetup = true;
+    }
+
+#if UNITY_EDITOR
 
     public void GenerateTileMap()
     {
@@ -39,15 +49,12 @@ public class HexTileMapBinder : Singleton<HexTileMapBinder>
         EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
     }
 
+#endif
 
-    private void Start()
-    {
-        HexGridManager.Instance.Setup(axialCoordinates, hexTiles);
-        isSetup = true;
-    }
 }
 
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(HexTileMapBinder))]
 public class HexTileMapBinderEditor : Editor
 {
@@ -81,3 +88,5 @@ public class BinderHierarchyObject
         Selection.activeObject = gameObject;
     }
 }
+
+#endif

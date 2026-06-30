@@ -13,7 +13,7 @@ public class Enemy : TilePiece
     private bool isInCombat = false;
 
 
-    public virtual void Die()
+    public override void Die()
     {
         base.Die();
         TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
@@ -27,17 +27,8 @@ public class Enemy : TilePiece
     }
 
 
-    private void Update()
-    {
-        if (!isInCombat)
-            EnterCombatCheck();
-    }
-
-
     private void EnterCombatCheck()
     {
-        if (TurnManager.Instance.IsInAction) return; // Must wait for actions first.
-
         int hexDistance = Hexagon.HexDistance(player.Occupying, Occupying);
         if (hexDistance > combatRange) return;
 
@@ -46,8 +37,10 @@ public class Enemy : TilePiece
     }
 
 
-    protected virtual void OnTurnChanged(TilePiece piece)
+    protected virtual void OnTurnChanged(TilePiece piece, TilePiece lastPiece)
     {
+        if (!isInCombat) EnterCombatCheck();
+
         if (piece != this) return;
         if (!TurnManager.Instance.HasTurn(this)) return;
         StartCoroutine(TakeTurn());

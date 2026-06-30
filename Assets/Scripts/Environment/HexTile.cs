@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class HexTile : MonoBehaviour
@@ -97,6 +98,12 @@ public class HexTile : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = isWalkable ? Color.green : Color.yellow;
+        if (TryGetComponent(out TeleportPoint _))
+            Gizmos.color = Color.purple;
+
+        if (TryGetComponent(out SpawnPoint _))
+            Gizmos.color = Color.blue;
+
         Gizmos.DrawWireSphere(transform.position + Vector3.up, 0.2f);
     }
 
@@ -105,7 +112,9 @@ public class HexTile : MonoBehaviour
     {
         Vector2Int hexAxial = Hexagon.WorldToAxial(WorldPosition);
         Vector2 world = Hexagon.AxialToWorld(hexAxial);
+
         transform.position = new(world.x, transform.position.y, world.y);
+        EditorSceneManager.MarkAllScenesDirty();
     }
 #endif
 }
