@@ -49,12 +49,7 @@ public class TilePiece : MonoBehaviour, IDamageable
     public void UnsubscribeToOnHeal(Action<int> callback) => onHeal -= callback;
 
 
-    public void SetHealth(int health)
-    {
-        this.health = Mathf.Min(health, maxHealth);
-        onHeal?.Invoke(0);
-    }
-
+    public void SetHealth(int health) => this.health = Mathf.Min(health, maxHealth);
 
     public void Heal(int amount)
     {
@@ -69,6 +64,7 @@ public class TilePiece : MonoBehaviour, IDamageable
 
         if (this == GameManager.Instance.Player)
         {
+            TurnManager.Instance.RemovePieceFromTurns(this);
             GameManager.Instance.RestartSceneAsync();
             return;
         }

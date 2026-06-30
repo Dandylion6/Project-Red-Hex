@@ -53,4 +53,14 @@ public class Enemy : TilePiece
         if (TurnManager.Instance == null) return;
         TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
     }
+
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        if (IsDead) return;
+
+        if (TurnManager.Instance == null) return;
+        TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
+    }
 }
