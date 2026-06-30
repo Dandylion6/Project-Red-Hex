@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
 {
@@ -15,7 +16,7 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
     }
 
 
-    protected override void OnItemDeselected() => target = null;
+    protected override void OnItemDeselected() { }
 
 
     protected override void OnTileSelect(HexTile tile)
@@ -52,6 +53,7 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
         yield return new WaitForSeconds(0.5f);
 
         target.TakeDamage(Data.Damage);
+        target = null;
         TurnManager.Instance.EndTurn();
     }
 }
