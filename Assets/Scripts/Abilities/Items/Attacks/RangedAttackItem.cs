@@ -24,6 +24,7 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
 
         target = damageable;
         StartCoroutine(ActionSequence());
+        Player.RotateTo(tile);
     }
 
 

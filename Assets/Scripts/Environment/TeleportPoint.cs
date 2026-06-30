@@ -30,7 +30,7 @@ public class TeleportPoint : MonoBehaviour
     {
         if (!CanTeleport(piece)) return;
 
-        if (currentScene != string.Empty) SceneManager.UnloadSceneAsync(currentScene);
-        if (goToScene != string.Empty) SceneManager.LoadScene(goToScene, LoadSceneMode.Additive);
+        if (goToScene != string.Empty)
+            GameManager.Instance.ChangeGameSceneAsync(goToScene);
     }
 }
