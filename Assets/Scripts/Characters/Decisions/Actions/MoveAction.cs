@@ -15,6 +15,8 @@ public class MoveAction : AIDecision<ItemData>
             if (distance > Brain.Piece.MaxMoveDistance) continue;
 
             StartCooldown();
+
+            Brain.Piece.RotateTo(tile);
             Brain.Piece.MoveTo(tile);
             break;
         }

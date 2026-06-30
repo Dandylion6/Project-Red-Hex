@@ -71,6 +71,19 @@ public class TilePiece : MonoBehaviour, IDamageable
     }
 
 
+    public void RotateTo(HexTile tile)
+    {
+        Vector3 endPosition = tile.transform.position;
+        Vector3 direction = endPosition - occupying.transform.position;
+        direction.y = 0.0f;
+
+        Quaternion look = Quaternion.LookRotation(direction.normalized, Vector3.up);
+
+        transform.DOKill();
+        transform.DORotate(look.eulerAngles, 0.4f).SetEase(Ease.OutBack).Play();
+    }
+
+
     public bool MoveTo(Vector3 target)
     {
         Vector2Int axialCoordinate = Hexagon.WorldToAxial(new(target.x, target.z));
@@ -84,13 +97,12 @@ public class TilePiece : MonoBehaviour, IDamageable
         if (!tile.CanSetPiece(this)) return false;
         if (occupying != null) 
             occupying.RemovePiece();
-
+        
         occupying = tile;
 
         TurnManager.Instance.StartAction();
-
         Vector3 endPosition = tile.transform.position;
-        transform.DOKill();
+
         transform.DOMoveY(transform.position.y + moveHeight, moveTime * 0.5f).SetEase(heightUp).OnComplete(() =>
         {
             transform.DOMoveY(endPosition.y, moveTime * 0.5f).SetEase(heightDown)
