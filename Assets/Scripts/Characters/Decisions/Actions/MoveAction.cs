@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class MoveAction : AIDecision
+public class MoveAction : AIDecision<ItemData>
 {
     public override IEnumerator ActionSequence()
     {
@@ -15,6 +14,7 @@ public class MoveAction : AIDecision
             int distance = Hexagon.HexDistance(Brain.Piece.Occupying, tile);
             if (distance > Brain.Piece.MaxMoveDistance) continue;
 
+            StartCooldown();
             Brain.Piece.MoveTo(tile);
             break;
         }
@@ -25,7 +25,6 @@ public class MoveAction : AIDecision
     public override bool IsValidAction()
     {
         int distance = Hexagon.HexDistance(Brain.Piece.Occupying, Brain.Player.Occupying);
-        Debug.Log(distance);
         if (distance <= 1) return false; // Can't move anymore.
         return true;
     }

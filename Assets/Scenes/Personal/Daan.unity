@@ -191,6 +191,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d642963424bd634faf7051950cccfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HexTile
+--- !u!114 &49601585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4066284290804351499, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
+  m_PrefabInstance: {fileID: 1348867373122559805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e2599d5f7d5e04c80bc44444adccdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicAttackAction
 --- !u!1 &63901377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3363674685689751770, guid: 7324766bdb0bd444e9530fe9193bd0b5, type: 3}
@@ -1643,6 +1654,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TeleportPoint
   currentScene: Daan
   goToScene: Level_1
+--- !u!114 &1538826718 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2664309565262271021, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
+  m_PrefabInstance: {fileID: 1348867373122559805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070848a2f1642534297abd2c60e6cd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveAction
 --- !u!1001 &1608263576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2222,9 +2244,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dummy Piece
       objectReference: {fileID: 0}
+    - target: {fileID: 6798220171613513931, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
+      propertyPath: decisions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798220171613513931, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
+      propertyPath: 'decisions.Array.data[0]'
+      value: 
+      objectReference: {fileID: 49601585}
+    - target: {fileID: 6798220171613513931, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
+      propertyPath: 'decisions.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1538826718}
     - target: {fileID: 7016999103712717462, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
       propertyPath: maxHealth
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7016999103712717462, guid: 00b7b1199dd420545a1316d1d9e55b32, type: 3}
       propertyPath: combatRange

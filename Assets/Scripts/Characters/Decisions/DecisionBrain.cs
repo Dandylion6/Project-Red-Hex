@@ -32,7 +32,11 @@ public class DecisionBrain : MonoBehaviour
 
         foreach(AIDecision decision in decisions)
         {
+            decision.UpdateCooldown();
+            
+            if (decision.Cooldown > 0) continue;
             if (!decision.IsValidAction()) continue;
+
             StartCoroutine(decision.ActionSequence());
             return;
         }

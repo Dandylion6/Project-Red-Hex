@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8546436655179518873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3125298264724559308}
+  - component: {fileID: 4066284290804351499}
+  m_Layer: 0
+  m_Name: Bite Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3125298264724559308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8546436655179518873}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8254833279166050080}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4066284290804351499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8546436655179518873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e2599d5f7d5e04c80bc44444adccdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicAttackAction
+  data: {fileID: 11400000, guid: c957ad4d81c21eb4ca3abd8f491d4f90, type: 2}
 --- !u!1001 &489960460411661196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,10 +171,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5867498901092762930, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6396350238848069430}
+    - targetCorrespondingSourceObject: {fileID: 2675088164695162248, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 3125298264724559308}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
 --- !u!4 &503653889759991706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5867498901092762930, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
+  m_PrefabInstance: {fileID: 6309786768271102632}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8254833279166050080 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2675088164695162248, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
   m_PrefabInstance: {fileID: 6309786768271102632}
   m_PrefabAsset: {fileID: 0}
