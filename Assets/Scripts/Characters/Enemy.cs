@@ -16,6 +16,7 @@ public class Enemy : TilePiece
     public override void Die()
     {
         base.Die();
+        TurnManager.Instance.RemovePieceFromTurns(this);
         TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
     }
 
