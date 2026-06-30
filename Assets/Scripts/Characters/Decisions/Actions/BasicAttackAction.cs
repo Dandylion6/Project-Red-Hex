@@ -8,6 +8,8 @@ public class BasicAttackAction : AIDecision<RangedAttackData>
         StartCooldown();
         TurnManager.Instance.StartAction();
 
+        Brain.Piece.RotateTo(Brain.Player.Occupying);
+
         yield return new WaitForSeconds(0.5f);
 
         Brain.Player.TakeDamage(Data.Damage);

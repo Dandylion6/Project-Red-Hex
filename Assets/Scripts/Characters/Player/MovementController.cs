@@ -78,6 +78,9 @@ public class MovementController : MonoBehaviour
             ToggleState();
 
         if (TurnManager.Instance.CurrentState != TurnManager.State.Move) return;
+
+        playerPiece.RotateTo(tile);
+
         if (!playerPiece.MoveTo(tile)) return;
 
         PlayerCamera.Instance.SetTarget(tile);
