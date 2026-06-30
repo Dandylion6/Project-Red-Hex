@@ -48,7 +48,11 @@ public class TilePiece : MonoBehaviour, IDamageable
     }
     
     
-    public virtual void Die() => Destroy(gameObject);
+    public virtual void Die()
+    {
+        transform.DOKill();
+        Destroy(gameObject);
+    }
 
 
     public void TakeDamage(int damage)
@@ -56,7 +60,9 @@ public class TilePiece : MonoBehaviour, IDamageable
         health = Mathf.Max(health - damage, 0);
         onDamageTaken?.Invoke(damage);
 
-        if (health == 0) Die();
+        if (health > 0) return;
+        if (gameObject == null) return;
+        Die();
     }
 
 
@@ -76,6 +82,8 @@ public class TilePiece : MonoBehaviour, IDamageable
         Vector3 endPosition = tile.transform.position;
         Vector3 direction = endPosition - occupying.transform.position;
         direction.y = 0.0f;
+
+        if (direction.magnitude <= float.Epsilon) return; // Can't turn.
 
         Quaternion look = Quaternion.LookRotation(direction.normalized, Vector3.up);
 
