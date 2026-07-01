@@ -25,7 +25,6 @@ public class BasicAttackAction : AIDecision<RangedAttackData>
         {
             if (!HexGridManager.Instance.InLineOfSight(Brain.Piece.Occupying, Brain.Player.Occupying)) return false;
         }
-
         return true;
     }
 }
