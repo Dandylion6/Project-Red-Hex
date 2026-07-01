@@ -8,7 +8,6 @@ public class TeleportPoint : Singleton<TeleportPoint>
 
 
     [Header("Teleport Settings")]
-    [SerializeField] private string currentScene = "Current Scene";
     [SerializeField] private string goToScene = "Next Scene";
 
 
