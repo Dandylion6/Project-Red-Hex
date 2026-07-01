@@ -6,6 +6,11 @@ public class MoveAction : AIDecision<ItemData>
     public override IEnumerator ActionSequence()
     {
         Pathfinding.Result result = HexGridManager.Instance.CalculatePath(Brain.Player.Occupying, Brain.Piece.Occupying);
+        if (result.path.Count == 0)
+        {
+            TurnManager.Instance.EndTurn();
+            yield break;
+        }
         Stack<HexTile> path = result.path;
 
         while (path.Count > 0)
