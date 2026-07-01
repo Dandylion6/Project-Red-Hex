@@ -24,6 +24,7 @@ public class HexTile : MonoBehaviour
 
     private HexOverlay overlay = null;
     private System.Action<TilePiece> onPiecePlaced = null;
+    private System.Action<TilePiece> onPieceRemoved = null;
     private TilePiece piece = null;
     private Vector2Int axialCoordinate = Vector2Int.zero;
 
@@ -31,6 +32,9 @@ public class HexTile : MonoBehaviour
 
     public void SubscribeToOnPiecePlaced(System.Action<TilePiece> callback) => onPiecePlaced += callback;
     public void UnsubscribeFromOnPiecePlaced(System.Action<TilePiece> callback) => onPiecePlaced -= callback;
+
+    public void SubscribeToOnPieceRemoved(System.Action<TilePiece> callback) => onPieceRemoved += callback;
+    public void UnsubscribeFromOnPieceRemoved(System.Action<TilePiece> callback) => onPieceRemoved -= callback;
 
 
     public bool TrySetPiece(TilePiece piece)
@@ -57,6 +61,7 @@ public class HexTile : MonoBehaviour
         TilePiece oldPiece = piece;
         piece = null;
 
+        onPieceRemoved?.Invoke(oldPiece);
         return oldPiece;
     }
 
@@ -114,6 +119,7 @@ public class HexTile : MonoBehaviour
         Vector2 world = Hexagon.AxialToWorld(hexAxial);
 
         transform.position = new(world.x, transform.position.y, world.y);
+        if (Application.isPlaying) return;
         EditorSceneManager.MarkAllScenesDirty();
     }
 #endif
