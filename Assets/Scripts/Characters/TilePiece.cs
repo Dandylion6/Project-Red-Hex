@@ -137,15 +137,10 @@ public class TilePiece : MonoBehaviour, IDamageable
         TurnManager.Instance.StartAction();
         Vector3 endPosition = tile.transform.position;
 
+        transform.DOKill();
         transform.DOMoveY(transform.position.y + moveHeight, moveTime * 0.5f).SetEase(heightUp).OnComplete(() =>
         {
-            transform.DOMoveY(endPosition.y, moveTime * 0.5f).SetEase(heightDown)
-                .OnComplete(() =>
-                {
-                    tile.SetPiece(this);
-                    TurnManager.Instance.EndTurn();
-                    onMove?.Invoke(tile);
-                }).Play();
+            transform.DOMoveY(endPosition.y, moveTime * 0.5f).SetEase(heightDown).OnComplete(() => MoveEnd(tile)).Play();
         }
         ).Play();
 
@@ -153,6 +148,18 @@ public class TilePiece : MonoBehaviour, IDamageable
         transform.DOMoveZ(endPosition.z, moveTime).SetEase(Ease.OutQuad).Play();
 
         return true;
+    }
+
+
+    private void MoveEnd(HexTile tile)
+    {
+        if (this is Enemy) // Should look at the player after moving.
+        {
+            RotateTo(GameManager.Instance.Player.occupying);
+        }
+        tile.SetPiece(this);
+        TurnManager.Instance.EndTurn();
+        onMove?.Invoke(tile);
     }
 
 
