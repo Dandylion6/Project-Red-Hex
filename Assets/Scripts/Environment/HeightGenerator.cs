@@ -7,9 +7,9 @@ public class HeightGenerator : MonoBehaviour
     [Header("Generation Settings")]
     [SerializeField] private float scale = 4.0f;
     [SerializeField] private Vector2 heightRange = new(-0.15f, 0.15f);
-    [SerializeField][Min(1)] private int octaves = 3;
-    [SerializeField] private float persistence = 0.9f;
-    [SerializeField] private float lucranarity = 2.0f;
+    [SerializeField] [Min(1)] [Tooltip("The number of noise layers to combine.")] private int octaves = 3;
+    [SerializeField] [Range(0.1f, 1.0f)] [Tooltip("Controls how much each octave contributes to the final noise value.")] private float persistence = 0.9f;
+    [SerializeField] [Range(0.1f, 3.0f)] [Tooltip("Controls how quickly the amplitude decreases with each octave.")] private float lucranarity = 2.0f;
     [SerializeField] private float seed = 0.0f;
     [SerializeField] private bool generateWithNewSeed = true;
 
@@ -53,8 +53,8 @@ public class HeightGenerator : MonoBehaviour
             value += Mathf.PerlinNoise(sampleX, sampleY) * amplitude;
             maxValue += amplitude;
 
-            frequency *= persistence;
-            amplitude *= lucranarity;
+            frequency *= lucranarity;
+            amplitude *= persistence;
         }
 
         return value / maxValue;

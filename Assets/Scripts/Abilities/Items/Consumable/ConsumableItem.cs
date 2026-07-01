@@ -1,25 +1,26 @@
 using System;
 using System.Collections;
-using UnityEngine;
 
-public abstract class ConsumableItem<T> : Item<T> where T : ConsumableItemData
+public abstract class ConsumableItem<T> : Item<T>, IConsumable where T : ConsumableItemData
 {
     private int count = 0;
 
-    public void AddCount()
-    {
-        Data.SetCount(++count);
-    }
+
+    public void AddConsumable() => Data.SetCount(++count);
+
+    public void UseConsumable() => Data.SetCount(--count);
+
 
     protected override IEnumerator ActionSequence()
     {
             StartCooldown();
             TurnManager.Instance.StartAction();
             Data.SetCount(--count);
-            yield return new WaitForSeconds(0.5f);
 
+            yield return TurnManager.TurnWait;
             TurnManager.Instance.EndTurn();
     }
+
 
     protected override void OnTileSelect(HexTile tile)
     {
@@ -30,23 +31,15 @@ public abstract class ConsumableItem<T> : Item<T> where T : ConsumableItemData
         
     }
 
+
     protected bool CanConsume(HexTile tile)
     {
-        if (Data.Count >= 1 && tile.Piece == GameManager.Instance.Player)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+        if (tile == null) return false;
+        if (tile.Piece != Player) return false;
+        if (Data.Count <= 0) return false;
 
-    protected void UseConsumable()
-    {
-        Data.SetCount(--count);
+        return true;
     }
-
 
 
     protected override void OnItemDeselected() => HexGridManager.Instance.ClearOverlay();
@@ -61,7 +54,7 @@ public abstract class ConsumableItem<T> : Item<T> where T : ConsumableItemData
     }
 }
 
-public class ConsumableItem : ConsumableItem<ConsumableItemData> 
+public class ConsumableItem : ConsumableItem<ConsumableItemData>
 {
 
 }
