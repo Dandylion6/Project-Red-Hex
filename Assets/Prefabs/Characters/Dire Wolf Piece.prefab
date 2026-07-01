@@ -151,6 +151,10 @@ PrefabInstance:
       propertyPath: healthBarHeight
       value: 1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3959154606130706494, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
+      propertyPath: baseMoveDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5867498901092762930, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
