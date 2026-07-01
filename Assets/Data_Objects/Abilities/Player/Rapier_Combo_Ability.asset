@@ -21,8 +21,8 @@ MonoBehaviour:
   ignoresObstacles: 0
   combo:
   - hitChance: 100
-    damageMultiplier: 1
+    damageMultiplier: 2
   - hitChance: 65
     damageMultiplier: 2
   - hitChance: 35
-    damageMultiplier: 3
+    damageMultiplier: 2
