@@ -8,7 +8,7 @@ public class Pathfinding
 
     public struct Result
     {
-        public Stack<HexTile> path;
+        public List<HexTile> path;
         public int tileDistance;
         public bool isComplete;
     }
@@ -38,8 +38,10 @@ public class Pathfinding
 
     public Result CalculatePath(HexTile start, HexTile end)
     {
-        Result result = new();
-        result.path = new();
+        Result result = new()
+        {
+            path = new()
+        };
 
         List<HexTile> openTiles = new() { start };
         HashSet<HexTile> closedTiles = new();
@@ -74,6 +76,7 @@ public class Pathfinding
 
                 if (!neighbor.IsWalkable) continue;
                 if (neighbor.IsObstacle) continue;
+                if (neighbor.Piece != null && neighbor != end) continue;
                 if (closedTiles.Contains(neighbor)) continue;
 
                 int tentativeG = nodes[current].g + 1;
@@ -122,15 +125,16 @@ public class Pathfinding
     }
 
 
-    private Stack<HexTile> ReconstructPath(Dictionary<HexTile, HexTile> cameFrom, HexTile current)
+    private List<HexTile> ReconstructPath(Dictionary<HexTile, HexTile> cameFrom, HexTile current)
     {
-        Stack<HexTile> totalPath = new();
+        List<HexTile> totalPath = new();
         while (cameFrom.ContainsKey(current))
         {
-            totalPath.Push(current);
+            totalPath.Add(current);
             current = cameFrom[current];
         }
-        totalPath.Push(current);
+
+        totalPath.Reverse();
         return totalPath;
     }
 }
