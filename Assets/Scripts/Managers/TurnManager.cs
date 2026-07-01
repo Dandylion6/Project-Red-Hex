@@ -88,12 +88,11 @@ public class TurnManager : Singleton<TurnManager>
         activePieces.Remove(piece);
         onPieceRemoved?.Invoke(piece);
 
-        if (activePieces.Count <= 1)
-        {
-            GivePlayerTurn();
-            isInCombat = false;
-            turnsInCombat = 0;
-        }
+        if (activePieces.Count > 1) return; // Combat is still ongoing, so don't give the player the turn yet.
+
+        GivePlayerTurn();
+        isInCombat = false;
+        turnsInCombat = 0;
     }
 
 
@@ -123,7 +122,9 @@ public class TurnManager : Singleton<TurnManager>
         activePieces.Clear();
         activePieces.Add(GameManager.Instance.Player);
 
-        yield return null;
+        yield return TurnWait;
+
+        isInCombat = false;
         GivePlayerTurn();
     }
 

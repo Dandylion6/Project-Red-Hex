@@ -8,6 +8,8 @@ public class TeleportPoint : Singleton<TeleportPoint>
 
 
     [Header("Teleport Settings")]
+    [SerializeField] private GameObject closedDoor = null;
+    [SerializeField] private GameObject openedDoor = null;
     [SerializeField] private string goToScene = "Next Scene";
 
 
@@ -32,6 +34,16 @@ public class TeleportPoint : Singleton<TeleportPoint>
     {
         tile = GetComponent<HexTile>();
         tile.SubscribeToOnPiecePlaced(MoveToNextScene);
+        TurnManager.Instance.SubscribeToOnTurnChanged(OnTurnChanged);
+    }
+
+
+    private void OnTurnChanged(TilePiece currentPiece, TilePiece lastPiece)
+    {
+        bool isOpen = moonShardsCollected >= REQUIRED_SHARDS;
+
+        closedDoor.SetActive(!isOpen);
+        openedDoor.SetActive(isOpen);
     }
 
 
@@ -41,5 +53,12 @@ public class TeleportPoint : Singleton<TeleportPoint>
 
         if (goToScene != string.Empty)
             GameManager.Instance.ChangeGameSceneAsync(goToScene);
+    }
+
+
+    private void OnDestroy()
+    {
+        if (tile != null) tile.UnsubscribeFromOnPiecePlaced(MoveToNextScene);
+        if (TurnManager.Instance != null) TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
     }
 }
