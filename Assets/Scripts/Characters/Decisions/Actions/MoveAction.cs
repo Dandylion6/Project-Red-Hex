@@ -14,13 +14,14 @@ public class MoveAction : AIDecision<ItemData>
             int distance = Hexagon.HexDistance(Brain.Piece.Occupying, tile);
             if (distance > Brain.Piece.MaxMoveDistance) continue;
 
+            TurnManager.Instance.StartAction();
             StartCooldown();
+            yield return TurnManager.TurnWait;
 
             Brain.Piece.RotateTo(tile);
             Brain.Piece.MoveTo(tile);
             break;
         }
-        yield return null;
     }
 
 

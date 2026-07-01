@@ -1,12 +1,13 @@
-using NUnit.Framework.Internal.Filters;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Hardware;
 using UnityEngine;
 
 public class TurnManager : Singleton<TurnManager>
 {
+    static public WaitForSeconds TurnWait => turnWait;
+
+
     public enum State
     {
         None,
@@ -20,6 +21,8 @@ public class TurnManager : Singleton<TurnManager>
     public int TurnsInCombat => turnsInCombat;
     public bool IsInCombat => isInCombat;
 
+
+    static private WaitForSeconds turnWait = new(0.5f);
 
     private readonly List<TilePiece> activePieces = new();
 

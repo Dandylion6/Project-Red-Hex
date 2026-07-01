@@ -1,26 +1,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct ComboData
+{
+    public float hitChance;
+    public float damageMultiplier;
+}
+
+
 [CreateAssetMenu(fileName = "New Combo Attack", menuName = "Data/Items/Combo Attack")]
 public class ComboAttackData : RangedAttackData
 {
     [Header("Combo Data")]
-    [SerializeField][Tooltip("Chance to hit in percentage.")] private float hitChance = 40.0f;
-    [SerializeField] private int minHits = 1;
-    [SerializeField] private int maxHits = 3;
+    [SerializeField] private List<ComboData> combo = new();
 
 
-    public float HitChance => hitChance;
-    public int MinHits => minHits;
-    public int MaxHits => maxHits;
+    public IReadOnlyList<ComboData> Combo => combo;
 
 
     public override Queue<ItemStatEntry> GetStats()
     {
         Queue<ItemStatEntry> entries = base.GetStats();
 
-        entries.Enqueue(new("Hits", MinHits.ToString() + " -> " + MaxHits.ToString()));
-        entries.Enqueue(new("Hit Chance", HitChance.ToString() + "%"));
+        entries.Enqueue(new("Hits", Combo.Count.ToString()));
 
         return entries;
     }
