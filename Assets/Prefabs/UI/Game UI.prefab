@@ -255,6 +255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e88b0e97dd5f3c4fb063af6c2a824b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameUI
+  questText: {fileID: 2462035234299505352}
+  questDescription: Find all Moon Shards to open the gate.
 --- !u!1 &2591597464092866481
 GameObject:
   m_ObjectHideFlags: 0
