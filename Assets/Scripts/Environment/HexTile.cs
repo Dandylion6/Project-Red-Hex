@@ -30,7 +30,7 @@ public class HexTile : MonoBehaviour
 
 
     public void SubscribeToOnPiecePlaced(System.Action<TilePiece> callback) => onPiecePlaced += callback;
-    public void UnsubscibeToOnPiecePlaced(System.Action<TilePiece> callback) => onPiecePlaced -= callback;
+    public void UnsubscribeFromOnPiecePlaced(System.Action<TilePiece> callback) => onPiecePlaced -= callback;
 
 
     public bool TrySetPiece(TilePiece piece)
