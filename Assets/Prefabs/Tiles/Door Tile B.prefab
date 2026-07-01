@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2859381130414993659, guid: 1e53acaeb0e421f4f9327b5809ab7534, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.29357
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 2859381130414993659, guid: 1e53acaeb0e421f4f9327b5809ab7534, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2859381130414993659, guid: 1e53acaeb0e421f4f9327b5809ab7534, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5028367
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2859381130414993659, guid: 1e53acaeb0e421f4f9327b5809ab7534, type: 3}
       propertyPath: m_LocalRotation.w
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5348186406296751676, guid: 1e53acaeb0e421f4f9327b5809ab7534, type: 3}
       propertyPath: m_Name
-      value: Door Tile B Variant
+      value: Door Tile B
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -77,6 +77,18 @@ PrefabInstance:
     - target: {fileID: 5033090407577534897, guid: 2b4cb42778e4ca742809fdcb21751f87, type: 3}
       propertyPath: m_Name
       value: Door open
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661853366903741195, guid: 2b4cb42778e4ca742809fdcb21751f87, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7738305
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661853366903741195, guid: 2b4cb42778e4ca742809fdcb21751f87, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7738305
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661853366903741195, guid: 2b4cb42778e4ca742809fdcb21751f87, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7738305
       objectReference: {fileID: 0}
     - target: {fileID: 5661853366903741195, guid: 2b4cb42778e4ca742809fdcb21751f87, type: 3}
       propertyPath: m_LocalPosition.x
