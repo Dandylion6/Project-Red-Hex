@@ -27,5 +27,9 @@ public class MoonShard : MonoBehaviour
     }
 
 
-    private void OnDestroy() => tile.UnsubscibeToOnPiecePlaced(OnPiecePlaced);
+    private void OnDestroy()
+    {
+        if (tile == null) return;
+        tile.UnsubscibeToOnPiecePlaced(OnPiecePlaced);
+    }
 }
