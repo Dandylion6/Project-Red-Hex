@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,7 +18,12 @@ public class GameManager : Singleton<GameManager>
 
     public TilePiece Player => player;
 
+    private Action onGameRestart = null;
     private CheckpointData checkpoint = new();
+
+
+    public void SubscribeToOnGameRestart(Action callback) => onGameRestart += callback;
+    public void UnsubscribeFromOnGameRestart(Action callback) => onGameRestart -= callback;
 
 
     public void SetCheckpointData(CheckpointData data) => checkpoint = data;
@@ -38,12 +44,14 @@ public class GameManager : Singleton<GameManager>
     private IEnumerator RestartScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        
+        string sceneName = currentScene.name;
+
         yield return SceneManager.UnloadSceneAsync(currentScene);
-        LoadCheckpoint();
-        yield return SceneManager.LoadSceneAsync(currentScene.name);
+        yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(currentScene.name));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+        LoadCheckpoint();
+        onGameRestart?.Invoke();
     }
 
 

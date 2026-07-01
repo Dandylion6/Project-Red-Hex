@@ -108,11 +108,22 @@ public class TurnManager : Singleton<TurnManager>
     }
 
 
-    private IEnumerator Start()
+    private void Start()
     {
-        activePieces.Add(GameManager.Instance.Player);
-        yield return null;
+        StartCoroutine(OnStartAction());
+        GameManager.Instance.SubscribeToOnGameRestart(OnStart);
+    }
 
+
+    private void OnStart() => StartCoroutine(OnStartAction());
+
+
+    private IEnumerator OnStartAction()
+    {
+        activePieces.Clear();
+        activePieces.Add(GameManager.Instance.Player);
+
+        yield return null;
         GivePlayerTurn();
     }
 
