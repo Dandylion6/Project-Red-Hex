@@ -123,7 +123,8 @@ public class TilePiece : MonoBehaviour, IDamageable
     public bool MoveTo(HexTile tile)
     {
         if (!tile.CanSetPiece(this)) return false;
-        if (occupying != null) 
+
+        if (occupying != null)
             occupying.RemovePiece();
 
         occupying = tile;
@@ -137,7 +138,6 @@ public class TilePiece : MonoBehaviour, IDamageable
                 .OnComplete(() =>
                 {
                     tile.SetPiece(this);
-                    occupying = tile;
                     TurnManager.Instance.EndTurn();
                     onMove?.Invoke(tile);
                 }).Play();
