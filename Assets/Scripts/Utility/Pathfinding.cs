@@ -60,7 +60,7 @@ public class Pathfinding
             if (current == end) // Finnished path.
             {
                 result.path = ReconstructPath(cameFrom, current);
-                result.tileDistance = Mathf.Max(result.path.Count - 1, 0);
+                result.tileDistance = Mathf.Max(result.path.Count, 0); // Exclude the starting tile from the distance.
                 result.isComplete = true;
                 return result;
             }
