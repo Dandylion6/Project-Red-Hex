@@ -160,13 +160,13 @@ public class HexGridManager : Singleton<HexGridManager>
     }
 
 
-    public bool InLineOfSight(HexTile start, HexTile end)
+    public bool InLineOfSight(HexTile start, HexTile end, bool ignoresPieces = false)
     {
-        return InLineOfSight(start, end, 0.01f) || InLineOfSight(start, end, -0.01f);
+        return InLineOfSight(start, end, 0.01f, ignoresPieces) || InLineOfSight(start, end, -0.01f, ignoresPieces);
     }
 
 
-    public bool InLineOfSight(HexTile start, HexTile end, float bias)
+    public bool InLineOfSight(HexTile start, HexTile end, float bias, bool ignoresPieces = false)
     {
         int steps = Hexagon.HexDistance(start, end);
         if (steps == 0) return true;
@@ -181,6 +181,7 @@ public class HexGridManager : Singleton<HexGridManager>
 
             if (!tileMap.TryGetValue(axialCoordinate, out HexTile next)) return false;
             if (next.IsObstacle) return false;
+            if (!ignoresPieces && next.Piece != null) return false;
         }
         return true;
     }
