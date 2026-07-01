@@ -19,6 +19,7 @@ public class TilePiece : MonoBehaviour, IDamageable
     [SerializeField] private AnimationCurve heightDown = new();
 
 
+    public Transform Character => character;
     public HexTile Occupying => occupying;
     public int MaxMoveDistance => Mathf.RoundToInt(baseMoveDistance * moveDistanceMultiplier);
     public int MaxHealth => maxHealth;
