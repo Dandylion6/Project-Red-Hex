@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73e264561eb94e4b96bd47e5f85e026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoonShard
+  moonShard: {fileID: 8220525990647069492}
 --- !u!4 &4787325633574286553 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3005442468685797739, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
