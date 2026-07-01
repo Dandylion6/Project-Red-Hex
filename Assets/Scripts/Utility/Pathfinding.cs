@@ -39,6 +39,7 @@ public class Pathfinding
     public Result CalculatePath(HexTile start, HexTile end)
     {
         Result result = new();
+        result.path = new();
 
         List<HexTile> openTiles = new() { start };
         HashSet<HexTile> closedTiles = new();

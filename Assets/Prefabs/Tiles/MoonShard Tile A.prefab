@@ -460,7 +460,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2275196074529432531, guid: c376058583b141f46a85db3836a94f57, type: 3}
       propertyPath: m_Name
-      value: Rock Tile A Variant
+      value: MoonShard Tile A
       objectReference: {fileID: 0}
     - target: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
       propertyPath: m_LocalPosition.x
@@ -520,10 +520,30 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3525381052851750401}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2275196074529432531, guid: c376058583b141f46a85db3836a94f57, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1575436211510713169}
   m_SourcePrefab: {fileID: 100100000, guid: c376058583b141f46a85db3836a94f57, type: 3}
 --- !u!4 &2579768946314077188 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
   m_PrefabInstance: {fileID: 5893008731832187152}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5646162626213927619 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2275196074529432531, guid: c376058583b141f46a85db3836a94f57, type: 3}
+  m_PrefabInstance: {fileID: 5893008731832187152}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1575436211510713169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5646162626213927619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b73e264561eb94e4b96bd47e5f85e026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoonShard
