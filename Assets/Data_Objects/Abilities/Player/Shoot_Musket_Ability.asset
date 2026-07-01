@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: Shoot Musket
   itemSprite: {fileID: 21300000, guid: ba1a4d73d9554b5449b2d20b35d97828, type: 3}
   description: Fire a silver bullet at a foe. Make every shot count.
-  cooldown: 3
-  damage: 3
-  attackRange: 4
+  cooldown: 4
+  damage: 4
+  attackRange: 2
   ignoresObstacles: 0
