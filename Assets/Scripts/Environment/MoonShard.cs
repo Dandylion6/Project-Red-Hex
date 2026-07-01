@@ -1,0 +1,25 @@
+using UnityEngine;
+
+[RequireComponent(typeof(HexTile))]
+public class MoonShard : MonoBehaviour
+{
+    private HexTile tile = null;
+
+
+    private void Start()
+    {
+        if (TryGetComponent(out tile)) return;
+        tile.SubscribeToOnPiecePlaced(OnPiecePlaced);
+    }
+
+
+    private void OnPiecePlaced(TilePiece piece)
+    {
+        if (piece != GameManager.Instance.Player) return;
+        if (TeleportPoint.Instance == null) return;
+        TeleportPoint.Instance.AddMoonShard();
+    }
+
+
+    private void OnDestroy() => tile.UnsubscibeToOnPiecePlaced(OnPiecePlaced);
+}
