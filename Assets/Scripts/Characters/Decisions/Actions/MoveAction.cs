@@ -20,8 +20,13 @@ public class MoveAction : AIDecision<ItemData>
             yield return TurnManager.TurnWait;
 
             Brain.Piece.RotateTo(tile);
-            Brain.Piece.MoveTo(tile);
-            break;
+            if (!Brain.Piece.MoveTo(tile))
+            {
+                // Failed to move.
+                TurnManager.Instance.EndTurn();
+                break;
+            }
+              
         }
     }
 

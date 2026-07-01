@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,7 @@ public class TeleportPoint : Singleton<TeleportPoint>
     [SerializeField] private GameObject closedDoor = null;
     [SerializeField] private GameObject openedDoor = null;
     [SerializeField] private string goToScene = "Next Scene";
+    [SerializeField] private int moonShardsToCollect = 3;
 
 
     public int MoonShardsCollected => moonShardsCollected;
@@ -19,13 +21,13 @@ public class TeleportPoint : Singleton<TeleportPoint>
     private int moonShardsCollected = 0;
 
 
-    public void AddMoonShard() => moonShardsCollected = Mathf.Min(moonShardsCollected + 1, 3);
+    public void AddMoonShard() => moonShardsCollected = Mathf.Min(moonShardsCollected + 1, moonShardsToCollect);
 
 
     private bool CanTeleport(TilePiece piece)
     {
         if (piece != GameManager.Instance.Player) return false;
-        if (moonShardsCollected < REQUIRED_SHARDS) return false;
+        if (moonShardsCollected < moonShardsToCollect) return false;
         return true;
     }
 
