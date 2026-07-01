@@ -19,6 +19,7 @@ MonoBehaviour:
   damage: 2
   attackRange: 1
   ignoresObstacles: 0
+<<<<<<< Updated upstream
   combo:
   - hitChance: 100
     damageMultiplier: 1
@@ -26,3 +27,8 @@ MonoBehaviour:
     damageMultiplier: 1
   - hitChance: 30
     damageMultiplier: 2
+=======
+  hitChance: 45
+  minHits: 1
+  maxHits: 2
+>>>>>>> Stashed changes
