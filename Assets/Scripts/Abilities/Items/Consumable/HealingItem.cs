@@ -3,19 +3,15 @@ using UnityEngine;
 
 public class HealingItem : ConsumableItem<HealingItemData>
 {
-
-
     protected override IEnumerator ActionSequence()
     {
         StartCooldown();
         TurnManager.Instance.StartAction();
         UseConsumable();
-        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.PlayerHeal, SettingsManager.Instance.GameVolume, true, Player.transform.position);
-        yield return new WaitForSeconds(0.5f);
 
-        //heal player
         GameManager.Instance.Player.Heal(Data.getHealBy);
 
+        yield return TurnManager.TurnWait;
         TurnManager.Instance.EndTurn();
     }
 
@@ -23,12 +19,9 @@ public class HealingItem : ConsumableItem<HealingItemData>
     protected override void OnTileSelect(HexTile tile)
     {
         //additionally checks that player is less than max health
-        Debug.Log(Data.Count);
-        if (CanConsume(tile) && GameManager.Instance.Player.Health < GameManager.Instance.Player.MaxHealth)
-        
-            StartCoroutine(ActionSequence());
-        }
+        if (!CanConsume(tile)) return;
+        if (Player.Health >= Player.MaxHealth) return;
 
+        StartCoroutine(ActionSequence());
     }
-
-
+}
