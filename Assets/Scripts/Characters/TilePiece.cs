@@ -125,7 +125,7 @@ public class TilePiece : MonoBehaviour, IDamageable
         if (!tile.CanSetPiece(this)) return false;
         if (occupying != null) 
             occupying.RemovePiece();
-        
+
         occupying = tile;
 
         TurnManager.Instance.StartAction();

@@ -38,8 +38,10 @@ public class Pathfinding
 
     public Result CalculatePath(HexTile start, HexTile end)
     {
-        Result result = new();
-        result.path = new();
+        Result result = new()
+        {
+            path = new()
+        };
 
         List<HexTile> openTiles = new() { start };
         HashSet<HexTile> closedTiles = new();
@@ -74,6 +76,7 @@ public class Pathfinding
 
                 if (!neighbor.IsWalkable) continue;
                 if (neighbor.IsObstacle) continue;
+                if (neighbor.Piece != null) continue;
                 if (closedTiles.Contains(neighbor)) continue;
 
                 int tentativeG = nodes[current].g + 1;
