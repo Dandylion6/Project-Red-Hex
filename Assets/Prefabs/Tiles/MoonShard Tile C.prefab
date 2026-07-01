@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4909881054297384876, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
       propertyPath: m_Name
-      value: MoonShard Tile 2 Variant
+      value: MoonShard Tile C
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -58,8 +58,28 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3005442468685797739, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
       insertIndex: 0
       addedObject: {fileID: 8547623439340471315}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4909881054297384876, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4868446311249764999}
   m_SourcePrefab: {fileID: 100100000, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
+--- !u!1 &3457044340585663006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4909881054297384876, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
+  m_PrefabInstance: {fileID: 7771670672064048562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4868446311249764999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457044340585663006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b73e264561eb94e4b96bd47e5f85e026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoonShard
 --- !u!4 &4787325633574286553 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3005442468685797739, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
