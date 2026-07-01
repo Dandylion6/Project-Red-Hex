@@ -15,6 +15,7 @@ public class PiecePlacer : MonoBehaviour
 
         piece.SpawnAt(tile);
         Destroy(this); // Not needed anymore.
+        transform.rotation = Quaternion.identity; // The tile should be un-rotated.
     }
 
 
@@ -28,10 +29,12 @@ public class PiecePlacer : MonoBehaviour
 #if UNITY_EDITOR
     public void Rotate(bool right)
     {
-        float sign = right ? 1.0f : -1.0f;
-        Quaternion rotation = transform.rotation * Quaternion.Euler(0.0f, 60.0f * sign, 0.0f);
+        TilePiece piece = GetComponent<TilePiece>();
 
-        transform.rotation = rotation;
+        float sign = right ? 1.0f : -1.0f;
+        Quaternion rotation = piece.Character.rotation * Quaternion.Euler(0.0f, 60.0f * sign, 0.0f);
+        piece.Character.rotation = rotation;
+
         EditorSceneManager.MarkAllScenesDirty();
     }
 
