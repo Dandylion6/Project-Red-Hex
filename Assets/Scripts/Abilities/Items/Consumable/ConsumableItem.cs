@@ -1,10 +1,16 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public abstract class ConsumableItem<T> : Item<T> where T : ConsumableItemData
 {
-    private int count = 5;
-    
+    private int count = 0;
+
+    public void AddCount()
+    {
+        Data.SetCount(++count);
+    }
+
     protected override IEnumerator ActionSequence()
     {
             StartCooldown();
