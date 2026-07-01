@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: Rapier_Combo_Ability
   m_EditorClassIdentifier: Assembly-CSharp::ComboAttackData
   displayName: Silver Rapier
-  itemSprite: {fileID: 21300000, guid: 7a250b4d473df9644a2cfa687b147e42, type: 3}
-  description: Short description of the item.
+  itemSprite: {fileID: 21300000, guid: f8ee15adc62518c4fb001b239daa6c3f, type: 3}
+  description: 'A silver sword of destruction '
   cooldown: 0
-  damage: 2
+  damage: 1
   attackRange: 1
   ignoresObstacles: 0
-  hitChance: 40
-  minHits: 1
-  maxHits: 3
+  combo:
+  - hitChance: 100
+    damageMultiplier: 2
+  - hitChance: 65
+    damageMultiplier: 2
+  - hitChance: 35
+    damageMultiplier: 2

@@ -19,6 +19,7 @@ public class TilePiece : MonoBehaviour, IDamageable
     [SerializeField] private AnimationCurve heightDown = new();
 
 
+    public Transform Character => character;
     public HexTile Occupying => occupying;
     public int MaxMoveDistance => Mathf.RoundToInt(baseMoveDistance * moveDistanceMultiplier);
     public int MaxHealth => maxHealth;
@@ -123,9 +124,10 @@ public class TilePiece : MonoBehaviour, IDamageable
     public bool MoveTo(HexTile tile)
     {
         if (!tile.CanSetPiece(this)) return false;
-        if (occupying != null) 
+
+        if (occupying != null)
             occupying.RemovePiece();
-        
+
         occupying = tile;
 
         TurnManager.Instance.StartAction();
@@ -137,7 +139,6 @@ public class TilePiece : MonoBehaviour, IDamageable
                 .OnComplete(() =>
                 {
                     tile.SetPiece(this);
-                    occupying = tile;
                     TurnManager.Instance.EndTurn();
                     onMove?.Invoke(tile);
                 }).Play();

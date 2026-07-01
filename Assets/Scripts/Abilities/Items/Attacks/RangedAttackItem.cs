@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEngine;
 
 public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
 {
@@ -50,10 +49,12 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
         StartCooldown();
         TurnManager.Instance.StartAction();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return TurnManager.TurnWait;
 
         target.TakeDamage(Data.Damage);
         target = null;
+
+        yield return TurnManager.TurnWait;
         TurnManager.Instance.EndTurn();
     }
 }

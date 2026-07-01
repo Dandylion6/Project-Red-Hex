@@ -1,26 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class MoveAction : AIDecision<ItemData>
 {
     public override IEnumerator ActionSequence()
     {
-        Pathfinding.Result result = HexGridManager.Instance.CalculatePath(Brain.Player.Occupying, Brain.Piece.Occupying);
-        Stack<HexTile> path = result.path;
+        Pathfinding.Result result = HexGridManager.Instance.CalculatePath(Brain.Piece.Occupying, Brain.Player.Occupying);
+        List<HexTile> path = result.path;
 
-        while (path.Count > 0)
+        if (path.Count == 0)
         {
-            HexTile tile = path.Pop();
-            int distance = Hexagon.HexDistance(Brain.Piece.Occupying, tile);
-            if (distance > Brain.Piece.MaxMoveDistance) continue;
-
-            StartCooldown();
-
-            Brain.Piece.RotateTo(tile);
-            Brain.Piece.MoveTo(tile);
-            break;
+            TurnManager.Instance.EndTurn();
+            yield break;
         }
-        yield return null;
+
+        int i = Mathf.Min(path.Count, Brain.Piece.MaxMoveDistance) - 1;
+        HexTile tile = path[i];
+
+        TurnManager.Instance.StartAction();
+        StartCooldown();
+        yield return TurnManager.TurnWait;
+
+        Brain.Piece.RotateTo(tile);
+        if (Brain.Piece.MoveTo(tile))
+            yield break;
+
+        TurnManager.Instance.EndTurn();
     }
 
 
