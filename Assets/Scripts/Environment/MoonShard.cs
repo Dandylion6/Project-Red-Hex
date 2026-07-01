@@ -30,6 +30,6 @@ public class MoonShard : MonoBehaviour
     private void OnDestroy()
     {
         if (tile == null) return;
-        tile.UnsubscibeToOnPiecePlaced(OnPiecePlaced);
+        tile.UnsubscribeFromOnPiecePlaced(OnPiecePlaced);
     }
 }
