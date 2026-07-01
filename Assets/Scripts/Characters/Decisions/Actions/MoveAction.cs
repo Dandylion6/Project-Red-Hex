@@ -1,17 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class MoveAction : AIDecision<ItemData>
 {
     public override IEnumerator ActionSequence()
     {
         Pathfinding.Result result = HexGridManager.Instance.CalculatePath(Brain.Player.Occupying, Brain.Piece.Occupying);
-
-        if (result.path.Count == 0)
-        {
-            TurnManager.Instance.EndTurn();
-            yield break;
-        }
         Stack<HexTile> path = result.path;
 
         while (path.Count > 0)
@@ -25,11 +20,12 @@ public class MoveAction : AIDecision<ItemData>
             yield return TurnManager.TurnWait;
 
             Brain.Piece.RotateTo(tile);
-            Brain.Piece.MoveTo(tile);
+            if (!Brain.Piece.MoveTo(tile))
+            {
+                TurnManager.Instance.EndTurn();
+            }
             yield break;
         }
-
-        TurnManager.Instance.EndTurn();
     }
 
 
