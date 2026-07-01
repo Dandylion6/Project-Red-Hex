@@ -40,18 +40,7 @@ public class Enemy : TilePiece
 
     protected virtual void OnTurnChanged(TilePiece piece, TilePiece lastPiece)
     {
-        if (!isInCombat) EnterCombatCheck();
-
-        if (piece != this) return;
-        if (!TurnManager.Instance.HasTurn(this)) return;
-        StartCoroutine(TakeTurn());
-    }
-
-    
-    protected virtual IEnumerator TakeTurn()
-    {
-        Debug.Log("Enemy taking turn.");
-        yield return new WaitForSeconds(1.0f);
-        TurnManager.Instance.EndTurn();
+        if (!isInCombat) 
+            EnterCombatCheck();
     }
 }

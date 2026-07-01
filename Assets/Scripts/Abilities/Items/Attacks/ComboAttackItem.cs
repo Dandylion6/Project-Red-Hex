@@ -8,38 +8,33 @@ public class ComboAttackItem : RangedAttackItem<ComboAttackData>
         StartCooldown();
         TurnManager.Instance.StartAction();
 
-        for (int i = 0; i < Data.MaxHits; ++i)
+        foreach (ComboData combo in Data.Combo)
         {
-            yield return new WaitForSeconds(0.5f);
+            if (!CanHit(combo)) break;
 
-            if (i < Data.MinHits)
-            {
-                Hit();
-                continue;
-            }
-
-            if (!CanHit()) break;
-
-            Hit();
+            yield return TurnManager.TurnWait;
+            Hit(combo);
         }
 
+        yield return TurnManager.TurnWait;
         TurnManager.Instance.EndTurn();
     }
 
 
-    private bool CanHit()
+    private bool CanHit(ComboData combo)
     {
         if (Target == null) return false;
 
         float chance = Random.Range(0.0f, 100.0f);
-        if (chance > Data.HitChance) return false;
+        if (chance > combo.hitChance) return false;
         return true;
     }
 
 
-    private void Hit()
+    private void Hit(ComboData combo)
     {
         if (Target == null) return;
-        Target.TakeDamage(Data.Damage);
+        int damage = Mathf.RoundToInt(Data.Damage * combo.damageMultiplier);
+        Target.TakeDamage(damage);
     }
 }
