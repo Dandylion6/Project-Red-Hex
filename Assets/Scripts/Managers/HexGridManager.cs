@@ -88,6 +88,7 @@ public class HexGridManager : Singleton<HexGridManager>
             foreach (HexTile neighbor in neighbors)
             {
                 if (neighbor == null) continue;
+                if (neighbor.Piece != null) continue;
                 if (!neighbor.IsWalkable) continue;
                 if (neighbor.IsObstacle) continue;
 
