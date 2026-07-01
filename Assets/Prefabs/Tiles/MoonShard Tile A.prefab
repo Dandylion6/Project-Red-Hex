@@ -547,3 +547,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73e264561eb94e4b96bd47e5f85e026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoonShard
+  moonShard: {fileID: 6340092014880485381}
