@@ -26,7 +26,9 @@ public class DesperateSnap : AIDecision<DesperationAttackAction>
         {
             yield return TurnManager.TurnWait;
             Brain.Player.TakeDamage(Data.Damage);
+            yield break;
         }
+        TurnManager.Instance.EndTurn();
     }
 
 
