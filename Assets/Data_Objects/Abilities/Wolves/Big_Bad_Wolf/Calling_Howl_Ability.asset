@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 
   cooldown: 0
   callingHowlPoints:
-  - spawnAmount: 1
+  - spawnAmount: 2
     triggerHealthPercentage: 75
   - spawnAmount: 2
     triggerHealthPercentage: 25
