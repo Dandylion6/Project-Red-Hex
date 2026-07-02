@@ -88,6 +88,20 @@ public class TilePiece : MonoBehaviour, IDamageable
         Die();
     }
 
+    //OVERIDE TO PLAY AUDIO WHEN DAMAGED
+    public void TakeDamage(int damage, AudioClip damageSoundClip)
+    {
+        if (this != null) { AudioManager.Instance.PlayOneShot(damageSoundClip, SettingsManager.Instance.GameVolume, true, transform.position); }
+        
+        
+        health = Mathf.Max(health - damage, 0);
+        onDamageTaken?.Invoke(damage);
+
+        if (isDead) return;
+        if (health > 0) return;
+        Die();
+    }
+
 
     public void SpawnAt(HexTile tile)
     {
