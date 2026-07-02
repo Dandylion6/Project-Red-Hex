@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffd970c318a0ae4f80de4161c8e5135, type: 3}
   m_Name: Natures_Harvest_Ability
   m_EditorClassIdentifier: Assembly-CSharp::HealingItemData
-  displayName: Nature's Harvest
+  displayName: 'Foraged Mend '
   itemSprite: {fileID: 0}
-  description: Consume the berries plucked from this very forest; mending your soul.
+  description: Consume a handful of berries plucked fresh from the bramble.
   cooldown: 1
-  count: 5
+  count: 0
   healBy: 4

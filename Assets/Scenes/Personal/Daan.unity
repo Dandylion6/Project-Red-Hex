@@ -1170,52 +1170,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!1 &622146116
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 622146117}
-  - component: {fileID: 622146118}
-  m_Layer: 0
-  m_Name: Calling Howl Action
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &622146117
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 622146116}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1242319483}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &622146118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 622146116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ba9172a5edc3c40b07bffd8d4ea38e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CallingHowlAction
-  data: {fileID: 11400000, guid: 2d2d16962f1c7874b8002f2260d806e4, type: 2}
-  wolfPrefab: {fileID: 7016999103712717462, guid: 33c194e0672798e4b889d9bce92a8a87, type: 3}
 --- !u!1001 &665310958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1974,17 +1928,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5206966829546471458, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 622146117}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
---- !u!4 &1242319483 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5206966829546471458, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-  m_PrefabInstance: {fileID: 1074520797}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1259231844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2087,77 +2033,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HexTileMapBinder
   axialCoordinates:
-  - {x: 1, y: 0}
-  - {x: 4, y: -3}
-  - {x: 1, y: -2}
-  - {x: -1, y: 1}
-  - {x: 5, y: -3}
-  - {x: 5, y: -4}
-  - {x: 0, y: 1}
-  - {x: 1, y: 2}
-  - {x: 0, y: -2}
-  - {x: 0, y: -1}
-  - {x: 3, y: -3}
-  - {x: 3, y: -1}
-  - {x: 3, y: 0}
-  - {x: 4, y: -2}
-  - {x: 0, y: 2}
-  - {x: 3, y: 1}
-  - {x: 2, y: -1}
-  - {x: 1, y: -1}
   - {x: 2, y: 2}
+  - {x: 2, y: 1}
+  - {x: 6, y: -3}
+  - {x: 0, y: 2}
+  - {x: 5, y: -4}
+  - {x: 3, y: 0}
+  - {x: 1, y: -1}
+  - {x: 2, y: -1}
+  - {x: 3, y: -1}
+  - {x: 5, y: -3}
+  - {x: 1, y: -2}
+  - {x: 2, y: -2}
+  - {x: 4, y: -3}
+  - {x: 5, y: -2}
+  - {x: 4, y: 0}
+  - {x: 5, y: -1}
+  - {x: -1, y: 2}
+  - {x: 2, y: -3}
+  - {x: -1, y: 1}
+  - {x: 0, y: -1}
+  - {x: 1, y: 0}
+  - {x: -1, y: -1}
+  - {x: -1, y: 0}
+  - {x: 0, y: 1}
+  - {x: 0, y: 0}
+  - {x: 1, y: 2}
+  - {x: 3, y: 1}
   - {x: 3, y: -2}
   - {x: 2, y: 0}
   - {x: 6, y: -2}
-  - {x: 2, y: -2}
-  - {x: 5, y: -1}
-  - {x: -1, y: 0}
-  - {x: 2, y: -3}
-  - {x: 1, y: 1}
-  - {x: 2, y: 1}
-  - {x: 5, y: -2}
-  - {x: -1, y: -1}
-  - {x: 4, y: 0}
-  - {x: 0, y: 0}
-  - {x: 6, y: -3}
+  - {x: 0, y: -2}
+  - {x: 4, y: -2}
   - {x: 4, y: -1}
-  - {x: -1, y: 2}
+  - {x: 1, y: 1}
   hexTiles:
-  - {fileID: 368341068}
-  - {fileID: 382912003}
-  - {fileID: 964882759}
-  - {fileID: 1851401673}
-  - {fileID: 156287760}
-  - {fileID: 176487757}
-  - {fileID: 1374194956}
-  - {fileID: 1906068449}
-  - {fileID: 836584868}
-  - {fileID: 414547764}
-  - {fileID: 0}
-  - {fileID: 1352072112}
-  - {fileID: 1696766338}
-  - {fileID: 873370082}
-  - {fileID: 686718274}
-  - {fileID: 699851900}
-  - {fileID: 784551249}
-  - {fileID: 256325639}
   - {fileID: 924174329}
+  - {fileID: 44139380}
+  - {fileID: 88285097}
+  - {fileID: 686718274}
+  - {fileID: 176487757}
+  - {fileID: 1696766338}
+  - {fileID: 256325639}
+  - {fileID: 784551249}
+  - {fileID: 1352072112}
+  - {fileID: 156287760}
+  - {fileID: 964882759}
+  - {fileID: 542617182}
+  - {fileID: 382912003}
+  - {fileID: 51387009}
+  - {fileID: 1259231845}
+  - {fileID: 174512341}
+  - {fileID: 1763524772}
+  - {fileID: 359925974}
+  - {fileID: 1851401673}
+  - {fileID: 414547764}
+  - {fileID: 368341068}
+  - {fileID: 765465066}
+  - {fileID: 1672456070}
+  - {fileID: 1374194956}
+  - {fileID: 2106052845}
+  - {fileID: 1906068449}
+  - {fileID: 699851900}
   - {fileID: 431164746}
   - {fileID: 665310959}
   - {fileID: 1012355153}
-  - {fileID: 542617182}
-  - {fileID: 174512341}
-  - {fileID: 1672456070}
-  - {fileID: 359925974}
-  - {fileID: 1608263577}
-  - {fileID: 44139380}
-  - {fileID: 51387009}
-  - {fileID: 765465066}
-  - {fileID: 1259231845}
-  - {fileID: 2106052845}
-  - {fileID: 88285097}
+  - {fileID: 836584868}
+  - {fileID: 873370082}
   - {fileID: 2034636974}
-  - {fileID: 1763524772}
+  - {fileID: 1608263577}
 --- !u!4 &1340578967
 Transform:
   m_ObjectHideFlags: 0

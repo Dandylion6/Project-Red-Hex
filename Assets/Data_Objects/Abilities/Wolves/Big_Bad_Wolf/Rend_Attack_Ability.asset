@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b7b6957e3b92f4f877bfe780659fbd, type: 3}
   m_Name: Rend_Attack_Ability
   m_EditorClassIdentifier: Assembly-CSharp::RangedAttackData
-  displayName: Rend
+  displayName: Rending Claws
   itemSprite: {fileID: 0}
   description: 'Tear through flesh using brutal claws
 
