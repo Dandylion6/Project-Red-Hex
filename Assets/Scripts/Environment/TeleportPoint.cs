@@ -12,7 +12,6 @@ public class TeleportPoint : Singleton<TeleportPoint>
     [SerializeField] private GameObject closedDoor = null;
     [SerializeField] private GameObject openedDoor = null;
     [SerializeField] private string goToScene = "Next Scene";
-    [SerializeField] private int moonShardsToCollect = 3;
 
 
     public int MoonShardsCollected => moonShardsCollected;
@@ -21,7 +20,7 @@ public class TeleportPoint : Singleton<TeleportPoint>
     private int moonShardsCollected = 0;
 
 
-    public void AddMoonShard() => moonShardsCollected = Mathf.Min(moonShardsCollected + 1, 3);
+    public void AddMoonShard() => moonShardsCollected = Mathf.Min(moonShardsCollected + 1, REQUIRED_SHARDS);
 
 
     private bool CanTeleport(TilePiece piece)

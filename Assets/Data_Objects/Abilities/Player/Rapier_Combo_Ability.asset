@@ -17,13 +17,13 @@ MonoBehaviour:
   description: Deal a flurry of slashes with a silver rapier. This hierloom will
     bring you to revenge.
   cooldown: 0
-  damage: 1
+  damage: 2
   attackRange: 1
   ignoresObstacles: 0
   combo:
   - hitChance: 100
     damageMultiplier: 1
-  - hitChance: 75
+  - hitChance: 80
+    damageMultiplier: 1
+  - hitChance: 20
     damageMultiplier: 2
-  - hitChance: 25
-    damageMultiplier: 1.5
