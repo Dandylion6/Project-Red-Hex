@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 'Tear through flesh using brutal claws
 
 '
-  cooldown: 2
+  cooldown: 3
   damage: 3
   attackRange: 2
   ignoresObstacles: 0
