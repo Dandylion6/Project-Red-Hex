@@ -13,25 +13,31 @@ MonoBehaviour:
   m_Name: AudioBank
   m_EditorClassIdentifier: Assembly-CSharp::AudioBank
   uIClick: {fileID: 8300000, guid: 8aa68b104ab20134ab5f2818b1ad18b7, type: 3}
-  bossLunge: {fileID: 0}
+  bossLunge: {fileID: 8300000, guid: 230f70bf50030ec4398fc7c44ef1f766, type: 3}
+  bossSummon: {fileID: 8300000, guid: 98c8529642d271b43a0e24d255f812cf, type: 3}
+  berryClick: {fileID: 8300000, guid: ef102cb6be672ed47bf410e025e9f5a4, type: 3}
+  musketClick: {fileID: 8300000, guid: 70e0086e3dd2e8e4bad9ccf032f6ff40, type: 3}
+  buttonHover: {fileID: 8300000, guid: 8aa68b104ab20134ab5f2818b1ad18b7, type: 3}
+  bossSlash: {fileID: 0}
   mainMenuMusic: {fileID: 8300000, guid: 6ce268b1557ea354984fa790011e9313, type: 3}
-  firstLevelAmbience: {fileID: 0}
-  thirdLevelMusic: {fileID: 0}
+  firstLevelAmbience: {fileID: 8300000, guid: 231ebe55f98c8564093ab894c86dd9dc, type: 3}
+  secondLevelAmbience: {fileID: 8300000, guid: ba5e8207bd40e6b43a64e7475230cbc2, type: 3}
+  thirdLevelMusic: {fileID: 8300000, guid: c513375127db2a04e809407e5df11b6a, type: 3}
   musketFire:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: bc68b35795252d7429f2768e896ec83d, type: 3}
+  - {fileID: 8300000, guid: 122124c52dc1c754a88fc94ae66cbf8e, type: 3}
   musketHit:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 368de878dcde19049b0def3581616c48, type: 3}
+  - {fileID: 8300000, guid: b5743e5442f7dfb4890d486046143195, type: 3}
   rapierHit:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 34f7d6ff78a3966488ba6ee086c3daee, type: 3}
+  - {fileID: 8300000, guid: 0a0032ab940d22046b3ea728362e3111, type: 3}
   playerMove:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 13b52ea8e0e63ae4f8a3a89e5cdc348e, type: 3}
+  - {fileID: 8300000, guid: 265e7517e6b10404f93969228aa25f0a, type: 3}
   playerHeal:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 88e2e8461c0bde04c9f151075444bcdb, type: 3}
+  - {fileID: 8300000, guid: fa348f956349dd34fb544b43a1ec2ff7, type: 3}
   wolfAttack:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: dbd32b85c25670145b589a929b1b026d, type: 3}
+  - {fileID: 8300000, guid: b38a341131f38af42abaaf71a3c0471e, type: 3}

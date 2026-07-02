@@ -9,11 +9,16 @@ public class AudioBank : ScriptableObject
     [Header("One Shot Clips")]
     [SerializeField] private AudioClip uIClick;
     [SerializeField] private AudioClip bossLunge;
-
+    [SerializeField] private AudioClip bossSummon;
+    [SerializeField] private AudioClip berryClick;
+    [SerializeField] private AudioClip musketClick;
+    [SerializeField] private AudioClip buttonHover;
+    [SerializeField] private AudioClip bossSlash;
 
     [Header("Ambience/Loops")]
     [SerializeField] private AudioClip mainMenuMusic;
     [SerializeField] private AudioClip firstLevelAmbience;
+    [SerializeField] private AudioClip secondLevelAmbience;
     [SerializeField] private AudioClip thirdLevelMusic;
     
 
