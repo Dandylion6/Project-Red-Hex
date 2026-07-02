@@ -21,13 +21,13 @@ public class TeleportPoint : Singleton<TeleportPoint>
     private int moonShardsCollected = 0;
 
 
-    public void AddMoonShard() => moonShardsCollected = Mathf.Min(moonShardsCollected + 1, moonShardsToCollect);
+    public void AddMoonShard() => moonShardsCollected = Mathf.Min(moonShardsCollected + 1, 3);
 
 
     private bool CanTeleport(TilePiece piece)
     {
         if (piece != GameManager.Instance.Player) return false;
-        if (moonShardsCollected < moonShardsToCollect) return false;
+        if (moonShardsCollected < REQUIRED_SHARDS) return false;
         return true;
     }
 
