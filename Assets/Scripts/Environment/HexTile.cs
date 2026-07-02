@@ -68,7 +68,7 @@ public class HexTile : MonoBehaviour
     }
 
 
-    public bool CanSetPiece(TilePiece piece)
+    public bool CanSetPiece(TilePiece piece, bool ignoreDistance = false)
     {
         if (piece == null) return false;
         if (!isWalkable) return false;
@@ -77,7 +77,7 @@ public class HexTile : MonoBehaviour
         // Check path.
         Pathfinding.Result result = HexGridManager.Instance.CalculatePath(piece.Occupying, this);
         if (!result.isComplete) return false;
-        if (result.tileDistance > piece.MaxMoveDistance) return false;
+        if (!ignoreDistance && result.tileDistance > piece.MaxMoveDistance) return false;
 
         return true;
     }

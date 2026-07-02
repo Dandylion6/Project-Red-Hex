@@ -13069,22 +13069,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 489352140}
     m_Modifications:
-    - target: {fileID: 751963562022118321, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.8660254
-      objectReference: {fileID: 0}
-    - target: {fileID: 751963562022118321, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 751963562022118321, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 751963562022118321, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
     - target: {fileID: 761092374446891201, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
       propertyPath: m_Name
       value: Big Bad Wolf Piece
@@ -13128,46 +13112,6 @@ PrefabInstance:
     - target: {fileID: 4337112764661938328, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605848396787352980, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      propertyPath: heightDown.m_Curve.Array.data[1].time
-      value: 0.40192646
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605848396787352980, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      propertyPath: heightDown.m_Curve.Array.data[1].value
-      value: 1.002381
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605848396787352980, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      propertyPath: heightUp.m_Curve.Array.data[0].inSlope
-      value: 1.1123378
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605848396787352980, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      propertyPath: heightUp.m_Curve.Array.data[0].outSlope
-      value: 1.1123378
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605848396787352980, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      propertyPath: heightDown.m_Curve.Array.data[2].inSlope
-      value: 0.25293407
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605848396787352980, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      propertyPath: heightUp.m_Curve.Array.data[0].outWeight
-      value: 0.038528893
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605848396787352980, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      propertyPath: heightDown.m_Curve.Array.data[1].outSlope
-      value: -0.9256343
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605848396787352980, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      propertyPath: heightDown.m_Curve.Array.data[2].inWeight
-      value: 0.06295769
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605848396787352980, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      propertyPath: heightDown.m_Curve.Array.data[2].outSlope
-      value: 0.25293407
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605848396787352980, guid: 770ef42883f68624193f3aed0b66d2d5, type: 3}
-      propertyPath: heightDown.m_Curve.Array.data[1].outWeight
-      value: 0.08231163
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

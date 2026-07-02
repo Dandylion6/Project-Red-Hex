@@ -117,21 +117,19 @@ public class TilePiece : MonoBehaviour, IDamageable
     }
 
 
-    public bool MoveTo(Vector3 target)
+    public bool MoveTo(Vector3 target, bool ignoreDistance = false)
     {
         Vector2Int axialCoordinate = Hexagon.WorldToAxial(new(target.x, target.z));
         HexTile tile = HexGridManager.Instance.GetTile(axialCoordinate);
-        return MoveTo(tile);
+        return MoveTo(tile, ignoreDistance);
     }
 
 
-    public bool MoveTo(HexTile tile)
+    public bool MoveTo(HexTile tile, bool ignoreDistance = false)
     {
-        if (!tile.CanSetPiece(this)) return false;
+        if (!tile.CanSetPiece(this, ignoreDistance)) return false;
 
-        if (occupying != null)
-            occupying.RemovePiece();
-
+        occupying.RemovePiece();
         occupying = tile;
 
         TurnManager.Instance.StartAction();
@@ -151,7 +149,10 @@ public class TilePiece : MonoBehaviour, IDamageable
     }
 
 
-    private void MoveEnd(HexTile tile)
+    public void SetOccupying(HexTile tile) => occupying = tile;
+
+
+    public void MoveEnd(HexTile tile)
     {
         if (this is Enemy) // Should look at the player after moving.
         {
