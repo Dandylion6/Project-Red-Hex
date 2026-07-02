@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &120431023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4203559513321052757, guid: bc9c7cbecce318e40be1ccf68cd51230, type: 3}
+  m_PrefabInstance: {fileID: 1108775236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &714036021
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,6 +352,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 1890270073763945696, guid: bc9c7cbecce318e40be1ccf68cd51230, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ce4ff7526ce21c9479f1352b33af6775, type: 3}
     - target: {fileID: 5516110604920137405, guid: bc9c7cbecce318e40be1ccf68cd51230, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -426,6 +435,38 @@ PrefabInstance:
     - target: {fileID: 5516110604920137405, guid: bc9c7cbecce318e40be1ccf68cd51230, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546591249096174856, guid: bc9c7cbecce318e40be1ccf68cd51230, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546591249096174856, guid: bc9c7cbecce318e40be1ccf68cd51230, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546591249096174856, guid: bc9c7cbecce318e40be1ccf68cd51230, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 120431023}
+    - target: {fileID: 6546591249096174856, guid: bc9c7cbecce318e40be1ccf68cd51230, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546591249096174856, guid: bc9c7cbecce318e40be1ccf68cd51230, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546591249096174856, guid: bc9c7cbecce318e40be1ccf68cd51230, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546591249096174856, guid: bc9c7cbecce318e40be1ccf68cd51230, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546591249096174856, guid: bc9c7cbecce318e40be1ccf68cd51230, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -630,7 +671,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1039638274}
   - {fileID: 1108775236}
-  - {fileID: 1352783208}
   - {fileID: 714036024}
   - {fileID: 1936615516}
   - {fileID: 1984773600}

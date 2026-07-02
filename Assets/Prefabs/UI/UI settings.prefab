@@ -799,6 +799,7 @@ GameObject:
   - component: {fileID: 8424973178432285199}
   - component: {fileID: 2626906305928563211}
   - component: {fileID: 3421608320003739473}
+  - component: {fileID: 1964834815313630346}
   m_Layer: 5
   m_Name: UI settings
   m_TagString: Untagged
@@ -899,6 +900,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1964834815313630346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2909012437588377418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a17cd289586d18645bc5a35d454df3ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
 --- !u!1 &3648850977068635582
 GameObject:
   m_ObjectHideFlags: 0
