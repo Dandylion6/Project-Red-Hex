@@ -7,12 +7,21 @@ public class MainMenuUI : MonoBehaviour
     [Header("Main Menu Settings")]
     [SerializeField] private string startingScene = "Scene Name";
 
+    private AudioSource source;
+    public void Start()
+    {
+        source = GetComponent<AudioSource>();
+
+        AudioManager.Instance.PlayLoop(AudioManager.Instance.AudioBank.MainMenuMusic,transform,Vector3.zero, SettingsManager.Instance.MusicVolume);
+    }
 
     public void OnPlayPress() => StartCoroutine(LoadGame());
 
 
     private IEnumerator LoadGame()
     {
+        AudioManager.Instance.StopLoop(source);
+        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.UIClick, SettingsManager.Instance.GameVolume, false);
         DontDestroyOnLoad(gameObject);
         yield return SceneManager.LoadSceneAsync(BaseScenes.CORE_SCENE);
 
@@ -23,9 +32,11 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnSettingsPress()
     {
-
+        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.UIClick, SettingsManager.Instance.GameVolume, false);
     }
 
 
     public void OnQuitPress() => Application.Quit();
+
+    
 }

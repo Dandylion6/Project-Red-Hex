@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bff98ed3ffbd654d8a30451eed9b047, type: 3}
+  m_Name: AudioBank
+  m_EditorClassIdentifier: Assembly-CSharp::AudioBank
+  playerMove: {fileID: 8300000, guid: 13b52ea8e0e63ae4f8a3a89e5cdc348e, type: 3}
+  musketFire: {fileID: 8300000, guid: bc68b35795252d7429f2768e896ec83d, type: 3}
+  musketHit: {fileID: 8300000, guid: 368de878dcde19049b0def3581616c48, type: 3}
+  rapierHit: {fileID: 8300000, guid: 34f7d6ff78a3966488ba6ee086c3daee, type: 3}
+  playerHeal: {fileID: 8300000, guid: 88e2e8461c0bde04c9f151075444bcdb, type: 3}
+  uIClick: {fileID: 8300000, guid: 8aa68b104ab20134ab5f2818b1ad18b7, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: 6ce268b1557ea354984fa790011e9313, type: 3}
+  firstLevelAmbience: {fileID: 0}
+  thirdLevelMusic: {fileID: 0}

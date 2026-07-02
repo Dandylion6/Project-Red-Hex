@@ -15,18 +15,14 @@ public class MoveAction : AIDecision<ItemData>
             yield break;
         }
 
-        int i = Mathf.Min(path.Count, Brain.Piece.MaxMoveDistance) - 1;
-        HexTile tile = path[i];
+            TurnManager.Instance.StartAction();
+            StartCooldown();
+            yield return TurnManager.TurnWait;
 
-        TurnManager.Instance.StartAction();
-        StartCooldown();
-        yield return TurnManager.TurnWait;
-
-        Brain.Piece.RotateTo(tile);
-        if (Brain.Piece.MoveTo(tile))
-            yield break;
-
-        TurnManager.Instance.EndTurn();
+            Brain.Piece.RotateTo(tile);
+            Brain.Piece.MoveTo(tile);
+            break;
+        }
     }
 
 

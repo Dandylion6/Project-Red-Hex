@@ -28,6 +28,7 @@ public class MovementController : MonoBehaviour
             case TurnManager.State.Move:
                 {
                     HexGridManager.Instance.ClearOverlay();
+                    AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.PlayerMove, SettingsManager.Instance.GameVolume, true, transform.position);
                     transform.DOMoveY(position.y, 0.2f).SetEase(Ease.OutBounce).Play();
                     TurnManager.Instance.SetState(TurnManager.State.None);
                     break;
@@ -67,7 +68,7 @@ public class MovementController : MonoBehaviour
         if (outOfCombat) playerPiece.AddMoveMultiplier(outOfCombatMoveMultiplier);
         else playerPiece.RemoveMoveMultiplier(outOfCombatMoveMultiplier);
         
-        hasMultiplier = outOfCombat;
+        hasMultiplier = outOfCombat; 
     }
 
 
