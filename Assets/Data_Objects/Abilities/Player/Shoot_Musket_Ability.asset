@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RangedAttackData
   displayName: Hunter's Guidance
   itemSprite: {fileID: 21300000, guid: 039391c1f02c52b4983690792d171ef5, type: 3}
-  description: Fire a silver bullet at a foe. Take aim as the hunter before you did.
+  description: Fire a silver bullet at a foe. Take aim as the hunter did before you.
   cooldown: 4
   damage: 4
   attackRange: 2
