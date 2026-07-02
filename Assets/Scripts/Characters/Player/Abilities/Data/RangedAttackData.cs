@@ -8,11 +8,13 @@ public class RangedAttackData : ItemData
     [SerializeField][Min(1)] private int damage = 1;
     [SerializeField][Min(1)][Tooltip("Amoujnt of hexagon distance the attack can reach.")] private int attackRange = 2;
     [SerializeField] private bool ignoresObstacles = false;
+    [SerializeField] private EffectSequence effect = null;
 
 
     public int Damage => damage;
     public int AttackRange => attackRange;
     public bool IgnoresObstacles => ignoresObstacles;
+    public EffectSequence Effect => effect;
 
 
     public override Queue<ItemStatEntry> GetStats()

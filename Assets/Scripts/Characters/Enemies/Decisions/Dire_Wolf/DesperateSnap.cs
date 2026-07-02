@@ -24,7 +24,12 @@ public class DesperateSnap : AIDecision<DesperationAttackAction>
         Brain.Piece.RotateTo(tile);
         if (Brain.Piece.MoveTo(tile, true))
         {
-            yield return TurnManager.TurnWait;
+            if (Data.Effect != null)
+            {
+                EffectSequence sequence = Instantiate(Data.Effect);
+                yield return sequence.PlaySeqeunce(Brain.Piece);
+            }
+
             Brain.Player.TakeDamage(Data.Damage);
             yield break;
         }
