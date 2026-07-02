@@ -12,13 +12,13 @@ public class SettingsManager : Singleton<SettingsManager>
 
     public void setMusicVolume(Scrollbar musicVolume)
     {
-        settingsData.musicVolume = Mathf.Clamp(musicVolume.value, 0, 100);
+        settingsData.musicVolume = Mathf.Clamp(musicVolume.value * 100, 0, 100);
         Debug.Log(settingsData.musicVolume);
     }
 
     public void setGameVolume(Scrollbar gameVolume)
     {
-        settingsData.gameVolume = Mathf.Clamp(gameVolume.value, 0, 100);
+        settingsData.gameVolume = Mathf.Clamp(gameVolume.value * 100, 0, 100);
         Debug.Log(settingsData.gameVolume);
     }
 

@@ -8,11 +8,12 @@ public class CallingHowlAction : AIDecision<CallingHowlActionData>
 
 
     private int callingIndex = 0; // Keeps track of which howl is being called in the sequence.
+    private CallingHowlPoint currentPoint = null; // The current point in the calling howl sequence.
 
 
     public override IEnumerator ActionSequence()
     {
-        CallingHowlPoint point = Data.CallingHowlPoints[callingIndex];
+        currentPoint = Data.CallingHowlPoints[callingIndex++];
         StartCooldown();
         TurnManager.Instance.StartAction();
 
@@ -27,10 +28,9 @@ public class CallingHowlAction : AIDecision<CallingHowlActionData>
     private void OnTurnChanged(TilePiece currentPiece, TilePiece lastPiece)
     {
         if (currentPiece != Brain.Piece) return;
+        if (currentPoint == null) return;
 
-        CallingHowlPoint point = Data.CallingHowlPoints[callingIndex++];
-        SpawnWolves(point.SpawnAmount);
-
+        SpawnWolves(currentPoint.SpawnAmount);
         TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
     }
 

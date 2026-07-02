@@ -22,13 +22,15 @@ public class MovementController : MonoBehaviour
                 {
                     transform.DOMoveY(position.y + 0.3f, 0.2f).SetEase(Ease.OutBack).Play();
                     TurnManager.Instance.SetState(TurnManager.State.Move);
+                    
+                    AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.PlayerMove, SettingsManager.Instance.GameVolume, true, transform.position);
                     HexGridManager.Instance.DisplayRange(playerPiece.Occupying, playerPiece.MaxMoveDistance);
                     break;
                 }
             case TurnManager.State.Move:
                 {
                     HexGridManager.Instance.ClearOverlay();
-                    AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.PlayerMove, SettingsManager.Instance.GameVolume, true, transform.position);
+                    Debug.Log("MOVED");
                     transform.DOMoveY(position.y, 0.2f).SetEase(Ease.OutBounce).Play();
                     TurnManager.Instance.SetState(TurnManager.State.None);
                     break;
@@ -37,6 +39,7 @@ public class MovementController : MonoBehaviour
         }
     }
 
+    
 
     private void Start()
     {
