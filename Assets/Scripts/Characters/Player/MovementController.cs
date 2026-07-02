@@ -30,7 +30,6 @@ public class MovementController : MonoBehaviour
             case TurnManager.State.Move:
                 {
                     HexGridManager.Instance.ClearOverlay();
-                    Debug.Log("MOVED");
                     transform.DOMoveY(position.y, 0.2f).SetEase(Ease.OutBounce).Play();
                     TurnManager.Instance.SetState(TurnManager.State.None);
                     break;
