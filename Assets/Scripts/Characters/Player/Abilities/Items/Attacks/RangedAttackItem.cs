@@ -24,7 +24,7 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
         if (!CanAttack(tile, out IDamageable damageable)) return;
 
         target = damageable;
-        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.MusketFire, SettingsManager.Instance.GameVolume, true, Player.transform.position);
+        
         targetTile = tile;
         StartCoroutine(ActionSequence());
         Player.RotateTo(tile);
@@ -50,6 +50,7 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
 
     protected override IEnumerator ActionSequence()
     {
+        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.MusketFire, SettingsManager.Instance.GameVolume, true, Player.transform.position);
         StartCooldown();
         TurnManager.Instance.StartAction();
 
