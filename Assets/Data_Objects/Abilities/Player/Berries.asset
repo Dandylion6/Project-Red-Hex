@@ -17,4 +17,4 @@ MonoBehaviour:
   description: Berries that revive your soul
   cooldown: 0
   count: 5
-  healBy: 2
+  healBy: 4
