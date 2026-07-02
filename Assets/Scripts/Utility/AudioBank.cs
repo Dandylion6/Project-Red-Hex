@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.AdaptivePerformance;
 
 [CreateAssetMenu(fileName = "AudioBank", menuName = "Data/Items/AudioBank")]
 public class AudioBank : ScriptableObject
@@ -30,18 +31,31 @@ public class AudioBank : ScriptableObject
     [SerializeField] private AudioClip[] playerHeal = new AudioClip[2];
     [SerializeField] private AudioClip[] wolfAttack = new AudioClip[2];
 
+
     //one shot getters
+    public AudioClip UIClick => uIClick;
+
+    public AudioClip BossLunge => bossLunge;
+    public AudioClip BossSummon => bossSummon;
+
+    public AudioClip BerryClick => berryClick;
+    public AudioClip MusketClick => musketClick;
+    public AudioClip ButtonHover => buttonHover;
+    public AudioClip BossSlash => bossSlash;
+
+    //one shot random getters
     public AudioClip[] PlayerMove => playerMove;
     public AudioClip[] MusketFire => musketFire;
     public AudioClip[] MusketHit => musketHit;
     public AudioClip[] RapierHit => rapierHit;
     public AudioClip[] PlayerHeal => playerHeal;
     public AudioClip[] WolfAttack => wolfAttack;
-    public AudioClip UIClick => uIClick;
+    
 
     //loop getters
     public AudioClip MainMenuMusic => mainMenuMusic;
     public AudioClip FirstLevelAmbience => firstLevelAmbience;
+    public AudioClip SecondLevelAmbience => secondLevelAmbience;
     public AudioClip ThirdLevelMusic => thirdLevelMusic;
 
 
