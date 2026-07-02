@@ -17,5 +17,5 @@ MonoBehaviour:
   description: Fire a silver bullet at a foe. Take aim as the hunter before you did.
   cooldown: 4
   damage: 4
-  attackRange: 2
+  attackRange: 3
   ignoresObstacles: 0

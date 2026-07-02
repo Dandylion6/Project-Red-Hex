@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1531461342383406189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2421067485795684503}
+  - component: {fileID: 7873245883185683982}
+  m_Layer: 0
+  m_Name: Desperate Snap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2421067485795684503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531461342383406189}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8254833279166050080}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7873245883185683982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531461342383406189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e67397989373b94c901f9c77feae213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DesperateSnap
+  data: {fileID: 11400000, guid: b920e757c88e8a1499d0ef1b9cef0a9a, type: 2}
 --- !u!1 &8546436655179518873
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,7 +100,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 705091074983033443, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: decisions.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 705091074983033443, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: 'decisions.Array.data[0]'
@@ -63,6 +108,10 @@ PrefabInstance:
       objectReference: {fileID: 4066284290804351499}
     - target: {fileID: 705091074983033443, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: 'decisions.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7873245883185683982}
+    - target: {fileID: 705091074983033443, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
+      propertyPath: 'decisions.Array.data[2]'
       value: 
       objectReference: {fileID: 2664309565262271021}
     - target: {fileID: 3959154606130706494, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
@@ -135,6 +184,9 @@ PrefabInstance:
       addedObject: {fileID: 1677773512262946098}
     - targetCorrespondingSourceObject: {fileID: 2675088164695162248, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       insertIndex: 0
+      addedObject: {fileID: 2421067485795684503}
+    - targetCorrespondingSourceObject: {fileID: 2675088164695162248, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
+      insertIndex: 1
       addedObject: {fileID: 3125298264724559308}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}

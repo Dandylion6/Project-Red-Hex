@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class MoveAction : AIDecision<ItemData>
+public class DesperateSnap : AIDecision<DesperationAttackAction>
 {
     public override IEnumerator ActionSequence()
     {
@@ -15,7 +14,7 @@ public class MoveAction : AIDecision<ItemData>
             yield break;
         }
 
-        int i = Mathf.Min(path.Count - 1, Brain.Piece.MaxMoveDistance) - 1;
+        int i = path.Count - 2; // Will always get to the player.
         HexTile tile = path[i];
 
         TurnManager.Instance.StartAction();
@@ -23,14 +22,21 @@ public class MoveAction : AIDecision<ItemData>
         yield return TurnManager.TurnWait;
 
         Brain.Piece.RotateTo(tile);
-        Brain.Piece.MoveTo(tile);
+        if (Brain.Piece.MoveTo(tile, true))
+        {
+            yield return TurnManager.TurnWait;
+            Brain.Player.TakeDamage(Data.Damage);
+        }
     }
 
 
     public override bool IsValidAction()
     {
         int distance = Hexagon.HexDistance(Brain.Piece.Occupying, Brain.Player.Occupying);
-        if (distance <= 1) return false; // Can't move anymore.
+        if (distance > Data.AttackRange) return false;
+
+        float healthPercentage = (Brain.Piece.Health / (float)Brain.Piece.MaxHealth) * 100.0f;
+        if (healthPercentage > Data.DesperationThreshold) return false;
         return true;
     }
 }
