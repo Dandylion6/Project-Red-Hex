@@ -432,8 +432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d7dadfd5809d945acca3f248e00bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableTile
+  toRemove: {fileID: 2391569952689363098}
   consumable: {fileID: 11400000, guid: d9281e9b57415fe4c9ebf188bbb8f03c, type: 2}
-  toPickUp: {fileID: 2391569952689363098}
 --- !u!1001 &4530847174103680894
 PrefabInstance:
   m_ObjectHideFlags: 0
