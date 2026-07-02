@@ -382,7 +382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8267271541571906364, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
       propertyPath: m_Name
-      value: Berry Tile Variant
+      value: Berry Tile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -405,13 +405,35 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
       insertIndex: 5
       addedObject: {fileID: 2560920242432645952}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8267271541571906364, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4831980501577913747}
   m_SourcePrefab: {fileID: 100100000, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
 --- !u!4 &2706803144589989712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2246490701953357307, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
   m_PrefabInstance: {fileID: 4232640905986146987}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5189945366501484951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8267271541571906364, guid: bf61d14cf93694842bed41bc6ad768f5, type: 3}
+  m_PrefabInstance: {fileID: 4232640905986146987}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4831980501577913747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5189945366501484951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39d7dadfd5809d945acca3f248e00bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConsumableTile
+  consumable: {fileID: 11400000, guid: d9281e9b57415fe4c9ebf188bbb8f03c, type: 2}
+  toPickUp: {fileID: 2391569952689363098}
 --- !u!1001 &4530847174103680894
 PrefabInstance:
   m_ObjectHideFlags: 0

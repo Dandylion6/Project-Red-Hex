@@ -44,15 +44,24 @@ public class TurnCombatUI : MonoBehaviour
 
         turnRotate = turnPivot.DOAnchorPosY(turnEndHeight, 1.0f).SetEase(Ease.InOutBack).SetAutoKill(false).Pause();
         canvas.alpha = 0.0f;
+        canvas.interactable = false;
         descriptionBox.alpha = 0.0f;
     }
 
 
     private void OnTurnChanged(TilePiece currentPiece, TilePiece lastPiece)
     {
-        float fade = TurnManager.Instance.IsInCombat ? 1.0f : 0.0f;
-        canvas.DOKill();
-        canvas.DOFade(fade, 0.4f).SetEase(Ease.InOutSine).Play();
+        if (TurnManager.Instance.IsInCombat)
+        {
+            canvas.DOKill();
+            canvas.DOFade(1.0f, 0.3f).SetEase(Ease.OutSine).OnComplete(() => canvas.interactable = true).Play();
+        }
+        else
+        {
+            canvas.DOKill();
+            canvas.DOFade(0.0f, 0.45f).SetEase(Ease.InOutSine).Play();
+            canvas.interactable = false;
+        }
         
         if (currentTurnIndex == TurnManager.Instance.TurnsInCombat) return;
 

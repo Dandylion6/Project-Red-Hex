@@ -296,13 +296,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6340092014880485381}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.6423553, y: 0.09629474, z: 0.19189031, w: 0.7357208}
-  m_LocalPosition: {x: 0.024, y: 0.977, z: -0.03505087}
-  m_LocalScale: {x: 189.10002, y: 189.10002, z: 189.09996}
+  m_LocalRotation: {x: -0.8777835, y: -0.035779584, z: -0.36699724, w: 0.3058253}
+  m_LocalPosition: {x: -0.075, y: 1.032, z: -0.037}
+  m_LocalScale: {x: 189.10002, y: 189.10002, z: 189.09995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2579768946314077188}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 5249945211246945721}
+  m_LocalEulerAnglesHint: {x: -34.275, y: -228.868, z: 191.282}
 --- !u!33 &9014449031575612380
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -360,6 +360,118 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8103730104352511785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1800892139359449845}
+  - component: {fileID: 3763739612761100237}
+  - component: {fileID: 9027844189890157235}
+  - component: {fileID: 7405963074363318367}
+  m_Layer: 3
+  m_Name: Shard Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1800892139359449845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8103730104352511785}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.013, y: 1.038, z: -0.108}
+  m_LocalScale: {x: 0.38000003, y: 0.38000003, z: 0.38000003}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 5249945211246945721}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3763739612761100237
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8103730104352511785}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &9027844189890157235
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8103730104352511785}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 38ce64ffad0003a42aab9b3f8177f888, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &7405963074363318367
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8103730104352511785}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8710017527728328736
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +562,39 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8783387373223716079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5249945211246945721}
+  m_Layer: 3
+  m_Name: Moon Shard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5249945211246945721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783387373223716079}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8387768240722820128}
+  - {fileID: 1800892139359449845}
+  m_Father: {fileID: 2579768946314077188}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5893008731832187152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -464,15 +609,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.5
+      value: 9.79357
       objectReference: {fileID: 0}
     - target: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.008077877
+      value: 0.010790116
       objectReference: {fileID: 0}
     - target: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.7942286
+      value: -0.36318874
       objectReference: {fileID: 0}
     - target: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
       propertyPath: m_LocalRotation.w
@@ -480,15 +625,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -507,9 +652,6 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8387768240722820128}
-    - targetCorrespondingSourceObject: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 394151993408489084}
     - targetCorrespondingSourceObject: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
       insertIndex: -1
@@ -520,6 +662,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3525381052851750401}
+    - targetCorrespondingSourceObject: {fileID: 8215975329270045972, guid: c376058583b141f46a85db3836a94f57, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5249945211246945721}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2275196074529432531, guid: c376058583b141f46a85db3836a94f57, type: 3}
       insertIndex: -1
@@ -547,4 +692,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73e264561eb94e4b96bd47e5f85e026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoonShard
-  moonShard: {fileID: 6340092014880485381}
+  toRemove: {fileID: 8783387373223716079}

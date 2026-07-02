@@ -20,6 +20,27 @@ public class HotBar : Singleton<HotBar>
     public void UnsubscribeFromOnSelectionChanged(Action<Item, Item> callback) => onSelectionChanged -= callback;
 
 
+    public bool AddConsumable(ConsumableItemData consumable)
+    {
+        IConsumable item = FindConsumable(consumable);
+        if (item == null) return false;
+        
+        item.AddConsumable();
+        return true;
+    }
+
+
+    private IConsumable FindConsumable(ConsumableItemData consumable)
+    {
+        foreach (Item item in items)
+        {
+            if (item.BaseData == consumable)
+                return item as IConsumable;
+        }
+        return null;
+    }
+
+
     public void SelectItem(Item item)
     {
         if (!TurnManager.Instance.HasTurn(player)) return;
