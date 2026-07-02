@@ -79,6 +79,7 @@ public class HotBar : Singleton<HotBar>
 
     private void DeselectCurrentItem()
     {
+        if (TurnManager.Instance.CurrentState != TurnManager.State.UseItem) return;
         TurnManager.Instance.SetState(TurnManager.State.None);
 
         Item lastItem = currentItem;

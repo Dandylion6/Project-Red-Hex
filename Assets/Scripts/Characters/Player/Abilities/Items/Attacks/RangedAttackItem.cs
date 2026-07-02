@@ -50,14 +50,13 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
 
     protected override IEnumerator ActionSequence()
     {
-        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.MusketFire, SettingsManager.Instance.GameVolume, true, Player.transform.position);
         StartCooldown();
         TurnManager.Instance.StartAction();
-
+        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.MusketFire, SettingsManager.Instance.GameVolume , true, Player.transform.position);
         yield return TurnManager.TurnWait;
 
-        target.TakeDamage(Data.Damage);
-        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.MusketHit, SettingsManager.Instance.GameVolume, true, targetTile.transform.position); 
+        target.TakeDamage(Data.Damage, AudioManager.Instance.AudioBank.MusketHit);
+         
         target = null;
 
         yield return TurnManager.TurnWait;

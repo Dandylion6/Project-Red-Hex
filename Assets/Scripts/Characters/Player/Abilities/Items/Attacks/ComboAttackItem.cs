@@ -35,6 +35,6 @@ public class ComboAttackItem : RangedAttackItem<ComboAttackData>
     {
         if (Target == null) return;
         int damage = Mathf.RoundToInt(Data.Damage * combo.damageMultiplier);
-        Target.TakeDamage(damage);
+        Target.TakeDamage(damage, AudioManager.Instance.AudioBank.RapierHit);
     }
 }
