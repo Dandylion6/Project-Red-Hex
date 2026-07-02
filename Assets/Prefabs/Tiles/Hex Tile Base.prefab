@@ -51,6 +51,7 @@ MonoBehaviour:
   currentTile: {fileID: 2787473265355952962}
   tileVariants: []
   isWalkable: 1
+  isObstacle: 0
   heightOffset: 0
   ignoreHeight: 0
 --- !u!64 &1977829871318713785
@@ -88,7 +89,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HexOverlay
   spriteRenderer: {fileID: 6288576547562979921}
-  rangeColor: {r: 0.9811321, g: 0.9640518, b: 0.85463387, a: 1}
+  rangeColor: {r: 0.9811321, g: 0.9454699, b: 0.8006408, a: 0.78431374}
+  targetColor: {r: 0.30153078, g: 0.8301887, b: 0.37825346, a: 1}
 --- !u!1 &8306431906180277721
 GameObject:
   m_ObjectHideFlags: 0
