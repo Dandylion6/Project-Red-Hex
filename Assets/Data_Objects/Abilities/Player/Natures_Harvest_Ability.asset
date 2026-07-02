@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Natures_Harvest_Ability
   m_EditorClassIdentifier: Assembly-CSharp::HealingItemData
   displayName: Nature's Harvest
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 25bfd245966333947b627c1c0bef04f0, type: 3}
   description: Consume the berries plucked from this very forest; mending your soul.
   cooldown: 1
-  count: 5
+  count: 0
   healBy: 4
