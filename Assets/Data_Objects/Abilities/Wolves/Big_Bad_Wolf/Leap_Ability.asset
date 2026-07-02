@@ -16,5 +16,5 @@ MonoBehaviour:
   itemSprite: {fileID: 0}
   description: You can't run and you can't hide.
   cooldown: 3
-  triggerDistance: 2
+  triggerDistance: 3
   turnsToCommit: 2
