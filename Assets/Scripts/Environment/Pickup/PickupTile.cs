@@ -40,9 +40,7 @@ public abstract class PickupTile : MonoBehaviour
             toRemove.transform.DOMoveY(idlePosition.y + piece.HealthBarHeight, 0.5f).SetEase(Ease.OutBack).Play();
             return;
         }
-
-        if (TeleportPoint.Instance == null) return;
-
+        
         toRemove.transform.DOMoveY(idlePosition.y + piece.HealthBarHeight, 0.5f).SetEase(Ease.OutBack).OnComplete(OnPickup).Play();
     }
 
