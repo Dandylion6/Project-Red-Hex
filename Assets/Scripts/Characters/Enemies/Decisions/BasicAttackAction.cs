@@ -10,7 +10,7 @@ public class BasicAttackAction : AIDecision<RangedAttackData>
 
         Brain.Piece.RotateTo(Brain.Player.Occupying);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return TurnManager.TurnWait;
 
         Brain.Player.TakeDamage(Data.Damage);
         TurnManager.Instance.EndTurn();

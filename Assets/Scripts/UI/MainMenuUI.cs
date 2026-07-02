@@ -24,8 +24,9 @@ public class MainMenuUI : MonoBehaviour
         AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.UIClick, SettingsManager.Instance.GameVolume, false);
         DontDestroyOnLoad(gameObject);
         yield return SceneManager.LoadSceneAsync(BaseScenes.CORE_SCENE);
+        yield return SceneManager.LoadSceneAsync(startingScene, LoadSceneMode.Additive);
 
-        SceneManager.LoadScene(startingScene, LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(startingScene));
         Destroy(gameObject);
     }
 
