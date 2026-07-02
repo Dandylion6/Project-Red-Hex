@@ -10,6 +10,7 @@ public class HealingItem : ConsumableItem<HealingItemData>
         StartCooldown();
         TurnManager.Instance.StartAction();
         UseConsumable();
+        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.PlayerHeal, SettingsManager.Instance.GameVolume, true, Player.transform.position);
         yield return new WaitForSeconds(0.5f);
 
         //heal player

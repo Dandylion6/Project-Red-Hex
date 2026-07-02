@@ -7,6 +7,8 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
 
     private IDamageable target = null;
 
+    private HexTile targetTile;
+
 
     protected override void OnItemSelected()
     {
@@ -23,6 +25,8 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
         if (!CanAttack(tile, out IDamageable damageable)) return;
 
         target = damageable;
+        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.MusketFire, SettingsManager.Instance.GameVolume, true, Player.transform.position);
+        targetTile = tile;
         StartCoroutine(ActionSequence());
     }
 
@@ -52,6 +56,7 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
         yield return new WaitForSeconds(0.5f);
 
         target.TakeDamage(Data.Damage);
+        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.MusketHit, SettingsManager.Instance.GameVolume, true, targetTile.transform.position); 
         target = null;
         TurnManager.Instance.EndTurn();
     }

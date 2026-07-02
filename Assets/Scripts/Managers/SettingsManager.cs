@@ -6,6 +6,9 @@ public class SettingsManager : Singleton<SettingsManager>
 
     private static SettingsData settingsData;
 
+    public float MusicVolume => settingsData.musicVolume;
+
+    public float GameVolume => settingsData.gameVolume;
 
     public void setMusicVolume(Scrollbar musicVolume)
     {
@@ -17,6 +20,11 @@ public class SettingsManager : Singleton<SettingsManager>
     {
         settingsData.gameVolume = Mathf.Clamp(gameVolume.value, 0, 100);
         Debug.Log(settingsData.gameVolume);
+    }
+
+    public void PlayUIClip()
+    {
+        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.UIClick, SettingsManager.Instance.GameVolume, false);
     }
 
 
