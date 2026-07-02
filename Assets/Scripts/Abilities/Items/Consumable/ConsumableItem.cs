@@ -46,12 +46,12 @@ public abstract class ConsumableItem<T> : Item<T>, IConsumable where T : Consuma
 
     protected override void OnItemSelected()
     {
-
         HexGridManager.DisplayType displayType = HexGridManager.DisplayType.Basic;
         HexGridManager.Instance.DisplayRange(Player.Occupying, 0, displayType);
-
-        Data.SetCount(count);
     }
+
+
+    private void Awake() => Data.SetCount(count);
 }
 
 public class ConsumableItem : ConsumableItem<ConsumableItemData>
