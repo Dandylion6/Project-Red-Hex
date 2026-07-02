@@ -39,6 +39,7 @@ public class GameManager : Singleton<GameManager>
         yield return SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Additive);
         
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(nextScene));
+        onGameRestart?.Invoke();
     }
 
     private IEnumerator RestartScene()
