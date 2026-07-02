@@ -257,6 +257,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameUI
   questText: {fileID: 2462035234299505352}
   questDescription: Find all Moon Shards to open the gate.
+  bossQuestDescription: Somwhere deep within these woods, the <b>wolf</b> still wears
+    her shawl. Slay the beast.
 --- !u!1 &2591597464092866481
 GameObject:
   m_ObjectHideFlags: 0
