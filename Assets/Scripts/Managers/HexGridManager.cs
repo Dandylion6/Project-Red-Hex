@@ -181,7 +181,7 @@ public class HexGridManager : Singleton<HexGridManager>
 
             if (!tileMap.TryGetValue(axialCoordinate, out HexTile next)) return false;
             if (next.IsObstacle) return false;
-            if (!ignoresPieces && next.Piece != null) return false;
+            if (!ignoresPieces && next.Piece != null && next.Piece != end.Piece) return false;
         }
         return true;
     }
