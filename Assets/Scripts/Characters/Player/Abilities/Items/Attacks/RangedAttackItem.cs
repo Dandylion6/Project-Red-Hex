@@ -52,7 +52,7 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
     {
         StartCooldown();
         TurnManager.Instance.StartAction();
-        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.MusketFire, SettingsManager.Instance.GameVolume , true, Player.transform.position);
+        AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.MusketFire, SettingsManager.Instance.GameVolume , true, Player.transform.position);
         yield return TurnManager.TurnWait;
 
         target.TakeDamage(Data.Damage, AudioManager.Instance.AudioBank.MusketHit);

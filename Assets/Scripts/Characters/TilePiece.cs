@@ -1,5 +1,6 @@
-using DG.Tweening;
 using System;
+using System.Collections.Generic;
+using DG.Tweening;
 using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -94,6 +95,19 @@ public class TilePiece : MonoBehaviour, IDamageable
         if (this != null) { AudioManager.Instance.PlayOneShot(damageSoundClip, SettingsManager.Instance.GameVolume, true, transform.position); }
         
         
+        health = Mathf.Max(health - damage, 0);
+        onDamageTaken?.Invoke(damage);
+
+        if (isDead) return;
+        if (health > 0) return;
+        Die();
+    }
+
+    //OVERIDE TO PLAY AUDIO WHEN DAMAGED (List)
+    public void TakeDamage(int damage, AudioClip[] clipList)
+    {
+        if (this != null) { AudioManager.Instance.PlayOneShotRandom(clipList, SettingsManager.Instance.GameVolume, true, transform.position); }
+
         health = Mathf.Max(health - damage, 0);
         onDamageTaken?.Invoke(damage);
 
