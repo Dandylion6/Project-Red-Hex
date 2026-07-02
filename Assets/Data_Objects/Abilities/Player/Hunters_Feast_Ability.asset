@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ffd970c318a0ae4f80de4161c8e5135, type: 3}
-  m_Name: Berries
+  m_Name: Hunters_Feast_Ability
   m_EditorClassIdentifier: Assembly-CSharp::HealingItemData
   displayName: Berries
   itemSprite: {fileID: 0}
-  description: Berries that revive your soul
-  cooldown: 0
+  description: Consume the berries plucked from this very forest; mending your soul.
+  cooldown: 1
   count: 5
   healBy: 4
