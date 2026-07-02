@@ -67,7 +67,7 @@ PrefabInstance:
       objectReference: {fileID: 2664309565262271021}
     - target: {fileID: 3959154606130706494, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: maxHealth
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3959154606130706494, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: combatRange
