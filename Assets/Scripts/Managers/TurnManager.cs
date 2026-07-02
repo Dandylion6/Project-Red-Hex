@@ -121,10 +121,13 @@ public class TurnManager : Singleton<TurnManager>
     {
         activePieces.Clear();
         activePieces.Add(GameManager.Instance.Player);
+        isInCombat = false;
+
+        currentState = State.None;
+        onTurnChanged?.Invoke(null, null);
 
         yield return TurnWait;
 
-        isInCombat = false;
         GivePlayerTurn();
     }
 

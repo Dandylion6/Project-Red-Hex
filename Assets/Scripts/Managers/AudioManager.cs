@@ -277,7 +277,9 @@ public class AudioManager : Singleton<AudioManager>
         if (poolHasSource)
         {
             sourceInfo = audioPool.Dequeue();
-            sourceInfo.source.gameObject.SetActive(true);
+            if (sourceInfo == null) return null;
+            if (sourceInfo.source != null)
+                sourceInfo.source.gameObject.SetActive(true);
             return sourceInfo;
         }
 
