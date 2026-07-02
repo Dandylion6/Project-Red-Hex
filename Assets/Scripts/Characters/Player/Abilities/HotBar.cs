@@ -88,13 +88,27 @@ public class HotBar : Singleton<HotBar>
     }
 
 
-    private void Start() => player = GameManager.Instance.Player;
-
-
-    private void Update()
+    private void Start()
     {
-        // When it isn't the player's turn they can't choose any item to use.
-        if (!TurnManager.Instance.HasTurn(player) && currentItem != null)
+        player = GameManager.Instance.Player;
+        TurnManager.Instance.SubscribeToOnTurnChanged(OnTurnChanged);
+    }
+
+
+    private void OnTurnChanged(TilePiece currentPiece, TilePiece lastPiece)
+    {
+        if (!TurnManager.Instance.IsInCombat)
+        {
             DeselectCurrentItem();
+            return;
+        }
+        if (currentPiece != player) DeselectCurrentItem();
+    }
+
+
+    private void OnDestroy()
+    {
+        if (TurnManager.Instance == null) return;
+        TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
     }
 }
