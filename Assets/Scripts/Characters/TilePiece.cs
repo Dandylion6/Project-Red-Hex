@@ -20,6 +20,10 @@ public class TilePiece : MonoBehaviour, IDamageable
     [SerializeField] private AnimationCurve heightDown = new();
 
 
+    [SerializeField] AudioClip[] attackSound;
+
+    
+
     public Transform Character => character;
     public HexTile Occupying => occupying;
     public int MaxMoveDistance => Mathf.RoundToInt(baseMoveDistance * moveDistanceMultiplier);
@@ -27,6 +31,8 @@ public class TilePiece : MonoBehaviour, IDamageable
     public int Health => health;
     public float HealthBarHeight => healthBarHeight;
     public bool IsDead => isDead;
+
+    public AudioClip[] AttackSound => attackSound;
 
     private Action<HexTile> onMove = null;
     private Action<int> onDamageTaken = null;

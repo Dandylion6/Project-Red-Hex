@@ -103,6 +103,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 705091074983033443, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
+      propertyPath: attackSound.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 705091074983033443, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: 'decisions.Array.data[0]'
       value: 
       objectReference: {fileID: 4066284290804351499}
@@ -114,6 +118,14 @@ PrefabInstance:
       propertyPath: 'decisions.Array.data[2]'
       value: 
       objectReference: {fileID: 2664309565262271021}
+    - target: {fileID: 705091074983033443, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
+      propertyPath: 'attackSound.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: dbd32b85c25670145b589a929b1b026d, type: 3}
+    - target: {fileID: 705091074983033443, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
+      propertyPath: 'attackSound.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: b38a341131f38af42abaaf71a3c0471e, type: 3}
     - target: {fileID: 3959154606130706494, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: maxHealth
       value: 8

@@ -6,8 +6,9 @@ public class DecisionBrain : MonoBehaviour
 {
     [Header("Brain Settings")]
     [SerializeField] private List<AIDecision> decisions = new();
+    [SerializeField] private AudioClip[] attackSound;
 
-
+    public AudioClip[] AttackSound => attackSound;
     public TilePiece Player => player;
     public TilePiece Piece => piece;
 
