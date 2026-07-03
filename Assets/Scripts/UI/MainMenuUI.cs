@@ -12,7 +12,6 @@ public class MainMenuUI : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
 
-        AudioManager.Instance.PlayLoop(AudioManager.Instance.AudioBank.MainMenuMusic,transform,Vector3.zero, SettingsManager.Instance.MusicVolume);
     }
 
     public void OnPlayPress() => StartCoroutine(LoadGame());

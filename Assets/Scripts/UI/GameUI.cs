@@ -43,4 +43,6 @@ public class GameUI : MonoBehaviour
 
 
     private void OnDestroy() => TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
+
+    
 }

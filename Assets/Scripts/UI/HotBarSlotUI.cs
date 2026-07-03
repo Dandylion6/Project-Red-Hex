@@ -10,6 +10,7 @@ public class HotBarSlotUI : MonoBehaviour
     [SerializeField] private Image itemIcon = null;
     [SerializeField] private GameObject cooldown = null;
     [SerializeField] private TMP_Text cooldownTimer = null;
+    
 
     [Header("Animation Settings")]
     [SerializeField] private float selectionOffset = 10.0f;
@@ -45,7 +46,11 @@ public class HotBarSlotUI : MonoBehaviour
     }
 
 
-    public void OnButtonClick() => HotBar.Instance.SelectItem(item);
+    public void OnButtonClick()
+    {
+        HotBar.Instance.SelectItem(item);
+        AudioManager.Instance.PlayOneShot(item.SelectionClip, SettingsManager.Instance.GameVolume);
+    }
 
 
     private void OnSelectionChanged(Item currentItem, Item lastItem)

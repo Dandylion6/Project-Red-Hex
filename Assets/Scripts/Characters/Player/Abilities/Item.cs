@@ -18,6 +18,9 @@ public abstract class Item : MonoBehaviour
     }
 
 
+    [SerializeField] private AudioClip selectionClip;
+
+    public AudioClip SelectionClip => selectionClip;
     public abstract ItemData BaseData { get; } // Will be overriden by T type.
     public int CooldownLeft => cooldownLeft;
 

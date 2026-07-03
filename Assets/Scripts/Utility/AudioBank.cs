@@ -14,7 +14,6 @@ public class AudioBank : ScriptableObject
     [SerializeField] private AudioClip berryClick;
     [SerializeField] private AudioClip musketClick;
     [SerializeField] private AudioClip buttonHover;
-    [SerializeField] private AudioClip bossSlash;
 
     [Header("Ambience/Loops")]
     [SerializeField] private AudioClip mainMenuMusic;
@@ -37,11 +36,9 @@ public class AudioBank : ScriptableObject
 
     public AudioClip BossLunge => bossLunge;
     public AudioClip BossSummon => bossSummon;
-
     public AudioClip BerryClick => berryClick;
     public AudioClip MusketClick => musketClick;
     public AudioClip ButtonHover => buttonHover;
-    public AudioClip BossSlash => bossSlash;
 
     //one shot random getters
     public AudioClip[] PlayerMove => playerMove;

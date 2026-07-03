@@ -29,6 +29,11 @@ public class AudioManager : Singleton<AudioManager>
 
     private AudioClip UIClip; 
 
+    public void setGlobalVolumeTo(float vol)
+    {
+        globalVolume = vol;
+    }
+    
     public SourceInfo AddSound(AudioClip clip, float volume = 1.0f)
     {
         SourceInfo sourceInfo = GetSource();
@@ -269,29 +274,24 @@ public class AudioManager : Singleton<AudioManager>
     }
 
 
+    
+    
     private SourceInfo GetSource()
     {
-        bool poolHasSource = audioPool.Count > 0;
-
-        SourceInfo sourceInfo;
-        if (poolHasSource)
+        while (audioPool.Count > 0)
         {
-            sourceInfo = audioPool.Dequeue();
-            if (sourceInfo == null) return null;
-            if (sourceInfo.source != null)
-                sourceInfo.source.gameObject.SetActive(true);
-            return sourceInfo;
+            SourceInfo pooled = audioPool.Dequeue();
+            if (pooled == null || pooled.source == null) continue; // stale, discard
+            pooled.source.gameObject.SetActive(true);
+            return pooled;
         }
 
         GameObject gameObject = new("Sound");
+        gameObject.transform.SetParent(transform);
         AudioSource source = gameObject.AddComponent<AudioSource>();
         source.playOnAwake = false;
         source.rolloffMode = AudioRolloffMode.Logarithmic;
         source.minDistance = 4.0f;
-        sourceInfo = new()
-        {
-            source = source
-        };
-        return sourceInfo;
+        return new SourceInfo { source = source };
     }
 }
