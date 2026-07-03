@@ -26,11 +26,12 @@ public class DesperateSnap : AIDecision<DesperationAttackAction>
         {
             if (Data.Effect != null)
             {
+                Brain.Player.TakeDamage(Data.Damage, AudioManager.Instance.AudioBank.WolfAttack);
                 EffectSequence sequence = Instantiate(Data.Effect);
                 yield return sequence.PlaySeqeunce(Brain.Piece);
             }
 
-            Brain.Player.TakeDamage(Data.Damage);
+            
             yield break;
         }
         TurnManager.Instance.EndTurn();

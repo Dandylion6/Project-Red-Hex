@@ -13,10 +13,11 @@ public class BasicAttackAction : AIDecision<RangedAttackData>
         if (Data.Effect != null)
         {
             EffectSequence sequence = Instantiate(Data.Effect);
+            Brain.Player.TakeDamage(Data.Damage, AudioManager.Instance.AudioBank.WolfAttack);
             yield return sequence.PlaySeqeunce(Brain.Piece);
         }
 
-        Brain.Player.TakeDamage(Data.Damage);
+        
 
         yield return TurnManager.TurnWait;
         TurnManager.Instance.EndTurn();
