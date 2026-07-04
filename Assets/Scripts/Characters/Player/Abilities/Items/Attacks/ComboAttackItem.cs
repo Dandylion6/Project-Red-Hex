@@ -41,6 +41,9 @@ public class ComboAttackItem : RangedAttackItem<ComboAttackData>
 
             yield return new WaitForSeconds(combo.comboDelay);
         }
+
+        yield return TurnManager.TurnWait;
+        TurnManager.Instance.EndTurn();
     }
 
 
