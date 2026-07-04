@@ -4290,6 +4290,7 @@ Transform:
   - {fileID: 1037246983}
   - {fileID: 2095647484}
   - {fileID: 1367724135}
+  - {fileID: 714479814}
   - {fileID: 499406420}
   - {fileID: 530774282}
   - {fileID: 665621560}
@@ -4298,6 +4299,7 @@ Transform:
   - {fileID: 632069023}
   - {fileID: 1805648353}
   - {fileID: 811031628}
+  - {fileID: 492640744}
   - {fileID: 1217598610}
   - {fileID: 1072565773}
   - {fileID: 1900675995}
@@ -5468,6 +5470,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1e743bace898054cb538842191f8ccf, type: 3}
+--- !u!4 &492640744 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4991109515127400706, guid: 9a966c1b3abc52648991524f6ae08dda, type: 3}
+  m_PrefabInstance: {fileID: 793945328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &499406420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3633339583640897912, guid: c1e743bace898054cb538842191f8ccf, type: 3}
@@ -7341,6 +7348,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3005442468685797739, guid: 270403bdcbe8f2b4ca6786fcde234ffc, type: 3}
   m_PrefabInstance: {fileID: 510587276}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &714479814 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3633339583640897912, guid: c1e743bace898054cb538842191f8ccf, type: 3}
+  m_PrefabInstance: {fileID: 1915078892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &723938915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8148,6 +8160,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d642963424bd634faf7051950cccfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HexTile
+--- !u!1001 &793945328
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 393317483}
+    m_Modifications:
+    - target: {fileID: 2942512359581587397, guid: 9a966c1b3abc52648991524f6ae08dda, type: 3}
+      propertyPath: m_Name
+      value: Forest Tile A Variant (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991109515127400706, guid: 9a966c1b3abc52648991524f6ae08dda, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.29357
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991109515127400706, guid: 9a966c1b3abc52648991524f6ae08dda, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0070517333
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991109515127400706, guid: 9a966c1b3abc52648991524f6ae08dda, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.4253664
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991109515127400706, guid: 9a966c1b3abc52648991524f6ae08dda, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991109515127400706, guid: 9a966c1b3abc52648991524f6ae08dda, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991109515127400706, guid: 9a966c1b3abc52648991524f6ae08dda, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991109515127400706, guid: 9a966c1b3abc52648991524f6ae08dda, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991109515127400706, guid: 9a966c1b3abc52648991524f6ae08dda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991109515127400706, guid: 9a966c1b3abc52648991524f6ae08dda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991109515127400706, guid: 9a966c1b3abc52648991524f6ae08dda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9a966c1b3abc52648991524f6ae08dda, type: 3}
 --- !u!1001 &799095013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17436,6 +17505,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d642963424bd634faf7051950cccfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HexTile
+--- !u!1001 &1915078892
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 393317483}
+    m_Modifications:
+    - target: {fileID: 3633339583640897912, guid: c1e743bace898054cb538842191f8ccf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.29357
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633339583640897912, guid: c1e743bace898054cb538842191f8ccf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.048942797
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633339583640897912, guid: c1e743bace898054cb538842191f8ccf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.6933155
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633339583640897912, guid: c1e743bace898054cb538842191f8ccf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633339583640897912, guid: c1e743bace898054cb538842191f8ccf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633339583640897912, guid: c1e743bace898054cb538842191f8ccf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633339583640897912, guid: c1e743bace898054cb538842191f8ccf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633339583640897912, guid: c1e743bace898054cb538842191f8ccf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633339583640897912, guid: c1e743bace898054cb538842191f8ccf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633339583640897912, guid: c1e743bace898054cb538842191f8ccf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915888382605998015, guid: c1e743bace898054cb538842191f8ccf, type: 3}
+      propertyPath: m_Name
+      value: Forest Tile B Variant (39)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c1e743bace898054cb538842191f8ccf, type: 3}
 --- !u!1001 &1917480372
 PrefabInstance:
   m_ObjectHideFlags: 0

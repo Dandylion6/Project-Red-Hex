@@ -38,6 +38,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 98c8529642d271b43a0e24d255f812cf, type: 3}
   - {fileID: 8300000, guid: 98c8529642d271b43a0e24d255f812cf, type: 3}
   - {fileID: 8300000, guid: 98c8529642d271b43a0e24d255f812cf, type: 3}
-  bossClaw: []
+  bossClaw:
+  - {fileID: 8300000, guid: b38a341131f38af42abaaf71a3c0471e, type: 3}
   wolfAttack:
   - {fileID: 8300000, guid: dbd32b85c25670145b589a929b1b026d, type: 3}
