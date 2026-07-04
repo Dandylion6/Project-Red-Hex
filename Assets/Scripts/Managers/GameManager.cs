@@ -81,6 +81,7 @@ public class GameManager : Singleton<GameManager>
 
     private void LoadCheckpoint()
     {
-        player.SetHealth(checkpoint.playerHealth);
+        player.SetState(checkpoint.playerHealth);
+        HotBar.Instance.ResetAllCooldowns();
     }
 }

@@ -20,6 +20,12 @@ public class HotBar : Singleton<HotBar>
     public void UnsubscribeFromOnSelectionChanged(Action<Item, Item> callback) => onSelectionChanged -= callback;
 
 
+    public void ResetAllCooldowns()
+    {
+        foreach (Item items in items) items.ResetCooldown();
+    }
+
+
     public bool AddConsumable(ConsumableItemData consumable)
     {
         IConsumable item = FindConsumable(consumable);

@@ -13,17 +13,29 @@ MonoBehaviour:
   m_Name: AudioBank
   m_EditorClassIdentifier: Assembly-CSharp::AudioBank
   uIClick: {fileID: 8300000, guid: 8aa68b104ab20134ab5f2818b1ad18b7, type: 3}
-  berryClick: {fileID: 8300000, guid: ef102cb6be672ed47bf410e025e9f5a4, type: 3}
+  berryClick: {fileID: 8300000, guid: 2375d653cb5752c41966aa7a3a800e93, type: 3}
   musketClick: {fileID: 8300000, guid: 70e0086e3dd2e8e4bad9ccf032f6ff40, type: 3}
   buttonHover: {fileID: 8300000, guid: 8aa68b104ab20134ab5f2818b1ad18b7, type: 3}
   mainMenuMusic: {fileID: 8300000, guid: 6ce268b1557ea354984fa790011e9313, type: 3}
   firstLevelAmbience: {fileID: 8300000, guid: 231ebe55f98c8564093ab894c86dd9dc, type: 3}
   secondLevelAmbience: {fileID: 8300000, guid: ba5e8207bd40e6b43a64e7475230cbc2, type: 3}
   thirdLevelMusic: {fileID: 8300000, guid: c513375127db2a04e809407e5df11b6a, type: 3}
-  playerMove:
-  - {fileID: 8300000, guid: 13b52ea8e0e63ae4f8a3a89e5cdc348e, type: 3}
-  playerHeal:
-  - {fileID: 8300000, guid: 88e2e8461c0bde04c9f151075444bcdb, type: 3}
+  onGrassLand:
+  - {fileID: 8300000, guid: 85fb070958f1cb54097768d0689e4b93, type: 3}
+  - {fileID: 8300000, guid: bdf83e4e589566144b8c84f71853c3e3, type: 3}
+  onGravelLand:
+  - {fileID: 8300000, guid: 1be17000de7d7634fba8b259f7608d59, type: 3}
+  - {fileID: 8300000, guid: c47803cddccae7f44b398df39394fe5d, type: 3}
+  onRockLand:
+  - {fileID: 8300000, guid: 29a43fcb5273f6a4193bf951841b996e, type: 3}
+  selectPiece:
+  - {fileID: 8300000, guid: 49fe9d398362c604684e92b4cc23a972, type: 3}
+  - {fileID: 8300000, guid: d27171ba9b608fa459dd3348b102380a, type: 3}
+  healing: []
+  damageTaken: []
+  eatBerries:
+  - {fileID: 8300000, guid: ac725726efec42a4c9a42e0d4391eca9, type: 3}
+  - {fileID: 8300000, guid: 6af6de4dfc9132048808a2e7eff9f3a0, type: 3}
   musketFire:
   - {fileID: 8300000, guid: bc68b35795252d7429f2768e896ec83d, type: 3}
   musketHit:

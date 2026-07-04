@@ -42,7 +42,7 @@ public abstract class ConsumableItem<T> : Item<T>, IConsumable where T : Consuma
     }
 
 
-    protected override void OnItemDeselected() => HexGridManager.Instance.ClearOverlay();
+    protected override void OnItemDeselected() { }
 
     protected override void OnItemSelected()
     {

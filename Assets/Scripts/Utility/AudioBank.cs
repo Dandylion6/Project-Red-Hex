@@ -1,6 +1,4 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.AdaptivePerformance;
 
 [CreateAssetMenu(fileName = "AudioBank", menuName = "Data/Items/AudioBank")]
 public class AudioBank : ScriptableObject
@@ -16,10 +14,17 @@ public class AudioBank : ScriptableObject
     [SerializeField] private AudioClip firstLevelAmbience;
     [SerializeField] private AudioClip secondLevelAmbience;
     [SerializeField] private AudioClip thirdLevelMusic;
-    
+
+    [Header("Landing Clips")]
+    [SerializeField] private AudioClip[] onGrassLand;
+    [SerializeField] private AudioClip[] onGravelLand;
+    [SerializeField] private AudioClip[] onRockLand;
+
     [Header("One Shot Clips")]
-    [SerializeField] private AudioClip[] playerMove;
-    [SerializeField] private AudioClip[] playerHeal;
+    [SerializeField] private AudioClip[] selectPiece;
+    [SerializeField] private AudioClip[] healing;
+    [SerializeField] private AudioClip[] damageTaken;
+    [SerializeField] private AudioClip[] eatBerries;
     [SerializeField] private AudioClip[] musketFire;
     [SerializeField] private AudioClip[] musketHit;
     [SerializeField] private AudioClip[] rapierHit;
@@ -34,11 +39,17 @@ public class AudioBank : ScriptableObject
     public AudioClip MusketClick => musketClick;
     public AudioClip ButtonHover => buttonHover;
 
-    public AudioClip[] PlayerMove => playerMove;
+    public AudioClip[] OnGrassLand => onGrassLand;
+    public AudioClip[] OnRockLand => onRockLand;
+    public AudioClip[] OnGravelLand => onGravelLand;
+
+    public AudioClip[] SelectPiece => selectPiece;
     public AudioClip[] MusketFire => musketFire;
     public AudioClip[] MusketHit => musketHit;
     public AudioClip[] RapierHit => rapierHit;
-    public AudioClip[] PlayerHeal => playerHeal;
+    public AudioClip[] Healing => healing;
+    public AudioClip[] DamageTaken => damageTaken;
+    public AudioClip[] EatBerries => eatBerries;
     public AudioClip[] BossLunge => bossLunge;
     public AudioClip[] BossSummon => bossSummon;
     public AudioClip[] BossClaw => bossClaw;

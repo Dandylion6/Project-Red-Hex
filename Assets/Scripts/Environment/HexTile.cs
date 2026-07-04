@@ -6,6 +6,14 @@ using UnityEngine;
 
 public class HexTile : MonoBehaviour
 {
+    public enum Type
+    {
+        Grass,
+        Gravel,
+        Rock,
+    }
+
+
     [Header("Tile Settings")]
     [SerializeField] private GameObject currentTile = null;
     [SerializeField] private List<GameObject> tileVariants = new(); 
@@ -13,6 +21,7 @@ public class HexTile : MonoBehaviour
     [SerializeField] private bool isObstacle = false;
     [SerializeField][Range(-0.15f, 0.15f)] private float heightOffset = 0.0f;
     [SerializeField] private bool ignoreHeight = false;
+    [SerializeField] private Type type = Type.Grass;
 
 
     public TilePiece Piece => piece;
@@ -53,6 +62,24 @@ public class HexTile : MonoBehaviour
     {
         this.piece = piece;
         onPiecePlaced?.Invoke(piece);
+    }
+
+
+    public void MakeSound()
+    {
+        switch (type)
+        {
+            case Type.Grass:
+                AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.OnGrassLand, transform, AudioType.Sfx, Vector3.up, 1.6f);
+                break;
+            case Type.Rock:
+                AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.OnRockLand, transform, AudioType.Sfx, Vector3.up, 1.2f);
+                break;
+            case Type.Gravel:
+                AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.OnGravelLand, transform, AudioType.Sfx, Vector3.up, 1.8f);
+                break;
+            default: break;
+        }
     }
 
 

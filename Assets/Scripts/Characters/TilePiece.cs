@@ -50,8 +50,9 @@ public class TilePiece : MonoBehaviour, IDamageable
     public void UnsubscribeToOnHeal(Action<int> callback) => onHeal -= callback;
 
 
-    public void SetHealth(int health)
+    public void SetState(int health)
     {
+        isDead = false;
         this.health = Mathf.Min(health, maxHealth);
         onHeal?.Invoke(0);
     }
@@ -68,13 +69,13 @@ public class TilePiece : MonoBehaviour, IDamageable
     {
         transform.DOKill();
 
+        isDead = true;
         if (this == GameManager.Instance.Player)
         {
             GameManager.Instance.RestartSceneAsync();
             return;
         }
 
-        isDead = true;
         Destroy(gameObject);
     }
 
@@ -175,12 +176,15 @@ public class TilePiece : MonoBehaviour, IDamageable
             RotateTo(GameManager.Instance.Player.occupying);
         }
         tile.SetPiece(this);
+        occupying.MakeSound();
+
         TurnManager.Instance.EndTurn();
         onMove?.Invoke(tile);
     }
 
 
     private void Awake() => health = maxHealth;
+
 
     protected virtual void OnDestroy()
     {

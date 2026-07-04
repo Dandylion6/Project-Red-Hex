@@ -23,14 +23,14 @@ public class MovementController : MonoBehaviour
                     transform.DOMoveY(position.y + 0.3f, 0.2f).SetEase(Ease.OutBack).Play();
                     TurnManager.Instance.SetState(TurnManager.State.Move);
                     
-                    AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.PlayerMove, AudioType.Sfx, 1.0f, true, transform.position);
+                    AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.SelectPiece, AudioType.Sfx, 1.0f, true, transform.position);
                     HexGridManager.Instance.DisplayRange(playerPiece.Occupying, playerPiece.MaxMoveDistance);
                     break;
                 }
             case TurnManager.State.Move:
                 {
                     HexGridManager.Instance.ClearOverlay();
-                    transform.DOMoveY(position.y, 0.2f).SetEase(Ease.OutBounce).Play();
+                    transform.DOMoveY(position.y, 0.2f).SetEase(Ease.InBack).OnComplete(() => playerPiece.Occupying.SetPiece(playerPiece)).Play();
                     TurnManager.Instance.SetState(TurnManager.State.None);
                     break;
                 }

@@ -30,6 +30,9 @@ public abstract class Item : MonoBehaviour
     private int cooldownLeft = 0;
 
 
+    public void ResetCooldown() => cooldownLeft = 0;
+
+
     /// <summary>Called when the player selects a tile while this item is selected.</summary>
     protected abstract void OnTileSelect(HexTile tile);
 

@@ -22,7 +22,7 @@ public class TurnManager : Singleton<TurnManager>
     public bool IsInCombat => isInCombat;
 
 
-    private static readonly WaitForSeconds turnWait = new(0.5f);
+    private static readonly WaitForSeconds turnWait = new(0.65f);
 
     private readonly List<TilePiece> activePieces = new();
 
