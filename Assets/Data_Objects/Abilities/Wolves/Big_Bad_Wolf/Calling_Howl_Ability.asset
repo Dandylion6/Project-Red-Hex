@@ -15,6 +15,7 @@ MonoBehaviour:
   displayName: Calling Howl
   itemSprite: {fileID: 0}
   description: 
+  itemSelectSound: {fileID: 0}
   cooldown: 0
   callingHowlPoints:
   - spawnAmount: 2
