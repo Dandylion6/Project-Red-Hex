@@ -1,9 +1,10 @@
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
-using DG.Tweening;
 using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.FilePathAttribute;
 
 public class TilePiece : MonoBehaviour, IDamageable
 {
@@ -20,24 +21,20 @@ public class TilePiece : MonoBehaviour, IDamageable
     [SerializeField] private AnimationCurve heightDown = new();
 
 
-    [SerializeField] AudioClip[] attackSound;
-
-    
-
     public Transform Character => character;
     public HexTile Occupying => occupying;
     public int MaxMoveDistance => Mathf.RoundToInt(baseMoveDistance * moveDistanceMultiplier);
     public int MaxHealth => maxHealth;
     public int Health => health;
+    public float Rotation => rotation;
     public float HealthBarHeight => healthBarHeight;
     public bool IsDead => isDead;
-
-    public AudioClip[] AttackSound => attackSound;
 
     private Action<HexTile> onMove = null;
     private Action<int> onDamageTaken = null;
     private Action<int> onHeal = null;
     private HexTile occupying = null;
+    private float rotation = 0.0f;
     private float moveDistanceMultiplier = 1.0f;
     private int health = 0;
     private bool isDead = false;
@@ -95,31 +92,18 @@ public class TilePiece : MonoBehaviour, IDamageable
         Die();
     }
 
-    //OVERIDE TO PLAY AUDIO WHEN DAMAGED
+
     public void TakeDamage(int damage, AudioClip damageSoundClip)
     {
-        if (this != null) { AudioManager.Instance.PlayOneShot(damageSoundClip, SettingsManager.Instance.GameVolume, true, transform.position); }
-        
-        
-        health = Mathf.Max(health - damage, 0);
-        onDamageTaken?.Invoke(damage);
-
-        if (isDead) return;
-        if (health > 0) return;
-        Die();
+        AudioManager.Instance.PlayOneShot(damageSoundClip, 1.0f, true, transform.position);
+        TakeDamage(damage);
     }
 
-    //OVERIDE TO PLAY AUDIO WHEN DAMAGED (List)
+
     public void TakeDamage(int damage, AudioClip[] clipList)
     {
-        if (this != null) { AudioManager.Instance.PlayOneShotRandom(clipList, SettingsManager.Instance.GameVolume, true, transform.position); }
-
-        health = Mathf.Max(health - damage, 0);
-        onDamageTaken?.Invoke(damage);
-
-        if (isDead) return;
-        if (health > 0) return;
-        Die();
+        AudioManager.Instance.PlayOneShotRandom(clipList, 1.0f, true, transform.position);
+        TakeDamage(damage);
     }
 
 
@@ -145,6 +129,7 @@ public class TilePiece : MonoBehaviour, IDamageable
         if (direction.magnitude <= float.Epsilon) return; // Can't turn.
 
         Quaternion look = Quaternion.LookRotation(direction.normalized, Vector3.up);
+        rotation = look.eulerAngles.y;
 
         character.DOKill();
         character.DORotate(look.eulerAngles, 0.4f).SetEase(Ease.OutBack).Play();

@@ -14,12 +14,8 @@ public class AudioManager : Singleton<AudioManager>
 
 
     [Header("References")]
-    [SerializeField] private AudioClip ambientTrack = null;
-
-    [Header("Audio Settings")]
-    [SerializeField] private float ambientVolume = 0.6f;
-
     [SerializeField] AudioBank audioBank = null;
+
 
     public AudioBank AudioBank => audioBank;
 
@@ -27,13 +23,13 @@ public class AudioManager : Singleton<AudioManager>
     private readonly List<SourceInfo> activeSources = new();
     private float globalVolume = 1.0f;
 
-    private AudioClip UIClip; 
 
-    public void setGlobalVolumeTo(float vol)
+    public void SetGlobalVolumeTo(float volume)
     {
-        globalVolume = vol;
+        globalVolume = volume;
     }
     
+
     public SourceInfo AddSound(AudioClip clip, float volume = 1.0f)
     {
         SourceInfo sourceInfo = GetSource();

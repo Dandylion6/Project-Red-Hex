@@ -10,20 +10,45 @@ public class ComboAttackItem : RangedAttackItem<ComboAttackData>
 
         foreach (ComboData combo in Data.Combo)
         {
-            if (!CanHit(combo)) break;
+            if (!CanHit(combo))
+            {
+                yield return TurnManager.TurnWait;
+                TurnManager.Instance.EndTurn();
+                yield break;
+            }
 
-            yield return TurnManager.TurnWait;
-            Hit(combo);
+            AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.RapierHit);
+
+            if (Data.Effect != null)
+            {
+                EffectSequence sequence = Instantiate(Data.Effect);
+
+                float rotation = 120.0f - Player.Rotation;
+                bool lookingRight = Player.Rotation >= 30.0f && Player.Rotation <= 210.0f;
+                sequence.transform.localScale = new(1.0f, lookingRight ? 1.0f : -1.0f, 1.0f);
+                sequence.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotation);
+
+                yield return sequence.PlaySeqeunce(Player.transform.position);
+            }
+
+            int damage = Mathf.RoundToInt(Data.Damage * combo.damageMultiplier);
+            Target.TakeDamage(damage);
+
+            if (!TargetIsValid())
+            {
+                yield return TurnManager.TurnWait;
+                TurnManager.Instance.EndTurn();
+                yield break;
+            }
+
+            yield return new WaitForSeconds(combo.comboDelay);
         }
-
-        yield return TurnManager.TurnWait;
-        TurnManager.Instance.EndTurn();
     }
 
 
     private bool CanHit(ComboData combo)
     {
-        if (Target == null) return false;
+        if (!TargetIsValid()) return false;
 
         float chance = Random.Range(0.0f, 100.0f);
         if (chance > combo.hitChance) return false;
@@ -31,10 +56,12 @@ public class ComboAttackItem : RangedAttackItem<ComboAttackData>
     }
 
 
-    private void Hit(ComboData combo)
+    private bool TargetIsValid()
     {
-        if (Target == null) return;
-        int damage = Mathf.RoundToInt(Data.Damage * combo.damageMultiplier);
-        Target.TakeDamage(damage, AudioManager.Instance.AudioBank.RapierHit);
+        if (Target == null) return false;
+
+        TilePiece piece = Target as TilePiece;
+        if (piece != null && piece.IsDead) return false;
+        return true;
     }
 }

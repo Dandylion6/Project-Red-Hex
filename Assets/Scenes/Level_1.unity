@@ -3582,7 +3582,12 @@ PrefabInstance:
       propertyPath: ambienceList
       value: 
       objectReference: {fileID: 8300000, guid: 231ebe55f98c8564093ab894c86dd9dc, type: 3}
-    m_RemovedComponents: []
+    - target: {fileID: 8752090810085401738, guid: 1accc1c6c90827b47ba132d1c45ad380, type: 3}
+      propertyPath: ambienceTrack
+      value: 
+      objectReference: {fileID: 8300000, guid: 231ebe55f98c8564093ab894c86dd9dc, type: 3}
+    m_RemovedComponents:
+    - {fileID: 6135060748515793797, guid: 1accc1c6c90827b47ba132d1c45ad380, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

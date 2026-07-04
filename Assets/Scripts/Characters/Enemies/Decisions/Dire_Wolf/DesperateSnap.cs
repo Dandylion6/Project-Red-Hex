@@ -1,8 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class DesperateSnap : AIDecision<DesperationAttackAction>
 {
+    private const float SNAP_DELAY_SECONDS = 0.2f;
+
+
     public override IEnumerator ActionSequence()
     {
         Pathfinding.Result result = HexGridManager.Instance.CalculatePath(Brain.Piece.Occupying, Brain.Player.Occupying);
@@ -19,21 +23,27 @@ public class DesperateSnap : AIDecision<DesperationAttackAction>
 
         TurnManager.Instance.StartAction();
         StartCooldown();
-        yield return TurnManager.TurnWait;
 
         Brain.Piece.RotateTo(tile);
         if (Brain.Piece.MoveTo(tile, true))
         {
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.BossLunge);
+
             if (Data.Effect != null)
             {
-                Brain.Player.TakeDamage(Data.Damage, AudioManager.Instance.AudioBank.WolfAttack);
+                yield return new WaitForSeconds(SNAP_DELAY_SECONDS);
+
+                AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.WolfAttack);
+
                 EffectSequence sequence = Instantiate(Data.Effect);
-                yield return sequence.PlaySeqeunce(Brain.Piece);
+                yield return sequence.PlaySeqeunce(Brain.Player.transform.position);
             }
 
-            
+            Brain.Player.TakeDamage(Data.Damage);
             yield break;
         }
+
+        yield return TurnManager.TurnWait;
         TurnManager.Instance.EndTurn();
     }
 

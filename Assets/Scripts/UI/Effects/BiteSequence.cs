@@ -8,21 +8,19 @@ public class BiteSequence : EffectSequence
     [SerializeField] private CanvasGroup group = null;
     [SerializeField] private RectTransform upperJaw = null;
     [SerializeField] private RectTransform lowerJaw = null;
-    [SerializeField] private float delaySeconds = 0.2f;
 
-    [Header("Bite tuning")]
+    [Header("Bite Tuning")]
+    [SerializeField] private float biteDelaySeconds = 0.2f;
     [SerializeField] private float biteWorldHeightOffset = 1.0f;
     [SerializeField] private float jawAnticipationOffset = 6.0f;
     [SerializeField] private float upperJawCloseOffset = 10.0f;
     [SerializeField] private float lowerJawCloseOffset = 35.0f;
-    [SerializeField] private float holdSeconds = 0.15f;
 
 
-    public override IEnumerator PlaySeqeunce(TilePiece piece)
+    public override IEnumerator PlaySeqeunce(Vector3 position)
     {
-        EffectsUI.Instance.AddEffect(this, GameManager.Instance.Player.transform.position + Vector3.up * biteWorldHeightOffset);
+        EffectsUI.Instance.AddEffect(this, position + Vector3.up * biteWorldHeightOffset);
         group.alpha = 0.0f;
-        group.transform.localScale = Vector3.one;
 
         float upperOpen = upperJaw.anchoredPosition.y;
         float lowerOpen = lowerJaw.anchoredPosition.y;
@@ -45,14 +43,12 @@ public class BiteSequence : EffectSequence
 
         // Impact settle: overshoot back to normal scale for a punchy finish
         sequence.Append(group.transform.DOScale(Vector3.one, 0.16f).SetEase(Ease.OutBack));
-
-        // Hold the bite so it actually reads before it disappears
-        sequence.AppendInterval(holdSeconds);
+        sequence.Join(group.transform.DOShakePosition(0.24f, 25.0f, 30));
 
         // Release
         sequence.Append(group.DOFade(0.0f, 0.18f).SetEase(Ease.InQuad));
         sequence.OnComplete(() => Destroy(gameObject));
 
-        yield return sequence.WaitForCompletion();
+        yield return new WaitForSeconds(biteDelaySeconds);
     }
 }

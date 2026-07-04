@@ -204,12 +204,11 @@ MonoBehaviour:
   group: {fileID: 4265215757291894510}
   upperJaw: {fileID: 2974623224541663375}
   lowerJaw: {fileID: 8111657819279251014}
-  delaySeconds: 0.2
+  biteDelaySeconds: 0.3
   biteWorldHeightOffset: 1
-  jawAnticipationOffset: 10
+  jawAnticipationOffset: 14
   upperJawCloseOffset: 15
   lowerJawCloseOffset: 45
-  holdSeconds: 0.1
 --- !u!225 &4265215757291894510
 CanvasGroup:
   m_ObjectHideFlags: 0

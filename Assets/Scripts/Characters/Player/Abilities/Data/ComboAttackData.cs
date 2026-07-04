@@ -6,6 +6,7 @@ public struct ComboData
 {
     public float hitChance;
     public float damageMultiplier;
+    public float comboDelay;
 }
 
 

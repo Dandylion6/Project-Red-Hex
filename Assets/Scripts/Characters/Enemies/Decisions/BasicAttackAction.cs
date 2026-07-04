@@ -1,6 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEngine;
 
 public class BasicAttackAction : AIDecision<RangedAttackData>
 {
@@ -11,15 +9,15 @@ public class BasicAttackAction : AIDecision<RangedAttackData>
         TurnManager.Instance.StartAction();
 
         Brain.Piece.RotateTo(Brain.Player.Occupying);
+        AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.WolfAttack);
 
         if (Data.Effect != null)
         {
             EffectSequence sequence = Instantiate(Data.Effect);
-            Brain.Player.TakeDamage(Data.Damage, Brain.AttackSound);
-            yield return sequence.PlaySeqeunce(Brain.Piece);
+            yield return sequence.PlaySeqeunce(Brain.Player.transform.position);
         }
-
         
+        Brain.Player.TakeDamage(Data.Damage);
 
         yield return TurnManager.TurnWait;
         TurnManager.Instance.EndTurn();

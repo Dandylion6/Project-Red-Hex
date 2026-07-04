@@ -3,10 +3,10 @@ using System.Collections;
 public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
 {
     protected IDamageable Target => target;
+    protected HexTile TargetTile => targetTile;
 
     private IDamageable target = null;
-
-    private HexTile targetTile;
+    private HexTile targetTile = null;
 
 
     protected override void OnItemSelected()
@@ -24,10 +24,10 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
         if (!CanAttack(tile, out IDamageable damageable)) return;
 
         target = damageable;
-        
         targetTile = tile;
-        StartCoroutine(ActionSequence());
+
         Player.RotateTo(tile);
+        StartCoroutine(ActionSequence());
     }
 
 

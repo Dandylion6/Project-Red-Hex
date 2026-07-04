@@ -3,5 +3,5 @@ using UnityEngine;
 
 public abstract class EffectSequence : MonoBehaviour
 {
-    public abstract IEnumerator PlaySeqeunce(TilePiece piece);
+    public abstract IEnumerator PlaySeqeunce(Vector3 position);
 }

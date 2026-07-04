@@ -20,10 +20,14 @@ MonoBehaviour:
   damage: 2
   attackRange: 1
   ignoresObstacles: 0
+  effect: {fileID: 2949057146748509355, guid: 4a7f6cc6ec99d77448a96eee99ab605b, type: 3}
   combo:
   - hitChance: 100
     damageMultiplier: 1
+    comboDelay: 0.2
   - hitChance: 80
     damageMultiplier: 1
+    comboDelay: 0.4
   - hitChance: 20
     damageMultiplier: 2
+    comboDelay: 0
