@@ -1,10 +1,7 @@
 using DG.Tweening;
 using System;
-using System.Collections.Generic;
-using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.FilePathAttribute;
 
 public class TilePiece : MonoBehaviour, IDamageable
 {
