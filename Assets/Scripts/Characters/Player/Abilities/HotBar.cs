@@ -62,6 +62,9 @@ public class HotBar : Singleton<HotBar>
         Item lastItem = currentItem;
         currentItem = item;
         onSelectionChanged?.Invoke(item, lastItem);
+
+        if (item.BaseData.ItemSelectSound != null)
+            AudioManager.Instance.PlayOneShot(item.BaseData.ItemSelectSound);
     }
 
 

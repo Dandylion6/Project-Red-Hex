@@ -11468,11 +11468,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8752090810085401738, guid: 1accc1c6c90827b47ba132d1c45ad380, type: 3}
+      propertyPath: volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752090810085401738, guid: 1accc1c6c90827b47ba132d1c45ad380, type: 3}
       propertyPath: ambience
       value: 
       objectReference: {fileID: 8300000, guid: c513375127db2a04e809407e5df11b6a, type: 3}
     - target: {fileID: 8752090810085401738, guid: 1accc1c6c90827b47ba132d1c45ad380, type: 3}
       propertyPath: ambienceList
+      value: 
+      objectReference: {fileID: 8300000, guid: c513375127db2a04e809407e5df11b6a, type: 3}
+    - target: {fileID: 8752090810085401738, guid: 1accc1c6c90827b47ba132d1c45ad380, type: 3}
+      propertyPath: ambienceTrack
       value: 
       objectReference: {fileID: 8300000, guid: c513375127db2a04e809407e5df11b6a, type: 3}
     m_RemovedComponents: []

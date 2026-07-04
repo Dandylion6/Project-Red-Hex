@@ -81,6 +81,7 @@ public class MovementController : MonoBehaviour
             ToggleState();
 
         if (TurnManager.Instance.CurrentState != TurnManager.State.Move) return;
+        if (!tile.CanSetPiece(playerPiece)) return;
 
         playerPiece.RotateTo(tile);
 

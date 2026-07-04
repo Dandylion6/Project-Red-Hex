@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine;
 
 public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
 {
@@ -52,12 +53,20 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
     {
         StartCooldown();
         TurnManager.Instance.StartAction();
-        AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.MusketFire, SettingsManager.Instance.GameVolume , true, Player.transform.position);
-        yield return TurnManager.TurnWait;
+        
+        if (Data.Effect != null)
+        {
+            EffectSequence sequence = Instantiate(Data.Effect);
+
+            float rotation = 120.0f - Player.Rotation;
+            bool lookingRight = Player.Rotation >= 30.0f && Player.Rotation <= 210.0f;
+            sequence.transform.localScale = new(1.0f, lookingRight ? 1.0f : -1.0f, 1.0f);
+            sequence.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotation);
+
+            yield return sequence.PlaySeqeunce(Player.transform.position);
+        }
 
         target.TakeDamage(Data.Damage, AudioManager.Instance.AudioBank.MusketHit);
-         
-        target = null;
 
         yield return TurnManager.TurnWait;
         TurnManager.Instance.EndTurn();

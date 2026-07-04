@@ -20,6 +20,8 @@ public class SlashSequence : EffectSequence
         EffectsUI.Instance.AddEffect(this, position + Vector3.up * slashWorldHeightOffset);
         slash.fillAmount = 0.0f;
 
+        PlaySound();
+
         Sequence sequence = DOTween.Sequence();
 
         sequence.Append(slash.DOFillAmount(1.0f, 0.14f).SetEase(Ease.InCirc).OnComplete(() => slash.fillClockwise = false));
@@ -31,5 +33,11 @@ public class SlashSequence : EffectSequence
         sequence.OnComplete(() => Destroy(gameObject));
 
         yield return new WaitForSeconds(slashDelaySeconds);
+    }
+
+
+    protected virtual void PlaySound()
+    {
+        AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.RapierHit);
     }
 }

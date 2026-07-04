@@ -9,6 +9,7 @@ public class ItemData : ScriptableObject
     [SerializeField] private string displayName = "New Item";
     [SerializeField] private Sprite itemSprite = null;
     [SerializeField][TextArea] private string description = "Short description of the item.";
+    [SerializeField] private AudioClip itemSelectSound = null;
 
     [Header("Item Data")]
     [SerializeField][Min(0)] private int cooldown = 1;
@@ -17,6 +18,7 @@ public class ItemData : ScriptableObject
     public string DisplayName => displayName;
     public Sprite ItemSprite => itemSprite;
     public string Description => description;
+    public AudioClip ItemSelectSound => itemSelectSound;
     public int Cooldown => cooldown;
 
 

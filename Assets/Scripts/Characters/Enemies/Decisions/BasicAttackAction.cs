@@ -1,20 +1,32 @@
 using System.Collections;
+using UnityEngine;
 
 public class BasicAttackAction : AIDecision<RangedAttackData>
 {
-    
+    [SerializeField][Tooltip("If true, the effect will originate from the piece toward the target. Otherwise it will appear on the player.")] private bool effectFromPiece = false;
+
+
     public override IEnumerator ActionSequence()
     {
         StartCooldown();
         TurnManager.Instance.StartAction();
 
         Brain.Piece.RotateTo(Brain.Player.Occupying);
-        AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.WolfAttack);
 
         if (Data.Effect != null)
         {
             EffectSequence sequence = Instantiate(Data.Effect);
-            yield return sequence.PlaySeqeunce(Brain.Player.transform.position);
+            Vector3 targetPosition = Brain.Player.transform.position;
+
+            if (effectFromPiece)
+            {
+                float rotation = 120.0f - Brain.Piece.Rotation;
+                bool lookingRight = Brain.Piece.Rotation >= 30.0f && Brain.Piece.Rotation <= 210.0f;
+                sequence.transform.localScale = new(1.0f, lookingRight ? 1.0f : -1.0f, 1.0f);
+                sequence.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotation);
+            }
+
+            yield return sequence.PlaySeqeunce(targetPosition);
         }
         
         Brain.Player.TakeDamage(Data.Damage);

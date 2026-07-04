@@ -12,6 +12,11 @@ public class Ambience : MonoBehaviour
     public void Start()
     {
         source = AudioManager.Instance.PlayLoop(ambienceTrack, volume);
+        if (source == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         source.volume = 0.0f; 
         
         // Will fade into the sound.
@@ -23,6 +28,7 @@ public class Ambience : MonoBehaviour
     private void OnDestroy()
     {
         if (AudioManager.Instance == null) return;
+        if (source == null) return;
         AudioManager.Instance.StopLoop(source);
     }
 }

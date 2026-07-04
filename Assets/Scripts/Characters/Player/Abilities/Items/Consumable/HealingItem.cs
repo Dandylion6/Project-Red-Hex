@@ -9,7 +9,7 @@ public class HealingItem : ConsumableItem<HealingItemData>
         TurnManager.Instance.StartAction();
         UseConsumable();
 
-        AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.PlayerHeal, SettingsManager.Instance.GameVolume, true, Player.transform.position);
+        AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.PlayerHeal, 1.0f, true, Player.transform.position);
         GameManager.Instance.Player.Heal(Data.getHealBy);
 
         yield return TurnManager.TurnWait;

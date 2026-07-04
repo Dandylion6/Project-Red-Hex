@@ -17,8 +17,6 @@ public class ComboAttackItem : RangedAttackItem<ComboAttackData>
                 yield break;
             }
 
-            AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.RapierHit);
-
             if (Data.Effect != null)
             {
                 EffectSequence sequence = Instantiate(Data.Effect);

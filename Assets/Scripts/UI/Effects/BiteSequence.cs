@@ -29,6 +29,8 @@ public class BiteSequence : EffectSequence
         float upperWide = upperOpen + jawAnticipationOffset;
         float lowerWide = lowerOpen - jawAnticipationOffset;
 
+        AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.WolfAttack);
+
         Sequence sequence = DOTween.Sequence();
 
         // Pop in + anticipation: jaws pull apart slightly before the bite

@@ -16,11 +16,12 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: f8ee15adc62518c4fb001b239daa6c3f, type: 3}
   description: Deal a flurry of slashes with a silver rapier. This hierloom will
     bring you to revenge.
+  itemSelectSound: {fileID: 8300000, guid: a51fa9ed52297d846bf89a495fd46ed1, type: 3}
   cooldown: 0
   damage: 2
   attackRange: 1
   ignoresObstacles: 0
-  effect: {fileID: 2949057146748509355, guid: 4a7f6cc6ec99d77448a96eee99ab605b, type: 3}
+  effect: {fileID: 2949057146748509355, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
   combo:
   - hitChance: 100
     damageMultiplier: 1
