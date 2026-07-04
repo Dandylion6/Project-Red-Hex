@@ -16,12 +16,13 @@ public class CallingHowlAction : AIDecision<CallingHowlActionData>
         currentPoint = Data.CallingHowlPoints[callingIndex++];
         StartCooldown();
         TurnManager.Instance.StartAction();
-        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.BossSummon, 1.0f, true, wolfPrefab.transform.position);
-        yield return TurnManager.TurnWait;
 
+        AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.BossSummon, 1.0f, true, wolfPrefab.transform.position);
+        
         // Will spawn wolves next time the piece has a turn.
-        TurnManager.Instance.SubscribeToOnTurnChanged(OnTurnChanged);
+        yield return TurnManager.TurnWait;
         TurnManager.Instance.EndTurn();
+        TurnManager.Instance.SubscribeToOnTurnChanged(OnTurnChanged);
     }
 
 
@@ -40,6 +41,8 @@ public class CallingHowlAction : AIDecision<CallingHowlActionData>
         for (int i = 0; i < amount; ++i)
         {
             HexTile spawn = GetValidSpawn();
+            if (spawn == null) return;
+
             TilePiece wolf = Instantiate(wolfPrefab, spawn.transform);
             wolf.SpawnAt(spawn);
             wolf.RotateTo(Brain.Player.Occupying);

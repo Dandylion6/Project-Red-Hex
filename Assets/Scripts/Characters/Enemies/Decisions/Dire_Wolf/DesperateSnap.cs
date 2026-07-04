@@ -27,7 +27,7 @@ public class DesperateSnap : AIDecision<DesperationAttackAction>
         Brain.Piece.RotateTo(tile);
         if (Brain.Piece.MoveTo(tile, true))
         {
-            AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.BossLunge);
+            AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.BossLunge);
 
             if (Data.Effect != null)
             {

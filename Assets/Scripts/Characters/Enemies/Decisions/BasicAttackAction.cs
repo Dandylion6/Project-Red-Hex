@@ -24,6 +24,7 @@ public class BasicAttackAction : AIDecision<RangedAttackData>
                 bool lookingRight = Brain.Piece.Rotation >= 30.0f && Brain.Piece.Rotation <= 210.0f;
                 sequence.transform.localScale = new(1.0f, lookingRight ? 1.0f : -1.0f, 1.0f);
                 sequence.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotation);
+                targetPosition = Brain.Piece.transform.position;
             }
 
             yield return sequence.PlaySeqeunce(targetPosition);
