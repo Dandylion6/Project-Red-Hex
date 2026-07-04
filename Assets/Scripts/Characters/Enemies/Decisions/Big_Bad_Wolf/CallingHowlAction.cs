@@ -17,7 +17,7 @@ public class CallingHowlAction : AIDecision<CallingHowlActionData>
         StartCooldown();
         TurnManager.Instance.StartAction();
 
-        AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.BossSummon, 1.0f, true, wolfPrefab.transform.position);
+        AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.BossSummon, AudioType.Ambience, 1.0f, true, wolfPrefab.transform.position);
         
         // Will spawn wolves next time the piece has a turn.
         yield return TurnManager.TurnWait;

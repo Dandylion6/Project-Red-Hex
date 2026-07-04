@@ -34,7 +34,7 @@ public class LeapAction : AIDecision<LeapActionData>
         Brain.Piece.SetOccupying(tile);
 
         Brain.Piece.transform.DOKill();
-        AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.BossLunge, 1.0f, true, GameManager.Instance.Player.transform.position);
+        AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.BossLunge, AudioType.Sfx, 1.0f, true, GameManager.Instance.Player.transform.position);
         Brain.Piece.transform.DOMoveY(transform.position.y + 4.0f, 0.35f).SetEase(Ease.OutCirc).OnComplete(() =>
         {
             Brain.Piece.transform.DOMoveY(endPosition.y, 0.35f).SetEase(Ease.OutBounce).OnComplete(() => Brain.Piece.MoveEnd(tile)).Play();

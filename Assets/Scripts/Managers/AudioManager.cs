@@ -1,5 +1,14 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+
+public enum AudioType
+{
+    None,
+    Ambience,
+    Sfx,
+}
+
 
 public class AudioManager : Singleton<AudioManager>
 {
@@ -8,6 +17,7 @@ public class AudioManager : Singleton<AudioManager>
         public AudioSource source;
         public Transform attachedTransform;
         public Vector3 offset;
+        public AudioType type;
         public float volume;
         public bool isAttached;
     }
@@ -21,13 +31,6 @@ public class AudioManager : Singleton<AudioManager>
 
     private readonly Queue<SourceInfo> audioPool = new();
     private readonly List<SourceInfo> activeSources = new();
-    private float globalVolume = 1.0f;
-
-
-    public void SetGlobalVolumeTo(float volume)
-    {
-        globalVolume = volume;
-    }
     
 
     public SourceInfo AddSound(AudioClip clip, float volume = 1.0f)
@@ -46,7 +49,7 @@ public class AudioManager : Singleton<AudioManager>
     }
 
 
-    public SourceInfo AddSound3D(AudioClip clip, Transform attachTo, Vector3 offset = new(), float volume = 1.0f)
+    public SourceInfo AddSound3D(AudioClip clip, Transform attachTo, AudioType type = AudioType.Sfx, Vector3 offset = new(), float volume = 1.0f)
     {
         SourceInfo sourceInfo = GetSource();
         AudioSource source = sourceInfo.source;
@@ -59,13 +62,14 @@ public class AudioManager : Singleton<AudioManager>
         sourceInfo.attachedTransform = attachTo;
         sourceInfo.isAttached = true;
 
+        sourceInfo.type = type;
         sourceInfo.offset = offset;
         activeSources.Add(sourceInfo);
         return sourceInfo;
     }
 
 
-    public void PlayOneShot(AudioClip clip, float volume = 1.0f, bool is3D = false, Vector3 position = new())
+    public void PlayOneShot(AudioClip clip, AudioType type = AudioType.Sfx, float volume = 1.0f, bool is3D = false, Vector3 position = new())
     {
         if (clip == null) return;
 
@@ -82,22 +86,23 @@ public class AudioManager : Singleton<AudioManager>
         source.time = 0.0f;
         source.Play();
 
+        sourceInfo.type = type;
         sourceInfo.volume = volume;
         activeSources.Add(sourceInfo);
     }
 
 
-    public void PlayOneShotRandom(AudioClip[] clips, float volume = 1.0f, bool is3D = false, Vector3 position = new())
+    public void PlayOneShotRandom(AudioClip[] clips, AudioType type = AudioType.Sfx, float volume = 1.0f, bool is3D = false, Vector3 position = new())
     {
         bool hasClips = clips.Length > 0;
         if (!hasClips) return;
 
         AudioClip clip = clips[Random.Range(0, clips.Length)];
-        PlayOneShot(clip, volume, is3D, position);
+        PlayOneShot(clip, type, volume, is3D, position);
     }
 
 
-    public void PlayOneShot(AudioClip clip, Transform attachTo, Vector3 offset = new(), float volume = 1.0f)
+    public void PlayOneShot(AudioClip clip, Transform attachTo, AudioType type = AudioType.Sfx, Vector3 offset = new(), float volume = 1.0f)
     {
         if (clip == null) return;
 
@@ -113,6 +118,7 @@ public class AudioManager : Singleton<AudioManager>
         source.Play();
 
         sourceInfo.volume = volume;
+        sourceInfo.type = type;
         sourceInfo.attachedTransform = attachTo;
         sourceInfo.isAttached = true;
         sourceInfo.offset = offset;
@@ -120,14 +126,14 @@ public class AudioManager : Singleton<AudioManager>
     }
 
 
-    public void PlayOneShotRandom(AudioClip[] clips, Transform attachTo, Vector3 offset = new(), float volume = 1.0f)
+    public void PlayOneShotRandom(AudioClip[] clips, Transform attachTo, AudioType type = AudioType.Sfx, Vector3 offset = new(), float volume = 1.0f)
     {
         AudioClip clip = clips[Random.Range(0, clips.Length)];
-        PlayOneShot(clip, attachTo, offset, volume);
+        PlayOneShot(clip, attachTo, type, offset, volume);
     }
 
 
-    public AudioSource PlayLoop(AudioClip clip, float volume = 1.0f)
+    public AudioSource PlayLoop(AudioClip clip, AudioType type = AudioType.Ambience, float volume = 1.0f)
     {
         if (clip == null) return null;
 
@@ -142,12 +148,13 @@ public class AudioManager : Singleton<AudioManager>
         source.Play();
 
         sourceInfo.volume = volume;
+        sourceInfo.type = type;
         activeSources.Add(sourceInfo);
         return source;
     }
 
 
-    public AudioSource PlayLoop(AudioClip clip, Transform attachTo, Vector3 offset = new(), float volume = 1f)
+    public AudioSource PlayLoop(AudioClip clip, Transform attachTo, AudioType type = AudioType.Ambience, Vector3 offset = new(), float volume = 1f)
     {
         if (clip == null) return null;
 
@@ -160,6 +167,7 @@ public class AudioManager : Singleton<AudioManager>
         source.Play();
 
         sourceInfo.volume = volume;
+        sourceInfo.type = type;
         sourceInfo.attachedTransform = attachTo;
         sourceInfo.isAttached = true;
         sourceInfo.offset = offset;
@@ -189,12 +197,6 @@ public class AudioManager : Singleton<AudioManager>
                 break;
             }
         }
-    }
-
-
-    private void Start()
-    {
-        globalVolume = 1.0f;
     }
 
 
@@ -248,14 +250,22 @@ public class AudioManager : Singleton<AudioManager>
             source.UnPause();
         }
 
-        source.volume = sourceInfo.volume * globalVolume;
+        float volume = SettingsManager.Settings.masterVolume;
+        switch (sourceInfo.type)
+        {
+            case AudioType.Ambience: volume *= SettingsManager.Settings.musicVolume; 
+                break;
+            case AudioType.Sfx: volume *= SettingsManager.Settings.sfxVolume;
+                break;
+            case AudioType.None: break;
+        }
+
+        source.volume = sourceInfo.volume * volume;
         bool fadeOut = sourceInfo.isAttached && sourceInfo.attachedTransform == null;
         if (fadeOut)
         {
             sourceInfo.isAttached = false;
-            // TODO: Add DOTween
-            //source.DOFade(0.0f, 0.8f).SetEase(Ease.InOutSine).Play();
-            // Will be later cleaned up.
+            source.DOFade(0.0f, 0.8f).SetEase(Ease.InOutSine).OnComplete(() => toClean.Add(sourceInfo)).Play();
         }
     }
 

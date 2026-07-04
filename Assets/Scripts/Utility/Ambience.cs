@@ -11,7 +11,7 @@ public class Ambience : MonoBehaviour
     
     public void Start()
     {
-        source = AudioManager.Instance.PlayLoop(ambienceTrack, volume);
+        source = AudioManager.Instance.PlayLoop(ambienceTrack, AudioType.Ambience, volume);
         if (source == null)
         {
             Destroy(gameObject);

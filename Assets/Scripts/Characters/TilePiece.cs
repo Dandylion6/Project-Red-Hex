@@ -95,14 +95,14 @@ public class TilePiece : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage, AudioClip damageSoundClip)
     {
-        AudioManager.Instance.PlayOneShot(damageSoundClip, 1.0f, true, transform.position);
+        AudioManager.Instance.PlayOneShot(damageSoundClip, AudioType.Sfx, 1.0f, true, transform.position);
         TakeDamage(damage);
     }
 
 
     public void TakeDamage(int damage, AudioClip[] clipList)
     {
-        AudioManager.Instance.PlayOneShotRandom(clipList, 1.0f, true, transform.position);
+        AudioManager.Instance.PlayOneShotRandom(clipList, AudioType.Sfx, 1.0f, true, transform.position);
         TakeDamage(damage);
     }
 

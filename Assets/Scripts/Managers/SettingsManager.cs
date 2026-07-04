@@ -1,33 +1,23 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
+
+public class SettingsData
+{
+    public float masterVolume = 0.5f;
+    public float musicVolume = 0.5f;
+    public float sfxVolume = 0.5f;
+}
+
 
 public class SettingsManager : Singleton<SettingsManager>
 {
+    static public SettingsData Settings => settings;
 
-    private static SettingsData settingsData;
-
-    public float MusicVolume => settingsData.musicVolume;
-
-    public float GameVolume => settingsData.gameVolume;
-
-    public void setMusicVolume(Slider musicVolume)
-    {
-        settingsData.musicVolume = Mathf.Clamp(musicVolume.value * 100, 0, 100);
-        AudioManager.Instance.SetGlobalVolumeTo(musicVolume.value);
-        Debug.Log(settingsData.musicVolume);
-    }
-
-    public void setGameVolume(Slider gameVolume)
-    {
-        settingsData.gameVolume = Mathf.Clamp(gameVolume.value * 100, 0, 100);
-        Debug.Log(settingsData.gameVolume);
-    }
-
-    public void PlayUIClip()
-    {
-        AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.UIClick, SettingsManager.Instance.GameVolume, false);
-    }
+    private static readonly SettingsData settings = new();
 
 
+    public void SetMasterVolume(float volume) => settings.masterVolume = Mathf.Lerp(0.0f, 1.0f, volume);
+
+    public void SetMusicVolume(float volume) => settings.musicVolume = Mathf.Lerp(0.0f, 1.0f, volume);
+
+    public void SetSfxVolume(float volume) => settings.sfxVolume = Mathf.Lerp(0.0f, 1.0f, volume);
 }

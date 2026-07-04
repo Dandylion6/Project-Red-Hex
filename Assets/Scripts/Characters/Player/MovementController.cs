@@ -23,7 +23,7 @@ public class MovementController : MonoBehaviour
                     transform.DOMoveY(position.y + 0.3f, 0.2f).SetEase(Ease.OutBack).Play();
                     TurnManager.Instance.SetState(TurnManager.State.Move);
                     
-                    AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.PlayerMove, 1.0f, true, transform.position);
+                    AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.PlayerMove, AudioType.Sfx, 1.0f, true, transform.position);
                     HexGridManager.Instance.DisplayRange(playerPiece.Occupying, playerPiece.MaxMoveDistance);
                     break;
                 }

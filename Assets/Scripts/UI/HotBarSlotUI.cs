@@ -49,7 +49,7 @@ public class HotBarSlotUI : MonoBehaviour
     public void OnButtonClick()
     {
         HotBar.Instance.SelectItem(item);
-        AudioManager.Instance.PlayOneShot(item.SelectionClip, SettingsManager.Instance.GameVolume);
+        AudioManager.Instance.PlayOneShot(item.SelectionClip);
     }
 
 
