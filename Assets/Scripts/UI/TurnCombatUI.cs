@@ -31,6 +31,14 @@ public class TurnCombatUI : MonoBehaviour
     private int currentTurnIndex = 0;
 
 
+    public void OnSkipTurn()
+    {
+        if (TurnManager.Instance == null) return;
+        if (!TurnManager.Instance.HasTurn(GameManager.Instance.Player)) return;
+        TurnManager.Instance.EndTurn();
+    }
+
+
     private void Start()
     {
         TurnManager.Instance.SubscribeToOnTurnChanged(OnTurnChanged);

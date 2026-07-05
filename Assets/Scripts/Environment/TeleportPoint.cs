@@ -35,11 +35,10 @@ public class TeleportPoint : Singleton<TeleportPoint>
     {
         tile = GetComponent<HexTile>();
         tile.SubscribeToOnPiecePlaced(MoveToNextScene);
-        TurnManager.Instance.SubscribeToOnTurnChanged(OnTurnChanged);
     }
 
 
-    private void OnTurnChanged(TilePiece currentPiece, TilePiece lastPiece)
+    private void Update()
     {
         bool isOpen = moonShardsCollected >= REQUIRED_SHARDS;
 
@@ -60,6 +59,5 @@ public class TeleportPoint : Singleton<TeleportPoint>
     private void OnDestroy()
     {
         if (tile != null) tile.UnsubscribeFromOnPiecePlaced(MoveToNextScene);
-        if (TurnManager.Instance != null) TurnManager.Instance.UnsubscribeFromOnTurnChanged(OnTurnChanged);
     }
 }
