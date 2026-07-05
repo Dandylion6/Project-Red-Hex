@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DesperateSnap : AIDecision<DesperationAttackAction>
 {
-    private const float SNAP_DELAY_SECONDS = 0.2f;
+    private const float SNAP_DELAY_SECONDS = 0.25f;
 
 
     public override IEnumerator ActionSequence()
@@ -36,7 +36,12 @@ public class DesperateSnap : AIDecision<DesperationAttackAction>
                 AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.WolfAttack);
 
                 EffectSequence sequence = Instantiate(Data.Effect);
-                yield return sequence.PlaySeqeunce(Brain.Player.transform);
+                EffectData data = new()
+                {
+                    piece = Brain.Piece,
+                    target = Brain.Player,
+                };
+                yield return sequence.PlaySeqeunce(data);
             }
 
             Brain.Player.TakeDamage(Data.Damage);

@@ -15,9 +15,10 @@ MonoBehaviour:
   displayName: Desperate Snap
   itemSprite: {fileID: 0}
   description: Short description of the item.
+  itemSelectSound: {fileID: 0}
   cooldown: 4
   damage: 1
   attackRange: 3
   ignoresObstacles: 1
-  effect: {fileID: 788925173593864122, guid: 337e12a1434cef742a746d836a77e389, type: 3}
+  effect: {fileID: 8673961942468816184, guid: 337e12a1434cef742a746d836a77e389, type: 3}
   desperationThreshold: 50

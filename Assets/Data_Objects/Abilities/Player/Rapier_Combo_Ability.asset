@@ -21,7 +21,7 @@ MonoBehaviour:
   damage: 2
   attackRange: 1
   ignoresObstacles: 0
-  effect: {fileID: 2949057146748509355, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
+  effect: {fileID: 4505351413552330682, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
   combo:
   - hitChance: 100
     damageMultiplier: 1

@@ -13,13 +13,15 @@ public class GameManager : Singleton<GameManager>
 
     [Header("References")]
     [SerializeField] private TilePiece player = null;
+    [SerializeField] private Camera mainCamera = null;
 
 
     public TilePiece Player => player;
+    public Camera MainCamera => mainCamera;
 
     private Action onGameRestart = null;
     private CheckpointData checkpoint = new();
-    private WaitForSeconds loadingWait = new(1.5f);
+    private readonly WaitForSeconds loadingWait = new(1.5f);
 
 
     public void SubscribeToOnGameRestart(Action callback) => onGameRestart += callback;

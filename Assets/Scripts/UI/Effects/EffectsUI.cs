@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectsUI : Singleton<EffectsUI>
+public class EffectsManager : Singleton<EffectsManager>
 {
     private class EffectData
     {

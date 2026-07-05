@@ -20,4 +20,4 @@ MonoBehaviour:
   damage: 4
   attackRange: 3
   ignoresObstacles: 0
-  effect: {fileID: 5175229490155262162, guid: 7abcdc35b6514ab4382ab4595434d4b7, type: 3}
+  effect: {fileID: 1205606991274260152, guid: 7abcdc35b6514ab4382ab4595434d4b7, type: 3}

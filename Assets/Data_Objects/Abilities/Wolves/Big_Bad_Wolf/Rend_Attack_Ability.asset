@@ -17,8 +17,9 @@ MonoBehaviour:
   description: 'Tear through flesh using brutal claws
 
 '
+  itemSelectSound: {fileID: 0}
   cooldown: 3
   damage: 3
   attackRange: 2
   ignoresObstacles: 0
-  effect: {fileID: 2949057146748509355, guid: 4a7f6cc6ec99d77448a96eee99ab605b, type: 3}
+  effect: {fileID: 5727674558508311062, guid: 1d7e7b579f047d44cb29dd72d32a9dc7, type: 3}

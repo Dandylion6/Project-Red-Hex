@@ -15,13 +15,18 @@ public class FireSequence : EffectSequence
     [SerializeField] private float shakeIntensity = 10.0f;
 
 
-    public override IEnumerator PlaySeqeunce(Transform attachTo)
+    public override IEnumerator PlaySeqeunce(EffectData data)
     {
+        Vector3 direction = (data.target.transform.position - data.piece.transform.position).normalized;
+        transform.position = data.piece.transform.position + Vector3.up * fireWorldHeightOffset;
+        transform.position += direction * fireMoveDistance;
+
+        Vector3 toCameraDirection = (GameManager.Instance.MainCamera.transform.position - transform.position).normalized;
+        transform.rotation = Quaternion.LookRotation(toCameraDirection, Vector3.up);
+
         fireImage.sprite = sprites[Random.Range(0, sprites.Count)];
-        EffectsUI.Instance.AddEffect(this, attachTo, Vector3.up * fireWorldHeightOffset);
 
         fireImage.rectTransform.localScale = new(0.0f, 0.0f, 1.0f);
-        fireImage.rectTransform.localPosition += Vector3.right * fireMoveDistance;
         fireImage.rectTransform.rotation *= Quaternion.Euler(0.0f, 0.0f, Random.Range(-180.0f, 180.0f));
 
         AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.MusketFire);

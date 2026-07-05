@@ -20,13 +20,12 @@ public class ComboAttackItem : RangedAttackItem<ComboAttackData>
             if (Data.Effect != null)
             {
                 EffectSequence sequence = Instantiate(Data.Effect);
-
-                float rotation = 120.0f - Player.Rotation;
-                bool lookingRight = Player.Rotation >= 30.0f && Player.Rotation <= 210.0f;
-                sequence.transform.localScale = new(1.0f, lookingRight ? 1.0f : -1.0f, 1.0f);
-                sequence.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotation);
-
-                yield return sequence.PlaySeqeunce(Player.transform);
+                EffectData data = new()
+                {
+                    piece = Player,
+                    target = Target as TilePiece,
+                };
+                yield return sequence.PlaySeqeunce(data);
             }
 
             int damage = Mathf.RoundToInt(Data.Damage * combo.damageMultiplier);
