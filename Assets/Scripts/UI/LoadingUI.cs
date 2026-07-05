@@ -1,11 +1,12 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoadingUI : SingletonPersistent<LoadingUI>
 {
     [Header("References")]
     [SerializeField] private CanvasGroup group = null;
-    [SerializeField] private RectTransform veil = null;
+    [SerializeField] private Image veil = null;
 
     [SerializeField] private RectTransform jaw = null;
     [SerializeField] private RectTransform upperJaw = null;
@@ -24,19 +25,20 @@ public class LoadingUI : SingletonPersistent<LoadingUI>
 
     public void StartUI()
     {
+        veil.fillOrigin = 1;
         veil.DOKill();
-        veil.anchoredPosition = Vector2.up * 1080.0f;
 
         loadingAnimation.Restart();
 
-        veil.DOAnchorPosY(0.0f, 0.5f).SetEase(Ease.InSine).OnComplete(() =>
+        veil.DOFillAmount(1.0f, 0.5f).SetEase(Ease.InSine).OnComplete(() =>
         {
             group.interactable = true;
             group.blocksRaycasts = true;
             group.alpha = 1.0f;
 
+            veil.fillOrigin = 0;
             veil.DOKill();
-            veil.DOAnchorPosY(-1080.0f, 0.5f).SetEase(Ease.OutSine).Play();
+            veil.DOFillAmount(0.0f, 0.5f).SetEase(Ease.OutSine).Play();
 
         }).Play();
     }
@@ -44,17 +46,18 @@ public class LoadingUI : SingletonPersistent<LoadingUI>
 
     public void EndUI()
     {
+        veil.fillOrigin = 1;
         veil.DOKill();
-        veil.anchoredPosition = Vector2.up * 1080.0f;
 
-        veil.DOAnchorPosY(0.0f, 0.5f).SetEase(Ease.InSine).OnComplete(() =>
+        veil.DOFillAmount(1.0f, 0.5f).SetEase(Ease.InSine).OnComplete(() =>
         {
             group.interactable = false;
             group.blocksRaycasts = false;
             group.alpha = 0.0f;
 
+            veil.fillOrigin = 0;
             veil.DOKill();
-            veil.DOAnchorPosY(-1080.0f, 0.5f).SetEase(Ease.OutSine).Play();
+            veil.DOFillAmount(0.0f, 0.5f).SetEase(Ease.OutSine).Play();
             loadingAnimation.Pause();
 
         }).Play();

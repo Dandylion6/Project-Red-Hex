@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 120, y: 120}
+  m_AnchoredPosition: {x: 0, y: 60}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1189267589810329023
 CanvasRenderer:
@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 110, y: 110}
+  m_AnchoredPosition: {x: 0, y: -60}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &588079203739070047
 CanvasRenderer:
@@ -206,9 +206,9 @@ MonoBehaviour:
   lowerJaw: {fileID: 8111657819279251014}
   biteDelaySeconds: 0.3
   biteWorldHeightOffset: 1
-  jawAnticipationOffset: 14
-  upperJawCloseOffset: 15
-  lowerJawCloseOffset: 45
+  jawAnticipationOffset: 16
+  upperJawCloseOffset: 20
+  lowerJawCloseOffset: 50
 --- !u!225 &4265215757291894510
 CanvasGroup:
   m_ObjectHideFlags: 0

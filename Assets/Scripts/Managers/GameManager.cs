@@ -51,12 +51,15 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator GoBackToMenu()
     {
+        transform.SetParent(null);
+        DontDestroyOnLoad(gameObject);
         LoadingUI.Instance.StartUI();
 
         yield return loadingWait;
         yield return SceneManager.LoadSceneAsync(BaseScenes.MENU_SCENE);
         
         LoadingUI.Instance.EndUI();
+        Destroy(gameObject);
     }
 
 
