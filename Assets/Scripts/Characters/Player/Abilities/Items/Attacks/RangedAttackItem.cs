@@ -63,7 +63,7 @@ public abstract class RangedAttackItem<T> : Item<T> where T : RangedAttackData
             sequence.transform.localScale = new(1.0f, lookingRight ? 1.0f : -1.0f, 1.0f);
             sequence.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotation);
 
-            yield return sequence.PlaySeqeunce(Player.transform.position);
+            yield return sequence.PlaySeqeunce(Player.transform);
         }
 
         target.TakeDamage(Data.Damage, AudioManager.Instance.AudioBank.MusketHit);

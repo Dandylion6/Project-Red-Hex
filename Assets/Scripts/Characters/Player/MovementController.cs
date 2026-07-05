@@ -30,7 +30,7 @@ public class MovementController : MonoBehaviour
             case TurnManager.State.Move:
                 {
                     HexGridManager.Instance.ClearOverlay();
-                    transform.DOMoveY(position.y, 0.2f).SetEase(Ease.InBack).OnComplete(() => playerPiece.Occupying.SetPiece(playerPiece)).Play();
+                    transform.DOMoveY(position.y, 0.2f).SetEase(Ease.InBack).OnComplete(() => playerPiece.Occupying.MakeSound()).Play();
                     TurnManager.Instance.SetState(TurnManager.State.None);
                     break;
                 }

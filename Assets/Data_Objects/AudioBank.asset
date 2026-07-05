@@ -16,6 +16,9 @@ MonoBehaviour:
   berryClick: {fileID: 8300000, guid: 2375d653cb5752c41966aa7a3a800e93, type: 3}
   musketClick: {fileID: 8300000, guid: 70e0086e3dd2e8e4bad9ccf032f6ff40, type: 3}
   buttonHover: {fileID: 8300000, guid: 8aa68b104ab20134ab5f2818b1ad18b7, type: 3}
+  turnChange:
+  - {fileID: 8300000, guid: 113e9cf6c275e0f469ddbec2abfc83d6, type: 3}
+  - {fileID: 8300000, guid: aef8e925edffa014c9cd4a98a407f0e2, type: 3}
   mainMenuMusic: {fileID: 8300000, guid: 6ce268b1557ea354984fa790011e9313, type: 3}
   firstLevelAmbience: {fileID: 8300000, guid: 231ebe55f98c8564093ab894c86dd9dc, type: 3}
   secondLevelAmbience: {fileID: 8300000, guid: ba5e8207bd40e6b43a64e7475230cbc2, type: 3}

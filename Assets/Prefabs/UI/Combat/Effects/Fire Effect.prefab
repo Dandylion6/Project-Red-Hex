@@ -55,7 +55,7 @@ MonoBehaviour:
   fireImage: {fileID: 7965683104976241541}
   fireDelaySeconds: 0.3
   fireWorldHeightOffset: 1
-  fireMoveDistance: 50
+  fireMoveDistance: 60
   shakeIntensity: 10
 --- !u!1 &1861205549081343804
 GameObject:

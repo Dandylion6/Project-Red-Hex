@@ -16,13 +16,14 @@ public class TurnManager : Singleton<TurnManager>
     }
 
 
+    public IReadOnlyList<TilePiece> ActivePieces => activePieces;
     public TilePiece PieceWithTurn => pieceWithTurn;
     public State CurrentState => currentState;
     public int TurnsInCombat => turnsInCombat;
     public bool IsInCombat => isInCombat;
 
 
-    private static readonly WaitForSeconds turnWait = new(0.65f);
+    private static readonly WaitForSeconds turnWait = new(0.8f);
 
     private readonly List<TilePiece> activePieces = new();
 
@@ -152,6 +153,7 @@ public class TurnManager : Singleton<TurnManager>
         currentState = State.None;
 
         onTurnChanged?.Invoke(pieceWithTurn, lastPiece);
+        AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.TurnChange);
     }
 
 
@@ -163,7 +165,11 @@ public class TurnManager : Singleton<TurnManager>
         pieceWithTurn = activePieces[currentTurnIndex];
 
         bool combatCycleDone = isInCombat && currentTurnIndex == 0;
-        if (combatCycleDone) ++turnsInCombat;
+        if (combatCycleDone)
+        {
+            ++turnsInCombat;
+            AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.TurnChange);
+        }
 
         onTurnChanged?.Invoke(pieceWithTurn, lastPiece);
     }

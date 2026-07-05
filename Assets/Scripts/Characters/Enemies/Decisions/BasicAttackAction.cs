@@ -16,7 +16,7 @@ public class BasicAttackAction : AIDecision<RangedAttackData>
         if (Data.Effect != null)
         {
             EffectSequence sequence = Instantiate(Data.Effect);
-            Vector3 targetPosition = Brain.Player.transform.position;
+            Transform target = Brain.Player.transform;
 
             if (effectFromPiece)
             {
@@ -24,10 +24,10 @@ public class BasicAttackAction : AIDecision<RangedAttackData>
                 bool lookingRight = Brain.Piece.Rotation >= 30.0f && Brain.Piece.Rotation <= 210.0f;
                 sequence.transform.localScale = new(1.0f, lookingRight ? 1.0f : -1.0f, 1.0f);
                 sequence.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotation);
-                targetPosition = Brain.Piece.transform.position;
+                target = Brain.Piece.transform;
             }
 
-            yield return sequence.PlaySeqeunce(targetPosition);
+            yield return sequence.PlaySeqeunce(target);
         }
         
         Brain.Player.TakeDamage(Data.Damage);

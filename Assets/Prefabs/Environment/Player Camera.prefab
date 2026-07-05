@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6598244617218084293}
   serializedVersion: 2
   m_LocalRotation: {x: 0.48231918, y: 0.27542177, z: -0.13534993, w: 0.82048255}
-  m_LocalPosition: {x: -3, y: 10, z: -5}
+  m_LocalPosition: {x: -3.59, y: 11.57, z: -5.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -182,4 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98631ba0c370fcf4091121d02e1dcc6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCamera
-  cameraMoveTime: 0.2
+  cameraTransform: {fileID: 4115944821157650054}
+  cameraMoveTime: 0.26
+  swayStrength: 0.18
+  swaySpeed: 0.32

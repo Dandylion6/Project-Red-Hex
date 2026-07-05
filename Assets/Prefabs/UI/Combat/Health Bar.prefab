@@ -56,14 +56,13 @@ MonoBehaviour:
   allyColor: {r: 0.38020647, g: 0.9056604, b: 0.4464402, a: 1}
   enemyColor: {r: 0.90588236, g: 0.32941177, b: 0.2784314, a: 1}
   screenOffset: {x: 15, y: 40}
-  worldHeightOffset: 1
   fadeTime: 0.2
   fadeEasing: 4
   minDamageShakeIntensity: 6
-  maxDamageShakeIntensity: 12
+  maxDamageShakeIntensity: 20
   minIntensityDamage: 1
-  maxIntensityDamage: 3
-  healPunchStrength: 10
+  maxIntensityDamage: 4
+  healPunchStrength: 16
   healPunchTime: 0.65
 --- !u!1 &1997202818650582616
 GameObject:

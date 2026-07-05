@@ -17,9 +17,9 @@ public class BiteSequence : EffectSequence
     [SerializeField] private float lowerJawCloseOffset = 35.0f;
 
 
-    public override IEnumerator PlaySeqeunce(Vector3 position)
+    public override IEnumerator PlaySeqeunce(Transform attachTo)
     {
-        EffectsUI.Instance.AddEffect(this, position + Vector3.up * biteWorldHeightOffset);
+        EffectsUI.Instance.AddEffect(this, attachTo, Vector3.up * biteWorldHeightOffset);
         group.alpha = 0.0f;
 
         float upperOpen = upperJaw.anchoredPosition.y;

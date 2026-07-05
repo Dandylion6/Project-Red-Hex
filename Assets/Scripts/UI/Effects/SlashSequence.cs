@@ -15,9 +15,9 @@ public class SlashSequence : EffectSequence
     [SerializeField] private float slashDissapearDelay = 0.1f;
 
 
-    public override IEnumerator PlaySeqeunce(Vector3 position)
+    public override IEnumerator PlaySeqeunce(Transform attachTo)
     {
-        EffectsUI.Instance.AddEffect(this, position + Vector3.up * slashWorldHeightOffset);
+        EffectsUI.Instance.AddEffect(this, attachTo, Vector3.up * slashWorldHeightOffset);
         slash.fillAmount = 0.0f;
 
         PlaySound();
@@ -25,7 +25,7 @@ public class SlashSequence : EffectSequence
         Sequence sequence = DOTween.Sequence();
 
         sequence.Append(slash.DOFillAmount(1.0f, 0.14f).SetEase(Ease.InCirc).OnComplete(() => slash.fillClockwise = false));
-        sequence.Join(transform.DOMove(transform.position + transform.right * slashMoveDistance, 0.2f).SetEase(Ease.OutSine));
+        sequence.Join(slash.rectTransform.DOLocalMove(Vector3.right * slashMoveDistance, 0.2f).SetEase(Ease.OutSine));
         
         sequence.Append(slash.rectTransform.DOShakePosition(0.2f, 16.0f, 16));
         sequence.Join(slash.DOFillAmount(0.0f, 0.12f).SetEase(Ease.OutQuad).SetDelay(slashDissapearDelay));

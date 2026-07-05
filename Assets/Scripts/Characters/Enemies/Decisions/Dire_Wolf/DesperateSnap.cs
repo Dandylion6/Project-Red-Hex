@@ -36,7 +36,7 @@ public class DesperateSnap : AIDecision<DesperationAttackAction>
                 AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.WolfAttack);
 
                 EffectSequence sequence = Instantiate(Data.Effect);
-                yield return sequence.PlaySeqeunce(Brain.Player.transform.position);
+                yield return sequence.PlaySeqeunce(Brain.Player.transform);
             }
 
             Brain.Player.TakeDamage(Data.Damage);

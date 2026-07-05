@@ -8,6 +8,7 @@ public class AudioBank : ScriptableObject
     [SerializeField] private AudioClip berryClick;
     [SerializeField] private AudioClip musketClick;
     [SerializeField] private AudioClip buttonHover;
+    [SerializeField] private AudioClip[] turnChange;
 
     [Header("Ambience/Loops")]
     [SerializeField] private AudioClip mainMenuMusic;
@@ -38,6 +39,7 @@ public class AudioBank : ScriptableObject
     public AudioClip BerryClick => berryClick;
     public AudioClip MusketClick => musketClick;
     public AudioClip ButtonHover => buttonHover;
+    public AudioClip[] TurnChange => turnChange;
 
     public AudioClip[] OnGrassLand => onGrassLand;
     public AudioClip[] OnRockLand => onRockLand;

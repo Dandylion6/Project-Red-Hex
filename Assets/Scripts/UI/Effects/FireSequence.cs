@@ -15,14 +15,14 @@ public class FireSequence : EffectSequence
     [SerializeField] private float shakeIntensity = 10.0f;
 
 
-    public override IEnumerator PlaySeqeunce(Vector3 position)
+    public override IEnumerator PlaySeqeunce(Transform attachTo)
     {
         fireImage.sprite = sprites[Random.Range(0, sprites.Count)];
-        EffectsUI.Instance.AddEffect(this, position + Vector3.up * fireWorldHeightOffset);
+        EffectsUI.Instance.AddEffect(this, attachTo, Vector3.up * fireWorldHeightOffset);
 
-        transform.localScale = new(0.0f, 0.0f, 1.0f);
-        transform.position += transform.right * fireMoveDistance;
-        transform.rotation *= Quaternion.Euler(0.0f, 0.0f, Random.Range(-180.0f, 180.0f));
+        fireImage.rectTransform.localScale = new(0.0f, 0.0f, 1.0f);
+        fireImage.rectTransform.localPosition += Vector3.right * fireMoveDistance;
+        fireImage.rectTransform.rotation *= Quaternion.Euler(0.0f, 0.0f, Random.Range(-180.0f, 180.0f));
 
         AudioManager.Instance.PlayOneShotRandom(AudioManager.Instance.AudioBank.MusketFire);
 
@@ -30,8 +30,8 @@ public class FireSequence : EffectSequence
 
         Sequence sequence = DOTween.Sequence();
 
-        sequence.Append(transform.DOScale(1.0f, 0.11f).SetEase(Ease.OutQuad));
-        sequence.Append(transform.DOScale(0.0f, 0.18f).SetEase(Ease.InOutQuad));
+        sequence.Append(fireImage.rectTransform.DOScale(1.0f, 0.11f).SetEase(Ease.OutQuad));
+        sequence.Append(fireImage.rectTransform.DOScale(0.0f, 0.18f).SetEase(Ease.InOutQuad));
         sequence.Join(fireImage.DOFade(0.0f, 0.16f).SetEase(Ease.InSine));
         sequence.OnComplete(() => Destroy(gameObject));
 
