@@ -18,7 +18,7 @@ MonoBehaviour:
   itemSelectSound: {fileID: 0}
   cooldown: 0
   callingHowlPoints:
-  - spawnAmount: 2
+  - spawnAmount: 1
     triggerHealthPercentage: 75
   - spawnAmount: 2
     triggerHealthPercentage: 25
