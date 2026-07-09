@@ -20,4 +20,10 @@ public class SettingsManager : Singleton<SettingsManager>
     public void SetMusicVolume(float volume) => settings.musicVolume = Mathf.Lerp(0.0f, 1.0f, volume);
 
     public void SetSfxVolume(float volume) => settings.sfxVolume = Mathf.Lerp(0.0f, 1.0f, volume);
+
+
+    private void Start()
+    {
+        QualitySettings.vSyncCount = 1;
+    }
 }

@@ -26,7 +26,8 @@ public class SettingsUI : MonoBehaviour
         group.interactable = isVisible;
         group.blocksRaycasts = isVisible;
         group.DOKill();
-        group.DOFade(isVisible ? 1.0f : 0.0f, 0.25f).SetEase(Ease.InOutSine).Play();
+        group.DOFade(isVisible ? 1.0f : 0.0f, 0.25f).SetEase(Ease.InOutSine).SetUpdate(true).Play();
+        Time.timeScale = isVisible ? 0.0f : 1.0f;
     }
 
 
