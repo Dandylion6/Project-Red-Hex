@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.5}
-  m_SizeDelta: {x: 0.8, y: 0.8}
+  m_AnchoredPosition: {x: 0, y: -0.6}
+  m_SizeDelta: {x: 0.9, y: 0.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3000524042650280093
 CanvasRenderer:
@@ -159,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -30, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.5}
-  m_SizeDelta: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0.6}
+  m_SizeDelta: {x: 1.1, y: 1.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3652483163333305172
 CanvasRenderer:
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 3441059273717484685}
   - component: {fileID: 8673961942468816184}
   m_Layer: 6
-  m_Name: Bite Effect
+  m_Name: Big Bad Bite Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -320,8 +320,8 @@ MonoBehaviour:
   upperJaw: {fileID: 2005809529265982545}
   lowerJaw: {fileID: 427867975275717779}
   biteDelaySeconds: 0.3
-  biteWorldHeightOffset: 0.6
-  jawAnticipationOffset: 0.1
+  biteWorldHeightOffset: 2
+  jawAnticipationOffset: 0.2
   upperJawCloseOffset: 0.2
   lowerJawCloseOffset: 0.4
   cameraBias: 0.6

@@ -25,6 +25,7 @@ public class LoadingUI : SingletonPersistent<LoadingUI>
 
     public void StartUI()
     {
+        Time.timeScale = 1.0f;
         veil.fillOrigin = 1;
         veil.DOKill();
 
@@ -46,6 +47,7 @@ public class LoadingUI : SingletonPersistent<LoadingUI>
 
     public void EndUI()
     {
+        Time.timeScale = 1.0f;
         veil.fillOrigin = 1;
         veil.DOKill();
 

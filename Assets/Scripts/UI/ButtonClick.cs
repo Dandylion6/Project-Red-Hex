@@ -8,7 +8,7 @@ public class ButtonClick : MonoBehaviour
     private Vector2 size = Vector2.one;
 
 
-    public void OnClick()
+    public virtual void OnClick()
     {
         AudioManager.Instance.PlayOneShot(AudioManager.Instance.AudioBank.UIClick);
         transform.DOKill();

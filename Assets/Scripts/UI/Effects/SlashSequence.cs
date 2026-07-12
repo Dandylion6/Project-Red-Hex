@@ -7,7 +7,6 @@ public class SlashSequence : EffectSequence
 {
     [Header("References")]
     [SerializeField] private Image slash = null;
-    [SerializeField] private Canvas canvas = null;
 
     [Header("Slash Tuning")]
     [SerializeField] private float slashDelaySeconds = 0.2f;

@@ -21,8 +21,8 @@ public class BiteSequence : EffectSequence
 
     public override IEnumerator PlaySeqeunce(EffectData data)
     {
-        Vector3 direction = (data.target.transform.position - data.piece.transform.position).normalized;
-        Vector3 toCameraDirection = (GameManager.Instance.MainCamera.transform.position - data.target.transform.position).normalized;
+        Vector3 direction = (data.target.Occupying.transform.position - data.piece.Occupying.transform.position).normalized;
+        Vector3 toCameraDirection = (GameManager.Instance.MainCamera.transform.position - data.target.Occupying.transform.position).normalized;
         Vector3 position = Vector3.Lerp(data.piece.transform.position, data.target.transform.position, 0.5f);
         position += Vector3.up * biteWorldHeightOffset;
 

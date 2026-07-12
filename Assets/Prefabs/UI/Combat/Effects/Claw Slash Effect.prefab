@@ -8,9 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 986637503038278307, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3127090356151830702, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
       propertyPath: m_Name
-      value: Claw Slash Effect Variant
+      value: Claw Slash Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127090356151830702, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505351413552330682, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
+      propertyPath: slashWorldHeightOffset
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 5943259010733241773, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
       propertyPath: m_Pivot.x
@@ -78,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5943259010733241773, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.462
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5943259010733241773, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -92,6 +104,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6361197197585583931, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6519467477211391837, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -99,6 +115,30 @@ PrefabInstance:
     - target: {fileID: 6519467477211391837, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
       propertyPath: m_PreserveAspect
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756727103136311152, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785124726020346, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785124726020346, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785124726020346, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785124726020346, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920785124726020346, guid: ed056eb610182ac4b9f4239276a950ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

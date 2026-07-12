@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class TilePiece : MonoBehaviour, IDamageable
@@ -10,6 +11,9 @@ public class TilePiece : MonoBehaviour, IDamageable
     [SerializeField] private int baseMoveDistance = 1;
     [SerializeField][Min(1)] private int maxHealth = 5;
     [SerializeField] private float healthBarHeight = 1.0f;
+
+    [Space]
+    [SerializeField] private UnityEvent onDeath = null;
 
     [Header("Animation Settings")]
     [SerializeField][Min(0.1f)] private float moveTime = 0.5f;
@@ -76,6 +80,7 @@ public class TilePiece : MonoBehaviour, IDamageable
             return;
         }
 
+        onDeath?.Invoke();
         Destroy(gameObject);
     }
 

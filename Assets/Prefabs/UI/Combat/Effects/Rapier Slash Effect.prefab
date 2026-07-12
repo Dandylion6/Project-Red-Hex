@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7920785124726020346}
   - component: {fileID: 5847856342988681993}
   - component: {fileID: 6519467477211391837}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 7756727103136311152}
   - component: {fileID: 8516114193035967509}
   - component: {fileID: 4505351413552330682}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rapier Slash Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -191,7 +191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlashSequence
   slash: {fileID: 6519467477211391837}
-  canvas: {fileID: 6361197197585583931}
   slashDelaySeconds: 0.2
   slashWorldHeightOffset: 1
   slashMoveDistance: 1

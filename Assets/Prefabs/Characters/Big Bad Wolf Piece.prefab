@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e2599d5f7d5e04c80bc44444adccdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicAttackAction
-  data: {fileID: 11400000, guid: c957ad4d81c21eb4ca3abd8f491d4f90, type: 2}
-  effectFromPiece: 0
+  data: {fileID: 11400000, guid: b42fad8941fe9de4facfd6ef7ece755b, type: 2}
+  effectFromPiece: 1
 --- !u!1 &4072766034684297590
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5867498901092762930, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1477499
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5867498901092762930, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: m_LocalPosition.y
@@ -293,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5867498901092762930, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.8948412
+      value: -1.7320508
       objectReference: {fileID: 0}
     - target: {fileID: 5867498901092762930, guid: 48e5471c05cc7f44c8d692e47e989d17, type: 3}
       propertyPath: m_LocalRotation.w

@@ -14,10 +14,12 @@ public class GameManager : Singleton<GameManager>
     [Header("References")]
     [SerializeField] private TilePiece player = null;
     [SerializeField] private Camera mainCamera = null;
+    [SerializeField] private Camera effectsCamera = null;
 
 
     public TilePiece Player => player;
     public Camera MainCamera => mainCamera;
+    public Camera EffectsCamera => effectsCamera;
 
     private Action onGameRestart = null;
     private CheckpointData checkpoint = new();
